@@ -11,9 +11,9 @@ namespace BreadFlip.UI
         [SerializeField] GameObject on;
         [SerializeField] GameObject off;
 
-        protected Toggle toggle;
+        private Toggle toggle;
 
-        protected void OnEnable()
+        void OnEnable()
         {
             StartAction();
         }
@@ -25,8 +25,9 @@ namespace BreadFlip.UI
             MoveIndicator(isOn);
         }
 
-        protected void MoveIndicator(bool value)
+        private void MoveIndicator(bool value)
         {
+            Debug.Log("Я зашёл");
             if (value)
             {
                 on.SetActive(true);
@@ -40,10 +41,16 @@ namespace BreadFlip.UI
             }
         }
 
-        public void OnPointerDown(PointerEventData eventData)
+        public void RunMoveIndicator()
         {
             isOn = toggle.isOn;
-            MoveIndicator(!isOn);
+            MoveIndicator(isOn);
         }
+
+        //public void OnPointerDown(PointerEventData eventData)
+        //{
+        //isOn = toggle.isOn;
+        //MoveIndicator(!isOn);
+        //}
     }
 }
