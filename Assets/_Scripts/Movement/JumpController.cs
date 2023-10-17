@@ -5,6 +5,7 @@ namespace BreadFlip.Movement
     public class JumpController : MonoBehaviour
     {
         [SerializeField] private Rigidbody _rigidbody;
+        [SerializeField] private Animator _animator;
         [SerializeField] private TrajectoryRenderer _trajectoryRenderer;
 
         private bool _isDoubleJumpPressed;
@@ -12,10 +13,12 @@ namespace BreadFlip.Movement
         private bool _inToaster;
 
         private const float _MAX_TIME = 1.3f;
+        public Toaster CurrentToaster { get; set; }
 
         private void OnValidate()
         {
             _rigidbody ??= gameObject.GetComponent<Rigidbody>();
+            _animator ??= gameObject.GetComponent<Animator>();
             _trajectoryRenderer ??= gameObject.GetComponentInChildren<TrajectoryRenderer>();
         }
 
@@ -41,6 +44,7 @@ namespace BreadFlip.Movement
 
             if (Input.GetMouseButton(0) && _startTime != 0)
             {
+                CurrentToaster.SetHandlePosition(GetForcePercent());
                 _trajectoryRenderer.ShowTrajectory(gameObject.transform.position, GetForceVector());
             }
 
@@ -67,6 +71,10 @@ namespace BreadFlip.Movement
                     _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0f, _rigidbody.velocity.z);
 
                 _rigidbody.AddForce(new Vector3(0, 10f, 0f), ForceMode.Impulse);
+                
+                // _rigidbody.MoveRotation(Quaternion.AngleAxis(360, Vector3.up));
+                _animator.Play($"flip_0{Random.Range(1,5)}");
+                
                 _isDoubleJumpPressed = true;
             }
 

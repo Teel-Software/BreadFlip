@@ -13,8 +13,10 @@ namespace BreadFlip.Movement
         
         public void OnCollideToaster(GameObject toasterObj)
         {
+            
             var toaster = toasterObj.GetComponent<Toaster>();
             if (!toaster) return;
+            _jumpController.CurrentToaster = toaster;
 
             var newPos = toaster.ToastPosition.position;
             transform.position = newPos;
