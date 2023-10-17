@@ -146,8 +146,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u0417\u0432\u0443\u043A"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e9f58b47cb6e7044e84cde777e12793e, type: 2}
+  m_sharedMaterial: {fileID: 4947806603131012211, guid: e9f58b47cb6e7044e84cde777e12793e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -357,8 +357,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u041C\u0443\u0437\u044B\u043A\u0430"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e9f58b47cb6e7044e84cde777e12793e, type: 2}
+  m_sharedMaterial: {fileID: 4947806603131012211, guid: e9f58b47cb6e7044e84cde777e12793e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -434,6 +434,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4668471603027509670}
   - component: {fileID: 8600539204302358395}
+  - component: {fileID: 8672859517905866666}
   m_Layer: 5
   m_Name: "Slider_\u0437\u0432\u0443\u043A"
   m_TagString: Untagged
@@ -509,7 +510,21 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 0
+  m_IsOn: 1
+--- !u!114 &8672859517905866666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4668471603027509671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68dbc30fa4aff984080136dbc1ba4bde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  on: {fileID: 4668471603938131228}
+  off: {fileID: 4668471603560697519}
 --- !u!1 &4668471603048488005
 GameObject:
   m_ObjectHideFlags: 0
@@ -1260,8 +1275,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u041D\u0430\u0437\u0430\u0434"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e9f58b47cb6e7044e84cde777e12793e, type: 2}
+  m_sharedMaterial: {fileID: 4947806603131012211, guid: e9f58b47cb6e7044e84cde777e12793e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1337,6 +1352,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4668471604136090814}
   - component: {fileID: 4363422960772148927}
+  - component: {fileID: 2356242629670676565}
   m_Layer: 5
   m_Name: "Slider_\u043C\u0443\u0437\u044B\u043A\u0430"
   m_TagString: Untagged
@@ -1413,6 +1429,20 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
+--- !u!114 &2356242629670676565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4668471604136090815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68dbc30fa4aff984080136dbc1ba4bde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  on: {fileID: 4668471603991881304}
+  off: {fileID: 4668471603199398803}
 --- !u!1 &4668471604150217057
 GameObject:
   m_ObjectHideFlags: 0
@@ -1481,8 +1511,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u041D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e9f58b47cb6e7044e84cde777e12793e, type: 2}
+  m_sharedMaterial: {fileID: 4947806603131012211, guid: e9f58b47cb6e7044e84cde777e12793e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
