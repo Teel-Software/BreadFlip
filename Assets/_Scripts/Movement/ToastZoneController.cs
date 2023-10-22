@@ -8,8 +8,12 @@ namespace BreadFlip.Movement
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private JumpController _jumpController;
 
+        //[SerializeField] private Timer _timer;
+
         public event Action OnCollidedToaster;
         public event Action OnCollidedBadThing;
+        public event Action OnColliderExit;
+
         
         public void OnCollideToaster(GameObject toasterObj)
         {
@@ -23,7 +27,7 @@ namespace BreadFlip.Movement
             
             _rigidbody.velocity = Vector3.zero;
             _jumpController.Reset();
-            
+
             OnCollidedToaster?.Invoke();
         }
 
@@ -31,6 +35,11 @@ namespace BreadFlip.Movement
         {
             _jumpController.enabled = false;
             OnCollidedBadThing?.Invoke();
+        }
+
+        public void OnExitFromCollider(GameObject gO)
+        {
+            OnColliderExit?.Invoke();
         }
     }
 }

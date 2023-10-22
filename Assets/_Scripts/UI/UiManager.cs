@@ -13,13 +13,13 @@ namespace BreadFlip.UI
 
         [SerializeField] private ToastZoneController zoneController;
 
-        private bool wasInvoked;
+        private bool onFailedWasInvoked;
 
         private void Start()
         {
             SetTimeScale(true);
             zoneController.OnCollidedBadThing += OnFailed;
-            wasInvoked = false;
+            onFailedWasInvoked = false;
         }
 
 
@@ -40,15 +40,19 @@ namespace BreadFlip.UI
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-        private void OnFailed()
+        public void OnFailed()
         {
-            if (!wasInvoked) 
+            if (!onFailedWasInvoked)
             {
-                losePanel.SetActive(true);
-                SetTimeScale(false);
+                Fail();
             }
-            wasInvoked = true;
+            onFailedWasInvoked = true;
         }
 
+        public void Fail()
+        {
+            losePanel.SetActive(true);
+            SetTimeScale(false);
+        }
     }
 }

@@ -1,3 +1,5 @@
+using BreadFlip.Movement;
+using BreadFlip.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,16 +10,30 @@ namespace BreadFlip
     public class Timer : MonoBehaviour
     {
         [SerializeField] private Slider _slider;
+        [SerializeField] private ToastZoneController zoneController;
+        [SerializeField] private UiManager uiManager;
 
-        private int wholeTime = 6;
-        private int currentTime = 0;
+        private static int wholeTime = 6;
+        private static int currentTime = 0;
+
+        public bool ifGameStarted = false;
 
         private void OnEnable()
-        { 
-            StartCoroutine(newIen());
+        {
+            wholeTime = 6;
+            currentTime = 0;
+            zoneController.OnCollidedToaster += StartTimer;
+            zoneController.OnColliderExit += DisableComponent;
+            StartCoroutine(WaitUntillFail());
         }
 
-        private IEnumerator newIen()
+        private void DisableComponent()
+        {
+            gameObject.SetActive(false);
+            StopCoroutine(WaitUntillFail());
+        }
+
+        private IEnumerator WaitUntillFail()
         {
             for (int i = 0; i < wholeTime; i++)
             {
@@ -28,16 +44,21 @@ namespace BreadFlip
 
                 yield return new WaitForSeconds(1f);
             }
-                        
-
-            
-
-            
 
             if (currentTime == 6)
             {
-                // вызывается событие на проигрыш
+                uiManager.Fail();
             }
+        }
+
+        private void StartTimer()
+        {
+            if (ifGameStarted) gameObject.SetActive(true);
+        }
+
+        public void StartGame(bool start)
+        {
+            ifGameStarted = true ? start : false;
         }
     }
 }
