@@ -49,6 +49,10 @@ namespace BreadFlip.Generation
                     var zoneCallback = new UnityGameObjectEvent();
                     zoneCallback.AddListener(entryZoneComponent.IsToaster ? toastZoneController.OnCollideToaster : toastZoneController.OnCollideBadThing);
                     entryZoneComponent.SetZoneEnteredEvent(zoneCallback);
+
+                    var zoneExitCallback = new UnityGameObjectEvent();
+                    if (entryZoneComponent.IsToaster)   zoneExitCallback.AddListener(toastZoneController.OnExitFromCollider);
+                    entryZoneComponent.SetZoneExitEvent(zoneExitCallback);
                 }
             }
         }

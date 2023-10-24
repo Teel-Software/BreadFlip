@@ -9,6 +9,7 @@ namespace BreadFlip.Generation
     {
         [SerializeField] private Collider _triggerZone;
         [SerializeField] private UnityGameObjectEvent _onEnteredZone;
+        [SerializeField] private UnityGameObjectEvent _onExitZone;
 
         [SerializeField] private bool _activeHighlight = true;
     
@@ -22,6 +23,11 @@ namespace BreadFlip.Generation
         public void SetZoneEnteredEvent(UnityGameObjectEvent myEvent)
         {
             _onEnteredZone = myEvent;
+        }
+
+        public void SetZoneExitEvent(UnityGameObjectEvent exitEvent)
+        {
+            _onExitZone = exitEvent;
         }
 
         private void Awake()
@@ -39,12 +45,30 @@ namespace BreadFlip.Generation
             }
         }
 
+        //private void OnCollisionExit(Collision collision)
+        //{
+        //    if (!IsZoneTrigger)
+        //    {
+        //        _onExitZone.Invoke(gameObject);
+        //        Debug.Log("Collision");
+        //    }
+        //}
+
         private void OnTriggerEnter(Collider other)
         {
             if (IsZoneTrigger)
             {
                 _onEnteredZone.Invoke(gameObject);
                 Debug.Log("Trigger");
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (IsZoneTrigger)
+            {
+                _onExitZone.Invoke(gameObject);
+                Debug.Log("EXIT Trigger");
             }
         }
 

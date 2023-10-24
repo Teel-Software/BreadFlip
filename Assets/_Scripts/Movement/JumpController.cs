@@ -1,21 +1,33 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace BreadFlip.Movement
 {
     public class JumpController : MonoBehaviour
     {
         [SerializeField] private Rigidbody _rigidbody;
+        [SerializeField] private Animator _animator;
         [SerializeField] private TrajectoryRenderer _trajectoryRenderer;
+        private ToastZoneController zoneController;
 
         private bool _isDoubleJumpPressed;
         private float _startTime;
         private bool _inToaster;
+        private bool _isOutOfToaster;
 
         private const float _MAX_TIME = 1.3f;
+        public Toaster CurrentToaster { get; set; }
+
+        private void Start()
+        {
+            zoneController = GetComponent<ToastZoneController>();
+            zoneController.OnColliderExit += () => { _isOutOfToaster = true; };
+            zoneController.OnCollidedToaster += () => { _inToaster = true; };
+        }
 
         private void OnValidate()
         {
             _rigidbody ??= gameObject.GetComponent<Rigidbody>();
+            _animator ??= gameObject.GetComponent<Animator>();
             _trajectoryRenderer ??= gameObject.GetComponentInChildren<TrajectoryRenderer>();
         }
 
@@ -23,6 +35,7 @@ namespace BreadFlip.Movement
         {
             _isDoubleJumpPressed = false;
             _inToaster = true;
+            _isOutOfToaster = false;
         }
 
         private void Update()
@@ -41,6 +54,7 @@ namespace BreadFlip.Movement
 
             if (Input.GetMouseButton(0) && _startTime != 0)
             {
+                CurrentToaster.SetHandlePosition(GetForcePercent());
                 _trajectoryRenderer.ShowTrajectory(gameObject.transform.position, GetForceVector());
             }
 
@@ -48,12 +62,13 @@ namespace BreadFlip.Movement
             {
                 var forceVector = GetForceVector();
 
-                if (forceVector.magnitude > 1)
+                if (forceVector.magnitude > 2)
                 {
                     _rigidbody.AddForce(forceVector, ForceMode.Impulse);
                     _trajectoryRenderer.ClearTrajectory();
                     
-                    _inToaster = false;
+                    if (!_isOutOfToaster)
+                        _inToaster = false;
                 }
                 _startTime = 0;
             }
@@ -67,6 +82,10 @@ namespace BreadFlip.Movement
                     _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0f, _rigidbody.velocity.z);
 
                 _rigidbody.AddForce(new Vector3(0, 10f, 0f), ForceMode.Impulse);
+                
+                // _rigidbody.MoveRotation(Quaternion.AngleAxis(360, Vector3.up));
+                _animator.Play($"flip_0{Random.Range(1,5)}");
+                
                 _isDoubleJumpPressed = true;
             }
 
