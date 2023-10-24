@@ -37,7 +37,7 @@ namespace BreadFlip.Movement
             OnCollidedBadThing?.Invoke();
         }
 
-        public void OnExitFromCollider(GameObject gO)
+        public void OnExitFromCollider(GameObject toasterObj)
         {
             OnColliderExit?.Invoke();
         }
