@@ -818,6 +818,25 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &803828763 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1924893622929116662, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+  m_PrefabInstance: {fileID: 1877933764}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &803828767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803828763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5353988f89fb6594e80f31be35a23da9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiManager: {fileID: 1877933766}
+  loseScore: {fileID: 1735450379}
 --- !u!1 &872181359
 GameObject:
   m_ObjectHideFlags: 0
@@ -932,7 +951,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.09466419, y: -0.8286409, z: 0.14755365, w: 0.53162104}
+  m_LocalRotation: {x: 0.09466421, y: -0.8286409, z: 0.14755367, w: 0.53162104}
   m_LocalPosition: {x: 8.441, y: 5.757, z: -6.007001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1187,7 +1206,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1202834065}
-  m_LocalRotation: {x: 0.09466419, y: -0.8286409, z: 0.14755365, w: 0.53162104}
+  m_LocalRotation: {x: 0.09466421, y: -0.8286409, z: 0.14755367, w: 0.53162104}
   m_LocalPosition: {x: 8.441, y: 5.757, z: -6.007001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1306,6 +1325,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1735450379 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9138631100343739791, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+  m_PrefabInstance: {fileID: 1877933764}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1737770653
 GameObject:
   m_ObjectHideFlags: 3
@@ -1972,6 +2002,10 @@ PrefabInstance:
     - target: {fileID: 9138631101457369173, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: BreadFlip.UI.UiManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138631101482513412, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_text
+      value: XX
       objectReference: {fileID: 0}
     - target: {fileID: 9138631101522550931, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
       propertyPath: m_IsActive

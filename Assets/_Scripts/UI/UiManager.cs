@@ -11,7 +11,7 @@ namespace BreadFlip.UI
         [SerializeField] private GameObject _gameUi;
         [SerializeField] private GameObject losePanel;
 
-        [SerializeField] private ToastZoneController zoneController;
+        [SerializeField] public ToastZoneController zoneController;
 
         private bool onFailedWasInvoked;
 

@@ -1,11 +1,9 @@
 using BreadFlip.Movement;
-using BreadFlip.UI;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace BreadFlip
+namespace BreadFlip.UI
 {
     public class Timer : MonoBehaviour
     {
