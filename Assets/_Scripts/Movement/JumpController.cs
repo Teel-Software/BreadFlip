@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+using System;
+using System.Collections;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace BreadFlip.Movement
 {
@@ -6,23 +9,20 @@ namespace BreadFlip.Movement
     {
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private Animator _animator;
+        [SerializeField] private Transform _modelTransform;
+        
         [SerializeField] private TrajectoryRenderer _trajectoryRenderer;
-        private ToastZoneController zoneController;
 
         private bool _isDoubleJumpPressed;
         private float _startTime;
         private bool _inToaster;
-        private bool _isOutOfToaster;
+        private float _rotationSpeed = 563f;
+        
+        private IEnumerator _playRotateAnimation;
+        private Vector3 _rotateAxis;
 
         private const float _MAX_TIME = 1.3f;
         public Toaster CurrentToaster { get; set; }
-
-        private void Start()
-        {
-            zoneController = GetComponent<ToastZoneController>();
-            zoneController.OnColliderExit += () => { _isOutOfToaster = true; };
-            zoneController.OnCollidedToaster += () => { _inToaster = true; };
-        }
 
         private void OnValidate()
         {
@@ -35,12 +35,13 @@ namespace BreadFlip.Movement
         {
             _isDoubleJumpPressed = false;
             _inToaster = true;
-            _isOutOfToaster = false;
+            
+            ResetRotation();
         }
 
         private void Update()
         {
-            if (!_inToaster) 
+            if (!_inToaster)
                 TryDoubleJump();
             else PrepareToJump();
         }
@@ -66,10 +67,13 @@ namespace BreadFlip.Movement
                 {
                     _rigidbody.AddForce(forceVector, ForceMode.Impulse);
                     _trajectoryRenderer.ClearTrajectory();
-                    
-                    if (!_isOutOfToaster)
-                        _inToaster = false;
+
+                    _playRotateAnimation = PlayRotateAnimation();
+                    StartCoroutine(_playRotateAnimation);
+
+                    _inToaster = false;
                 }
+
                 _startTime = 0;
             }
         }
@@ -82,24 +86,49 @@ namespace BreadFlip.Movement
                     _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0f, _rigidbody.velocity.z);
 
                 _rigidbody.AddForce(new Vector3(0, 10f, 0f), ForceMode.Impulse);
-                
-                // _rigidbody.MoveRotation(Quaternion.AngleAxis(360, Vector3.up));
-                _animator.Play($"flip_0{Random.Range(1,5)}");
-                
+
+                ResetRotation();
+                _playRotateAnimation = PlayRotateAnimation();
+                StartCoroutine(_playRotateAnimation);
+                //_animator.Play($"flip_0{Random.Range(1,5)}");
+
                 _isDoubleJumpPressed = true;
             }
 
             if (Input.GetMouseButtonUp(0) && _isDoubleJumpPressed && _rigidbody.velocity.y > 0)
             {
-                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, _rigidbody.velocity.y / 2f, _rigidbody.velocity.z);
+                _rigidbody.velocity =
+                    new Vector3(_rigidbody.velocity.x, _rigidbody.velocity.y / 2f, _rigidbody.velocity.z);
             }
+        }
+
+        private void ResetRotation()
+        {
+            if (_playRotateAnimation != null) StopCoroutine(_playRotateAnimation);
+            _modelTransform.localRotation = Quaternion.identity;
+            
+            _rotateAxis = GetRandomAxis();
+        }
+
+        private IEnumerator PlayRotateAnimation()
+        {
+            while (true)
+            {
+                _modelTransform.Rotate(_rotateAxis, _rotationSpeed*Time.deltaTime);
+                yield return null;
+            }
+        }
+
+        private Vector3 GetRandomAxis()
+        {
+            return new Vector3(Random.Range(-1, 2), Random.Range(-1, 2), Random.Range(-1, 2));
         }
 
         private Vector3 GetForceVector()
         {
             var direction = -transform.forward;
             var force = GetForcePercent();
-            
+
             const int c = 10;
             var newVector = new Vector3(direction.x * force, force, direction.z * force) * c;
             return newVector;
@@ -108,7 +137,7 @@ namespace BreadFlip.Movement
         private float GetForcePercent()
         {
             if (_startTime == 0) return 0;
-            
+
             var percent = (Time.time - _startTime) / _MAX_TIME;
             if ((int)percent % 2 == 0) return percent - (int)percent;
             return 1 - (percent - (int)percent);
