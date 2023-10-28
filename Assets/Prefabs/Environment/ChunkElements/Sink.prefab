@@ -56,6 +56,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   Visual: {fileID: 6410012574995164183}
+  _entryZoneComponents:
+  - {fileID: 1168647213205441703}
 --- !u!1 &4922375398749216689
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,8 +250,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.29295, y: 0.564739, z: 3.006506}
-  m_Center: {x: 0.12862718, y: 2.1538548, z: -0.050643444}
+  m_Size: {x: 3.29295, y: 0.44627202, z: 3.006506}
+  m_Center: {x: 0.12862718, y: 2.0946212, z: -0.050643444}
 --- !u!114 &1168647213205441703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,84 +268,9 @@ MonoBehaviour:
   _onEnteredZone:
     m_PersistentCalls:
       m_Calls: []
-  _color: {r: 0, g: 1, b: 0, a: 0}
---- !u!114 &2853654152812687006
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6410012574995164183}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49a8255bb61893f489b5f470533c8188, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _triggerZone: {fileID: 3903862953282133176}
-  _onEnteredZone:
+  _onExitZone:
     m_PersistentCalls:
       m_Calls: []
-  _color: {r: 0, g: 1, b: 0, a: 0}
---- !u!114 &3014209945997921755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6410012574995164183}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2494c34cc37005344a0f2764a7bac15b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4655336141605765740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6410012574995164183}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49a8255bb61893f489b5f470533c8188, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _triggerZone: {fileID: 7987297121910556727}
-  _onEnteredZone:
-    m_PersistentCalls:
-      m_Calls: []
-  _color: {r: 0, g: 1, b: 0, a: 0}
---- !u!114 &5489259815111878016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6410012574995164183}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49a8255bb61893f489b5f470533c8188, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _triggerZone: {fileID: 6810015526095747305}
-  _onEnteredZone:
-    m_PersistentCalls:
-      m_Calls: []
-  _color: {r: 0, g: 1, b: 0, a: 0}
---- !u!114 &9086232765283847348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6410012574995164183}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49a8255bb61893f489b5f470533c8188, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _triggerZone: {fileID: 4645086432454650800}
-  _onEnteredZone:
-    m_PersistentCalls:
-      m_Calls: []
+  _activeHighlight: 1
+  _isToaster: 0
   _color: {r: 0, g: 1, b: 0, a: 0}

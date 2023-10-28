@@ -48,7 +48,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92cb0430a13d40a48e0d6ae2075255c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
   _spawnParent: {fileID: 2713404047980045698}
   _chunkPrefabs:
   - {fileID: 538679584, guid: b3d0b289fd3d1404a89ab27a64741d6a, type: 3}
@@ -59,10 +58,10 @@ MonoBehaviour:
   - {fileID: 5461920935522241696}
   - {fileID: 2713404046733869758}
   - {fileID: 2713404046067188904}
-  _offsetDistanceToLastChunkX: 15
-  _offsetDistanceToFirstChunkX: 5
+  _offsetDistanceToLastChunkX: 20
+  _offsetDistanceToFirstChunkX: 10
   _minSpawnedChunks: 5
-  _maxSpawnedChunks: 10
+  _maxSpawnedChunks: 30
   _emptySpaceVariant: {fileID: -7422536353257134378, guid: de16bce59ce74f34190d851a1e98bf95, type: 3}
   _emptySpaceValue: 3
 --- !u!1001 &2713404046197496734

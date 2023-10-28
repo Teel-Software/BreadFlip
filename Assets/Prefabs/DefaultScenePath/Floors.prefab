@@ -46,7 +46,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92cb0430a13d40a48e0d6ae2075255c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
   _spawnParent: {fileID: 5393401308657931489}
   _chunkPrefabs:
   - {fileID: 8562240437642264439, guid: 6c87fc733881e4b458d872b7fb51f5bf, type: 3}

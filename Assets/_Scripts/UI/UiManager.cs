@@ -1,3 +1,4 @@
+using System.Collections;
 using BreadFlip.Movement;
 using System.Runtime.CompilerServices;
 using UnityEngine;
@@ -11,6 +12,8 @@ namespace BreadFlip.UI
         [SerializeField] private GameObject _gameUi;
         [SerializeField] private GameObject losePanel;
 
+        [SerializeField] private float _failUIDelay = 1.5f;
+        
         [SerializeField] public ToastZoneController zoneController;
 
         private bool onFailedWasInvoked;
@@ -44,13 +47,15 @@ namespace BreadFlip.UI
         {
             if (!onFailedWasInvoked)
             {
-                Fail();
+                StartCoroutine(Fail());
             }
             onFailedWasInvoked = true;
         }
 
-        public void Fail()
+        public IEnumerator Fail()
         {
+            yield return new WaitForSeconds(_failUIDelay);
+            
             losePanel.SetActive(true);
             SetTimeScale(false);
         }

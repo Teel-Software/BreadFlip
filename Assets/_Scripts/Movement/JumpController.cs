@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -10,9 +11,12 @@ namespace BreadFlip.Movement
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private Animator _animator;
         [SerializeField] private Transform _modelTransform;
-        
-        [SerializeField] private TrajectoryRenderer _trajectoryRenderer;
 
+        [SerializeField] private BoxCollider _collisionCollider;
+        [SerializeField] private BoxCollider _modelCollider;
+
+        [SerializeField] private TrajectoryRenderer _trajectoryRenderer;
+        
         private bool _isDoubleJumpPressed;
         private float _startTime;
         private bool _inToaster;
@@ -20,6 +24,7 @@ namespace BreadFlip.Movement
         
         private IEnumerator _playRotateAnimation;
         private Vector3 _rotateAxis;
+        private int _speedMultiplicator = 1;
 
         private const float _MAX_TIME = 1.3f;
         public Toaster CurrentToaster { get; set; }
@@ -29,6 +34,8 @@ namespace BreadFlip.Movement
             _rigidbody ??= gameObject.GetComponent<Rigidbody>();
             _animator ??= gameObject.GetComponent<Animator>();
             _trajectoryRenderer ??= gameObject.GetComponentInChildren<TrajectoryRenderer>();
+
+            if (_modelCollider) _modelCollider.enabled = false;
         }
 
         public void Reset()
@@ -55,7 +62,7 @@ namespace BreadFlip.Movement
 
             if (Input.GetMouseButton(0) && _startTime != 0)
             {
-                CurrentToaster.SetHandlePosition(GetForcePercent());
+                //CurrentToaster.SetHandlePosition(GetForcePercent());
                 _trajectoryRenderer.ShowTrajectory(gameObject.transform.position, GetForceVector());
             }
 
@@ -70,6 +77,8 @@ namespace BreadFlip.Movement
 
                     _playRotateAnimation = PlayRotateAnimation();
                     StartCoroutine(_playRotateAnimation);
+
+                    CurrentToaster.JumpUp();
 
                     _inToaster = false;
                 }
@@ -87,10 +96,7 @@ namespace BreadFlip.Movement
 
                 _rigidbody.AddForce(new Vector3(0, 10f, 0f), ForceMode.Impulse);
 
-                ResetRotation();
-                _playRotateAnimation = PlayRotateAnimation();
-                StartCoroutine(_playRotateAnimation);
-                //_animator.Play($"flip_0{Random.Range(1,5)}");
+                InverseRotation();
 
                 _isDoubleJumpPressed = true;
             }
@@ -104,24 +110,40 @@ namespace BreadFlip.Movement
 
         private void ResetRotation()
         {
-            if (_playRotateAnimation != null) StopCoroutine(_playRotateAnimation);
+            StopRotation();
             _modelTransform.localRotation = Quaternion.identity;
+
+            _speedMultiplicator = 1;
             
             _rotateAxis = GetRandomAxis();
+        }
+        
+        private void InverseRotation()
+        {
+            StopRotation();
+            
+            _rotateAxis = -_rotateAxis;
+            _playRotateAnimation = PlayRotateAnimation();
+            _speedMultiplicator = 2;
+            StartCoroutine(_playRotateAnimation);
         }
 
         private IEnumerator PlayRotateAnimation()
         {
             while (true)
             {
-                _modelTransform.Rotate(_rotateAxis, _rotationSpeed*Time.deltaTime);
+                _modelTransform.Rotate(_rotateAxis, _rotationSpeed * _speedMultiplicator * Time.deltaTime);
                 yield return null;
             }
         }
 
         private Vector3 GetRandomAxis()
         {
-            return new Vector3(Random.Range(-1, 2), Random.Range(-1, 2), Random.Range(-1, 2));
+            return new Vector3(
+                Random.Range(0, 2) * 2 - 1,
+                Random.Range(0, 2) * 2 - 1,
+                Random.Range(0, 2) * 2 - 1
+            );
         }
 
         private Vector3 GetForceVector()
@@ -141,6 +163,18 @@ namespace BreadFlip.Movement
             var percent = (Time.time - _startTime) / _MAX_TIME;
             if ((int)percent % 2 == 0) return percent - (int)percent;
             return 1 - (percent - (int)percent);
+        }
+
+        public void UnlockPhysicsRotation()
+        {
+            _rigidbody.constraints = RigidbodyConstraints.None;
+            _modelCollider.enabled = true;
+            _collisionCollider.enabled = false;
+        }
+
+        public void StopRotation()
+        {
+            if (_playRotateAnimation != null) StopCoroutine(_playRotateAnimation);
         }
     }
 }

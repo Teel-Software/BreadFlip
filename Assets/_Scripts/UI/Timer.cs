@@ -1,3 +1,4 @@
+using System;
 using BreadFlip.Movement;
 using System.Collections;
 using UnityEngine;
@@ -16,6 +17,8 @@ namespace BreadFlip.UI
 
         public bool ifGameStarted = false;
 
+        public static event Action TimeOvered;
+
         private void OnEnable()
         {
             wholeTime = 6;
@@ -23,6 +26,12 @@ namespace BreadFlip.UI
             zoneController.OnCollidedToaster += StartTimer;
             zoneController.OnColliderExit += DisableComponent;
             StartCoroutine(WaitUntillFail());
+        }
+
+        private void OnDestroy()
+        {
+            zoneController.OnCollidedToaster -= StartTimer;
+            zoneController.OnColliderExit -= DisableComponent;
         }
 
         private void DisableComponent()
@@ -37,15 +46,14 @@ namespace BreadFlip.UI
             {
                 _slider.value = wholeTime - currentTime;
                 currentTime += 1;
-
-                Debug.Log($"TIMEEERR: {wholeTime - currentTime}");
-
+                
                 yield return new WaitForSeconds(1f);
             }
 
             if (currentTime == 6)
             {
-                uiManager.Fail();
+                StartCoroutine(uiManager.Fail());
+                zoneController.PlayDeadSmoke();
             }
         }
 
@@ -56,7 +64,7 @@ namespace BreadFlip.UI
 
         public void StartGame(bool start)
         {
-            ifGameStarted = true ? start : false;
+            ifGameStarted = start;
         }
     }
 }

@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using BreadFlip.Movement;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -8,11 +10,19 @@ namespace BreadFlip.Generation
     {
         [SerializeField] private ChunkElementVariant[] _tables;
         [SerializeField] private ChunkElementVariant[] _tableVariants;
-    
+
+        [SerializeField] private EntryZoneComponent[] _entryZoneComponents;
+
         public GameObject StartSpawnPoint;
         public GameObject EndSpawnPoint;
 
         public AnimationCurve ChanceFromDistance;
+
+        private void OnValidate()
+        {
+            if (_entryZoneComponents is { Length: 0 })
+                _entryZoneComponents = GetComponentsInChildren<EntryZoneComponent>();
+        }
 
         public void ReplacePrefabInChunk()
         {
@@ -46,15 +56,27 @@ namespace BreadFlip.Generation
             {
                 foreach (var entryZoneComponent in table.EntryZoneComponents)
                 {
-                    var zoneCallback = new UnityGameObjectEvent();
-                    zoneCallback.AddListener(entryZoneComponent.IsToaster ? toastZoneController.OnCollideToaster : toastZoneController.OnCollideBadThing);
-                    entryZoneComponent.SetZoneEnteredEvent(zoneCallback);
-
-                    var zoneExitCallback = new UnityGameObjectEvent();
-                    if (entryZoneComponent.IsToaster)   zoneExitCallback.AddListener(toastZoneController.OnExitFromCollider);
-                    entryZoneComponent.SetZoneExitEvent(zoneExitCallback);
+                    RegisterEntryZone(toastZoneController, entryZoneComponent);
                 }
             }
+
+            foreach (var entryZoneComponent in _entryZoneComponents)
+            {
+                RegisterEntryZone(toastZoneController, entryZoneComponent);
+            }
+        }
+
+        private static void RegisterEntryZone(ToastZoneController toastZoneController, EntryZoneComponent entryZoneComponent)
+        {
+            var zoneCallback = new UnityGameObjectEvent();
+            zoneCallback.AddListener(entryZoneComponent.IsToaster
+                ? toastZoneController.OnCollideToaster
+                : toastZoneController.OnCollideBadThing);
+            entryZoneComponent.SetZoneEnteredEvent(zoneCallback);
+
+            var zoneExitCallback = new UnityGameObjectEvent();
+            if (entryZoneComponent.IsToaster) zoneExitCallback.AddListener(toastZoneController.OnExitFromCollider);
+            entryZoneComponent.SetZoneExitEvent(zoneExitCallback);
         }
     }
 }

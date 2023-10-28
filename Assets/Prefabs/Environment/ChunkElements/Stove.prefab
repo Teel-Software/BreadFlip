@@ -118,6 +118,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   Visual: {fileID: 2212762400904092899}
+  _entryZoneComponents:
+  - {fileID: 7055514177944932065}
 --- !u!1001 &1329730120813355442
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -196,8 +198,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.2917657, y: 1.1091042, z: 3.3638525}
-  m_Center: {x: 0.095877886, y: 2.6132064, z: 0.15819281}
+  m_Size: {x: 3.2917657, y: 0.95679045, z: 3.3638525}
+  m_Center: {x: 0.095877886, y: 2.5370495, z: 0.15819287}
 --- !u!114 &7055514177944932065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,16 +216,9 @@ MonoBehaviour:
   _onEnteredZone:
     m_PersistentCalls:
       m_Calls: []
+  _onExitZone:
+    m_PersistentCalls:
+      m_Calls: []
+  _activeHighlight: 1
+  _isToaster: 0
   _color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
---- !u!114 &8008693743979085825
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2212762400904092899}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2494c34cc37005344a0f2764a7bac15b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
