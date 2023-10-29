@@ -16,6 +16,8 @@ namespace BreadFlip.Movement
         [SerializeField] private BoxCollider _modelCollider;
 
         [SerializeField] private TrajectoryRenderer _trajectoryRenderer;
+
+        [SerializeField] private GameObject mainMenu;
         
         private bool _isDoubleJumpPressed;
         private float _startTime;
@@ -55,35 +57,38 @@ namespace BreadFlip.Movement
 
         private void PrepareToJump()
         {
-            if (Input.GetMouseButtonDown(0))
+            if (!mainMenu.activeSelf)
             {
-                _startTime = Time.time;
-            }
-
-            if (Input.GetMouseButton(0) && _startTime != 0)
-            {
-                //CurrentToaster.SetHandlePosition(GetForcePercent());
-                _trajectoryRenderer.ShowTrajectory(gameObject.transform.position, GetForceVector());
-            }
-
-            if (Input.GetMouseButtonUp(0) && _startTime != 0)
-            {
-                var forceVector = GetForceVector();
-
-                if (forceVector.magnitude > 2)
+                if (Input.GetMouseButtonDown(0))
                 {
-                    _rigidbody.AddForce(forceVector, ForceMode.Impulse);
-                    _trajectoryRenderer.ClearTrajectory();
-
-                    _playRotateAnimation = PlayRotateAnimation();
-                    StartCoroutine(_playRotateAnimation);
-
-                    CurrentToaster.JumpUp();
-
-                    _inToaster = false;
+                    _startTime = Time.time;
                 }
 
-                _startTime = 0;
+                if (Input.GetMouseButton(0) && _startTime != 0)
+                {
+                    //CurrentToaster.SetHandlePosition(GetForcePercent());
+                    _trajectoryRenderer.ShowTrajectory(gameObject.transform.position, GetForceVector());
+                }
+
+                if (Input.GetMouseButtonUp(0) && _startTime != 0)
+                {
+                    var forceVector = GetForceVector();
+
+                    if (forceVector.magnitude > 2)
+                    {
+                        _rigidbody.AddForce(forceVector, ForceMode.Impulse);
+                        _trajectoryRenderer.ClearTrajectory();
+
+                        _playRotateAnimation = PlayRotateAnimation();
+                        StartCoroutine(_playRotateAnimation);
+
+                        CurrentToaster.JumpUp();
+
+                        _inToaster = false;
+                    }
+
+                    _startTime = 0;
+                }
             }
         }
 

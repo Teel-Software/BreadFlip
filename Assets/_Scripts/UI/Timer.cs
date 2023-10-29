@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using BreadFlip.Movement;
 using System.Collections;
 using UnityEngine;
@@ -40,9 +40,18 @@ namespace BreadFlip.UI
             StopCoroutine(WaitUntillFail());
         }
 
+        // чтобы таймер не шёл после уже случившего проигрыша
+        private void Update()
+        {
+            if (uiManager.Get_onFailedWasInvoked())
+            {
+                StopCoroutine(WaitUntillFail());
+            }
+        }
+
         private IEnumerator WaitUntillFail()
         {
-            for (int i = 0; i < wholeTime; i++)
+            for (int i = 0; i <= wholeTime; i++)
             {
                 _slider.value = wholeTime - currentTime;
                 currentTime += 1;
@@ -50,7 +59,7 @@ namespace BreadFlip.UI
                 yield return new WaitForSeconds(1f);
             }
 
-            if (currentTime == 6)
+            if (currentTime >= 6)
             {
                 StartCoroutine(uiManager.Fail());
                 zoneController.PlayDeadSmoke();

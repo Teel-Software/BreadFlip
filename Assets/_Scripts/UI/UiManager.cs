@@ -1,6 +1,5 @@
-using System.Collections;
+﻿using System.Collections;
 using BreadFlip.Movement;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,9 +11,11 @@ namespace BreadFlip.UI
         [SerializeField] private GameObject _gameUi;
         [SerializeField] private GameObject losePanel;
 
-        [SerializeField] private float _failUIDelay = 1.5f;
+        [SerializeField] private float _failUIDelay = 0.5f;
         
         [SerializeField] public ToastZoneController zoneController;
+
+        [SerializeField] private BoxCollider _toasterCollider;
 
         private bool onFailedWasInvoked;
 
@@ -58,6 +59,25 @@ namespace BreadFlip.UI
             
             losePanel.SetActive(true);
             SetTimeScale(false);
+        }
+
+        public bool Get_onFailedWasInvoked()
+        {
+            return onFailedWasInvoked;
+        }
+
+
+        // отключаем коллайдер тостеру, после того, как он уже проиграл, чтобы лишний раз не взаимодействовал с окружением
+        private void Update()
+        {
+            if (onFailedWasInvoked)
+            {
+                _toasterCollider.enabled = false;
+            }
+            else
+            {
+                _toasterCollider.enabled = true;
+            }
         }
     }
 }
