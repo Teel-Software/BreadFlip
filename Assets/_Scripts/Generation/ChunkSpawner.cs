@@ -42,13 +42,14 @@ namespace BreadFlip.Generation
         private void OnDrawGizmosSelected()
         {
             if (!_player) return;
-
-            var offset = _offsetDistanceToLastChunkX - _offsetDistanceToFirstChunkX;
             
-            var sideSize = (_offsetDistanceToFirstChunkX + _offsetDistanceToLastChunkX) / 2;
-            var xSize = sideSize * Vector3.right;
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(_player.transform.position - _offsetDistanceToLastChunkX * Vector3.right, 1f);
+            Gizmos.DrawSphere(_player.transform.position + _offsetDistanceToFirstChunkX * Vector3.right, 1f);
             
-            Gizmos.DrawCube(_player.transform.position - offset * Vector3.right, new Vector3(xSize.x, 2, 2));
+            Gizmos.color = Color.green;
+            Gizmos.DrawSphere(_spawnedChunks.Last().EndSpawnPoint.transform.position - _offsetDistanceToFirstChunkX * Vector3.right, 1f);
+            Gizmos.DrawSphere(_spawnedChunks.First().StartSpawnPoint.transform.position + _offsetDistanceToLastChunkX * Vector3.right, 1f);
         }
 
         private void Start()
