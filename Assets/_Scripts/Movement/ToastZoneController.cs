@@ -29,6 +29,7 @@ namespace BreadFlip.Movement
             _jumpController.Reset();
             
             PlaySmoke();
+            PlayCrumbs();
 
             OnCollidedToaster?.Invoke();
         }
@@ -46,6 +47,7 @@ namespace BreadFlip.Movement
         public void OnExitFromCollider(GameObject toasterObj)
         {
             PlaySmoke();
+            PlayCrumbs();
             OnColliderExit?.Invoke();
         }
 

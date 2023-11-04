@@ -124,7 +124,7 @@ namespace BreadFlip.Movement
             
             _rotateAxis = -_rotateAxis;
             _playRotateAnimation = PlayRotateAnimation();
-            _speedMultiplicator = 2;
+            _speedMultiplicator = 1;
             StartCoroutine(_playRotateAnimation);
         }
 
