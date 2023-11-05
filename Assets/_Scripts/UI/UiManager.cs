@@ -9,13 +9,12 @@ namespace BreadFlip.UI
     {
         [SerializeField] private GameObject _mainMenu;
         [SerializeField] private GameObject _gameUi;
+        [SerializeField] private GameObject _actionUI;
         [SerializeField] private GameObject losePanel;
 
         [SerializeField] private float _failUIDelay = 0.5f;
         
         [SerializeField] public ToastZoneController zoneController;
-
-        [SerializeField] private BoxCollider _toasterCollider;
 
         private bool onFailedWasInvoked;
 
@@ -48,6 +47,7 @@ namespace BreadFlip.UI
         {
             if (!onFailedWasInvoked)
             {
+                _actionUI.SetActive(false);
                 StartCoroutine(Fail());
             }
             onFailedWasInvoked = true;
@@ -64,20 +64,6 @@ namespace BreadFlip.UI
         public bool Get_onFailedWasInvoked()
         {
             return onFailedWasInvoked;
-        }
-
-
-        // отключаем коллайдер тостеру, после того, как он уже проиграл, чтобы лишний раз не взаимодействовал с окружением
-        private void Update()
-        {
-            if (onFailedWasInvoked)
-            {
-                _toasterCollider.enabled = false;
-            }
-            else
-            {
-                _toasterCollider.enabled = true;
-            }
         }
     }
 }

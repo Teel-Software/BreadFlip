@@ -16,26 +16,41 @@ namespace BreadFlip.Movement
         public event Action OnCollidedBadThing;
         public event Action OnColliderExit;
 
+        private bool _collidedToaster;
+        private bool _collidedBadThing;
+
+        private void Start()
+        {
+            _collidedBadThing = false;
+            _collidedToaster = false;
+        }
+
         public void OnCollideToaster(GameObject toasterObj)
         {
-            var toaster = toasterObj.GetComponent<Toaster>();
-            if (!toaster) return;
-            _jumpController.CurrentToaster = toaster;
+            if (!_collidedBadThing)
+            {
+                _collidedToaster = true;
 
-            var newPos = toaster.ToastPosition.position;
-            transform.position = newPos;
-            
-            _rigidbody.velocity = Vector3.zero;
-            _jumpController.Reset();
-            
-            PlaySmoke();
-            PlayCrumbs();
+                var toaster = toasterObj.GetComponent<Toaster>();
+                if (!toaster) return;
+                _jumpController.CurrentToaster = toaster;
 
-            OnCollidedToaster?.Invoke();
+                var newPos = toaster.ToastPosition.position;
+                transform.position = newPos;
+
+                _rigidbody.velocity = Vector3.zero;
+                _jumpController.Reset();
+
+                PlaySmoke();
+                PlayCrumbs();
+
+                OnCollidedToaster?.Invoke();
+            }
         }
 
         public void OnCollideBadThing(GameObject badThing)
         {
+            _collidedBadThing = true;
             PlayCrumbs();
             _jumpController.UnlockPhysicsRotation();
             _jumpController.StopRotation();
@@ -49,6 +64,8 @@ namespace BreadFlip.Movement
             PlaySmoke();
             PlayCrumbs();
             OnColliderExit?.Invoke();
+            _collidedToaster = false;
+            _collidedBadThing = false;
         }
 
         private void PlayCrumbs()
