@@ -9,6 +9,7 @@ namespace BreadFlip.UI
 
         [SerializeField] private UiManager uiManager;
         [SerializeField] private TMP_Text loseScore;
+        [SerializeField] private TMP_Text recordScore;
 
         private TMP_Text tmp;
 
@@ -37,6 +38,24 @@ namespace BreadFlip.UI
 
         private void PrintTextOnLoseScreen()
         {
+            if (PlayerPrefs.HasKey("record"))
+            {
+                if (_score > PlayerPrefs.GetInt("record"))
+                {
+                    PlayerPrefs.SetInt("record", _score);
+                    recordScore.text = _score.ToString();
+                }
+                else
+                {
+                    recordScore.text = PlayerPrefs.GetInt("record").ToString();
+                }
+            }
+            else
+            {
+                PlayerPrefs.SetInt("record", _score);
+                recordScore.text = _score.ToString();
+            }
+            
             loseScore.text = _score.ToString();
         }
     }

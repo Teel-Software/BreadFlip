@@ -75,5 +75,10 @@ namespace BreadFlip.UI
         {
             ifGameStarted = start;
         }
+
+        public void StartTimerManually()
+        {
+            ifGameStarted = true;
+        }
     }
 }

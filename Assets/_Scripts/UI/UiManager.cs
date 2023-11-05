@@ -7,22 +7,38 @@ namespace BreadFlip.UI
 {
     public class UiManager : MonoBehaviour
     {
+        [Header("Main UI Elements")]
         [SerializeField] private GameObject _mainMenu;
         [SerializeField] private GameObject _gameUi;
         [SerializeField] private GameObject _actionUI;
         [SerializeField] private GameObject losePanel;
 
+        [SerializeField] private Timer _timer;
+
         [SerializeField] private float _failUIDelay = 0.5f;
         
         [SerializeField] public ToastZoneController zoneController;
 
+        // flags
         private bool onFailedWasInvoked;
+        //private bool gameNeedsToRestart;
+
+        private void Awake()
+        {
+            Debug.Log(PlayerPrefs.GetInt("gameNeedsToRestart"));
+        }
 
         private void Start()
         {
             SetTimeScale(true);
             zoneController.OnCollidedBadThing += OnFailed;
             onFailedWasInvoked = false;
+            
+            if (PlayerPrefs.GetInt("gameNeedsToRestart") == 1)
+            {
+                RestartGame();
+                PlayerPrefs.DeleteKey("gameNeedsToRestart");
+            }
         }
 
 
@@ -64,6 +80,23 @@ namespace BreadFlip.UI
         public bool Get_onFailedWasInvoked()
         {
             return onFailedWasInvoked;
+        }
+
+        public void ReplayLogic()
+        {
+            PlayerPrefs.SetInt("gameNeedsToRestart", 1);
+            ReloadScene();
+        }
+
+        private void RestartGame()
+        {
+            // переключаем экраны
+            _mainMenu.SetActive(false);
+            _gameUi.SetActive(true);
+
+            // запускаем таймер
+            _timer.transform.gameObject.SetActive(true);
+            _timer.StartTimerManually();
         }
     }
 }
