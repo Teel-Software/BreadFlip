@@ -1,4 +1,5 @@
 using BreadFlip.Sound;
+using BreadFlip.UI;
 using System;
 using UnityEngine;
 
@@ -29,6 +30,12 @@ namespace BreadFlip.Movement
             _collidedBadThing = false;
             _collidedToaster = false;
             startedInToaster = true;
+            Timer.TimeOvered += PlayDeadSmoke;
+        }
+
+        private void OnDestroy()
+        {
+            Timer.TimeOvered -= PlayDeadSmoke;
         }
 
         public void OnCollideToaster(GameObject toasterObj)

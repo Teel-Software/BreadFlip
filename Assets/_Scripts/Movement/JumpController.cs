@@ -91,7 +91,7 @@ namespace BreadFlip.Movement
                 {
                     var forceVector = GetForceVector();
 
-                    if (forceVector.magnitude > 2)
+                    if (forceVector.magnitude > 4)
                     {
                         _rigidbody.AddForce(forceVector, ForceMode.Impulse);
                         _trajectoryRenderer.ClearTrajectory();

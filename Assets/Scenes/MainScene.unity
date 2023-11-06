@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!23 &22697343 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6392261171645819986, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
+  m_PrefabInstance: {fileID: 2139659192}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &190059056 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 811503766263375528, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
@@ -349,6 +354,11 @@ MonoBehaviour:
   mixer: {fileID: -2627774582063877700, guid: cde558913d546bf4680e5c2268feca56, type: 2}
   musicToggle: {fileID: 266655388}
   BackgroundMusic: 0
+--- !u!1 &266944301 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5073544946718634969, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
+  m_PrefabInstance: {fileID: 2139659192}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &318428774
 GameObject:
   m_ObjectHideFlags: 0
@@ -762,6 +772,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!23 &1141313359 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5085768755244732877, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
+  m_PrefabInstance: {fileID: 2139659192}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1177448500
 GameObject:
   m_ObjectHideFlags: 0
@@ -1754,6 +1769,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6113963116517659634, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6556600626714998364, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
       propertyPath: _soundManager
       value: 
@@ -1773,7 +1792,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6556600626714998364, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
   m_PrefabInstance: {fileID: 2139659192}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 266944301}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8868dab8a554d3a8934af402e601bb3, type: 3}
@@ -1789,3 +1808,23 @@ BoxCollider:
   m_CorrespondingSourceObject: {fileID: 3881330473007605310, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
   m_PrefabInstance: {fileID: 2139659192}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2139659203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266944301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88f1a8966ee699143b64bbfe2d28a450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _PulpRenderer: {fileID: 22697343}
+  _CrustRenderer: {fileID: 1141313359}
+  startCrustColor: {r: 0.6862745, g: 0.4627451, b: 0.18431373, a: 1}
+  endCrustColor: {r: 0.13, g: 0.08765713, b: 0.034914277, a: 1}
+  startPulpColor: {r: 0.9607843, g: 0.8117647, b: 0.5568628, a: 1}
+  endPulpColor: {r: 0.4, g: 0.3379592, b: 0.23183675, a: 1}
+  _zoneController: {fileID: 2139659193}
+  resetDuration: 1.5
