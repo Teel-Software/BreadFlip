@@ -1,5 +1,6 @@
-using System;
+﻿using System;
 using System.Collections;
+using BreadFlip.Sound;
 using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -18,7 +19,12 @@ namespace BreadFlip.Movement
         [SerializeField] private TrajectoryRenderer _trajectoryRenderer;
 
         [SerializeField] private GameObject mainMenu;
-        
+
+        [Header("Audio")]
+        [SerializeField] private SoundManager _soundManager;
+        private bool firstSoundPlayed;
+        private bool secondSoundPlayed;
+
         private bool _isDoubleJumpPressed;
         private float _startTime;
         private bool _inToaster;
@@ -45,6 +51,10 @@ namespace BreadFlip.Movement
             _isDoubleJumpPressed = false;
             _inToaster = true;
             
+            firstSoundPlayed = false;
+            secondSoundPlayed = false;
+
+
             ResetRotation();
         }
 
@@ -68,6 +78,13 @@ namespace BreadFlip.Movement
                 {
                     //CurrentToaster.SetHandlePosition(GetForcePercent());
                     _trajectoryRenderer.ShowTrajectory(gameObject.transform.position, GetForceVector());
+
+                    // звук старта при прыжке, играет один раз
+                    if (!firstSoundPlayed)
+                    {
+                        _soundManager.PlayJumpFirst();
+                        firstSoundPlayed = true;
+                    }
                 }
 
                 if (Input.GetMouseButtonUp(0) && _startTime != 0)
@@ -85,6 +102,13 @@ namespace BreadFlip.Movement
                         CurrentToaster.JumpUp();
 
                         _inToaster = false;
+
+                        // звук вылета хлеба из тостера, играет один раз
+                        if (!secondSoundPlayed)
+                        {
+                            _soundManager.PlayJumpSecond();
+                            secondSoundPlayed = true;
+                        }
                     }
 
                     _startTime = 0;
@@ -104,12 +128,18 @@ namespace BreadFlip.Movement
                 InverseRotation();
 
                 _isDoubleJumpPressed = true;
+
+                // начать double jump sound
+                _soundManager.PlayDoubleJump();
             }
 
             if (Input.GetMouseButtonUp(0) && _isDoubleJumpPressed && _rigidbody.velocity.y > 0)
             {
                 _rigidbody.velocity =
                     new Vector3(_rigidbody.velocity.x, _rigidbody.velocity.y / 2f, _rigidbody.velocity.z);
+
+                // остановить double jump sound
+                _soundManager.StopDoubleJumpSound();
             }
         }
 

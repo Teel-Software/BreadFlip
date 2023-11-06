@@ -1,3 +1,4 @@
+using BreadFlip.Sound;
 using System;
 using UnityEngine;
 
@@ -12,6 +13,10 @@ namespace BreadFlip.Movement
         [SerializeField] private ParticleSystem _crumbsToastPrefab;
         [SerializeField] private ParticleSystem _smokeSmokeDeadPrefab;
 
+        [Header("Audio")]
+        [SerializeField] private SoundManager _soundManager;
+        private bool startedInToaster;
+
         public event Action OnCollidedToaster;
         public event Action OnCollidedBadThing;
         public event Action OnColliderExit;
@@ -23,6 +28,7 @@ namespace BreadFlip.Movement
         {
             _collidedBadThing = false;
             _collidedToaster = false;
+            startedInToaster = true;
         }
 
         public void OnCollideToaster(GameObject toasterObj)
@@ -45,6 +51,15 @@ namespace BreadFlip.Movement
                 PlayCrumbs();
 
                 OnCollidedToaster?.Invoke();
+
+                if (!startedInToaster)
+                {
+                    _soundManager.PlayLandedInToasterSound();
+                }
+                else
+                {
+                    startedInToaster = false;
+                }
             }
         }
 
@@ -57,6 +72,8 @@ namespace BreadFlip.Movement
             
             _jumpController.enabled = false;
             OnCollidedBadThing?.Invoke();
+
+            _soundManager.PlayFailedSound();
         }
 
         public void OnExitFromCollider(GameObject toasterObj)
