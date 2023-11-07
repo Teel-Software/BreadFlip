@@ -21,7 +21,8 @@ namespace BreadFlip.UI
             tmp = transform.GetComponentInChildren<TMP_Text>();
             
             uiManager.zoneController.OnCollidedToaster += UpdateTextOnScorePanel;
-            
+            Timer.TimeOvered += PrintTextOnLoseScreen;
+
             uiManager.zoneController.OnCollidedBadThing += PrintTextOnLoseScreen;
         }
 
