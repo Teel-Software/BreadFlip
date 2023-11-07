@@ -117,7 +117,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainMenu: {fileID: 811503766263375528}
   _gameUi: {fileID: 3152046714966707053}
+  _actionUI: {fileID: 9002855797719003557}
   losePanel: {fileID: 9138631101522550931}
+  _timer: {fileID: 0}
   _failUIDelay: 1.5
   zoneController: {fileID: 0}
 --- !u!1001 &1400848310355086391
@@ -431,6 +433,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: BreadFlip.UI.UiManager, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 7899912485140786339, guid: b3c2dfeb5717c2345a52033ea52fe54c, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7899912485140786340, guid: b3c2dfeb5717c2345a52033ea52fe54c, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -557,6 +563,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiManager: {fileID: 5667851704598959125}
   loseScore: {fileID: 9138631100343739791}
+  recordScore: {fileID: 0}
 --- !u!1 &1924893623106048814 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 704330179225149209, guid: b3c2dfeb5717c2345a52033ea52fe54c, type: 3}
@@ -589,6 +596,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68dbc30fa4aff984080136dbc1ba4bde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &9002855797719003557 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8034494010300087698, guid: b3c2dfeb5717c2345a52033ea52fe54c, type: 3}
+  m_PrefabInstance: {fileID: 1400848310355086391}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &9138631100343739791 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7899912486184855992, guid: b3c2dfeb5717c2345a52033ea52fe54c, type: 3}
