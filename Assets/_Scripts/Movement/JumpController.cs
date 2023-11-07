@@ -1,5 +1,7 @@
-using System;
+﻿using System;
 using System.Collections;
+using BreadFlip.Sound;
+using BreadFlip.UI;
 using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -16,7 +18,14 @@ namespace BreadFlip.Movement
         [SerializeField] private BoxCollider _modelCollider;
 
         [SerializeField] private TrajectoryRenderer _trajectoryRenderer;
-        
+
+        [SerializeField] private GameObject mainMenu;
+
+        [Header("Audio")]
+        [SerializeField] private SoundManager _soundManager;
+        private bool firstSoundPlayed;
+        private bool secondSoundPlayed;
+
         private bool _isDoubleJumpPressed;
         private float _startTime;
         private bool _inToaster;
@@ -43,6 +52,10 @@ namespace BreadFlip.Movement
             _isDoubleJumpPressed = false;
             _inToaster = true;
             
+            firstSoundPlayed = false;
+            secondSoundPlayed = false;
+
+
             ResetRotation();
         }
 
@@ -55,41 +68,58 @@ namespace BreadFlip.Movement
 
         private void PrepareToJump()
         {
-            if (Input.GetMouseButtonDown(0))
+            if (!mainMenu.activeSelf)
             {
-                _startTime = Time.time;
-            }
-
-            if (Input.GetMouseButton(0) && _startTime != 0)
-            {
-                //CurrentToaster.SetHandlePosition(GetForcePercent());
-                _trajectoryRenderer.ShowTrajectory(gameObject.transform.position, GetForceVector());
-            }
-
-            if (Input.GetMouseButtonUp(0) && _startTime != 0)
-            {
-                var forceVector = GetForceVector();
-
-                if (forceVector.magnitude > 2)
+                if (Input.GetMouseButtonDown(0))
                 {
-                    _rigidbody.AddForce(forceVector, ForceMode.Impulse);
-                    _trajectoryRenderer.ClearTrajectory();
-
-                    _playRotateAnimation = PlayRotateAnimation();
-                    StartCoroutine(_playRotateAnimation);
-
-                    CurrentToaster.JumpUp();
-
-                    _inToaster = false;
+                    _startTime = Time.time;
                 }
 
-                _startTime = 0;
+                if (Input.GetMouseButton(0) && _startTime != 0)
+                {
+                    //CurrentToaster.SetHandlePosition(GetForcePercent());
+                    _trajectoryRenderer.ShowTrajectory(gameObject.transform.position, GetForceVector());
+
+                    // звук старта при прыжке, играет один раз
+                    if (!firstSoundPlayed)
+                    {
+                        _soundManager.PlayJumpFirst();
+                        firstSoundPlayed = true;
+                    }
+                }
+
+                if (Input.GetMouseButtonUp(0) && _startTime != 0)
+                {
+                    var forceVector = GetForceVector();
+
+                    if (forceVector.magnitude > 4)
+                    {
+                        _rigidbody.AddForce(forceVector, ForceMode.Impulse);
+                        _trajectoryRenderer.ClearTrajectory();
+
+                        _playRotateAnimation = PlayRotateAnimation();
+                        StartCoroutine(_playRotateAnimation);
+
+                        CurrentToaster.JumpUp();
+
+                        _inToaster = false;
+
+                        // звук вылета хлеба из тостера, играет один раз
+                        if (!secondSoundPlayed)
+                        {
+                            _soundManager.PlayJumpSecond();
+                            secondSoundPlayed = true;
+                        }
+                    }
+
+                    _startTime = 0;
+                }
             }
         }
 
         private void TryDoubleJump()
         {
-            if (Input.GetMouseButtonDown(0) && !_isDoubleJumpPressed)
+            if (Input.GetMouseButtonDown(0) && !_isDoubleJumpPressed && !UiManager.pauseButtonPressed)
             {
                 if (_rigidbody.velocity.y < 0)
                     _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0f, _rigidbody.velocity.z);
@@ -99,12 +129,18 @@ namespace BreadFlip.Movement
                 InverseRotation();
 
                 _isDoubleJumpPressed = true;
+
+                // начать double jump sound
+                _soundManager.PlayDoubleJump();
             }
 
             if (Input.GetMouseButtonUp(0) && _isDoubleJumpPressed && _rigidbody.velocity.y > 0)
             {
                 _rigidbody.velocity =
                     new Vector3(_rigidbody.velocity.x, _rigidbody.velocity.y / 2f, _rigidbody.velocity.z);
+
+                // остановить double jump sound
+                _soundManager.StopDoubleJumpSound();
             }
         }
 
@@ -124,7 +160,7 @@ namespace BreadFlip.Movement
             
             _rotateAxis = -_rotateAxis;
             _playRotateAnimation = PlayRotateAnimation();
-            _speedMultiplicator = 2;
+            _speedMultiplicator = 1;
             StartCoroutine(_playRotateAnimation);
         }
 
