@@ -19,26 +19,33 @@ namespace BreadFlip.UI
         
         [SerializeField] public ToastZoneController zoneController;
 
+        public static bool pauseButtonPressed;
+
         // flags
         private bool onFailedWasInvoked;
-        //private bool gameNeedsToRestart;
-
-        private void Awake()
-        {
-            Debug.Log(PlayerPrefs.GetInt("gameNeedsToRestart"));
-        }
 
         private void Start()
         {
             SetTimeScale(true);
             zoneController.OnCollidedBadThing += OnFailed;
             onFailedWasInvoked = false;
+            pauseButtonPressed = false;
             
             if (PlayerPrefs.GetInt("gameNeedsToRestart") == 1)
             {
                 RestartGame();
                 PlayerPrefs.DeleteKey("gameNeedsToRestart");
             }
+        }
+
+        public void PressPauseButton()
+        {
+            pauseButtonPressed = true;
+        }
+
+        public void UnpressPauseButton()
+        {
+            pauseButtonPressed = false;
         }
 
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using BreadFlip.Sound;
+using BreadFlip.UI;
 using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -118,7 +119,7 @@ namespace BreadFlip.Movement
 
         private void TryDoubleJump()
         {
-            if (Input.GetMouseButtonDown(0) && !_isDoubleJumpPressed)
+            if (Input.GetMouseButtonDown(0) && !_isDoubleJumpPressed && !UiManager.pauseButtonPressed)
             {
                 if (_rigidbody.velocity.y < 0)
                     _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0f, _rigidbody.velocity.z);
