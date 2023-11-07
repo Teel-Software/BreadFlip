@@ -453,8 +453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fbed8c3a529546409bf32eebc0b0a6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundMixer: {fileID: 4641804460511051801, guid: cde558913d546bf4680e5c2268feca56, type: 2}
-  effectsMixer: {fileID: -2627774582063877700, guid: cde558913d546bf4680e5c2268feca56, type: 2}
+  mixer: {fileID: 24100000, guid: cde558913d546bf4680e5c2268feca56, type: 2}
 --- !u!1001 &696238564
 PrefabInstance:
   m_ObjectHideFlags: 0
