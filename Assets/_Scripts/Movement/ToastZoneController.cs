@@ -21,9 +21,7 @@ namespace BreadFlip.Movement
             var toaster = toasterObj.GetComponent<Toaster>();
             if (!toaster) return;
             _jumpController.CurrentToaster = toaster;
-
-            var newPos = toaster.ToastPosition.position;
-            transform.position = newPos;
+            toaster.SetToast(transform);
             
             _rigidbody.velocity = Vector3.zero;
             _jumpController.Reset();

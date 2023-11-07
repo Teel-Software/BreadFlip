@@ -62,7 +62,7 @@ namespace BreadFlip.Movement
 
             if (Input.GetMouseButton(0) && _startTime != 0)
             {
-                //CurrentToaster.SetHandlePosition(GetForcePercent());
+                CurrentToaster.SetHandlePosition(GetForcePercent());
                 _trajectoryRenderer.ShowTrajectory(gameObject.transform.position, GetForceVector());
             }
 
@@ -72,13 +72,13 @@ namespace BreadFlip.Movement
 
                 if (forceVector.magnitude > 2)
                 {
+                    CurrentToaster.JumpUp();
+                    
                     _rigidbody.AddForce(forceVector, ForceMode.Impulse);
                     _trajectoryRenderer.ClearTrajectory();
 
                     _playRotateAnimation = PlayRotateAnimation();
                     StartCoroutine(_playRotateAnimation);
-
-                    CurrentToaster.JumpUp();
 
                     _inToaster = false;
                 }
