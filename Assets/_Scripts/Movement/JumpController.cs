@@ -92,7 +92,7 @@ namespace BreadFlip.Movement
                 {
                     var forceVector = GetForceVector();
 
-                    if (forceVector.magnitude > 4)
+                    if (forceVector.magnitude > 3.5f)
                     {
                         _rigidbody.AddForce(forceVector, ForceMode.Impulse);
                         _trajectoryRenderer.ClearTrajectory();
@@ -110,6 +110,10 @@ namespace BreadFlip.Movement
                             _soundManager.PlayJumpSecond();
                             secondSoundPlayed = true;
                         }
+                    }
+                    else
+                    {
+                        _trajectoryRenderer.ClearTrajectory();
                     }
 
                     _startTime = 0;

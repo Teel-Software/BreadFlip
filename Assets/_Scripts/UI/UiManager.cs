@@ -89,7 +89,7 @@ namespace BreadFlip.UI
             return onFailedWasInvoked;
         }
 
-        public void ReplayLogic()
+        public void ReplayGame()
         {
             PlayerPrefs.SetInt("gameNeedsToRestart", 1);
             ReloadScene();
@@ -100,6 +100,8 @@ namespace BreadFlip.UI
             // переключаем экраны
             _mainMenu.SetActive(false);
             _gameUi.SetActive(true);
+
+            zoneController.startedInToaster = true;
 
             // запускаем таймер
             _timer.transform.gameObject.SetActive(true);

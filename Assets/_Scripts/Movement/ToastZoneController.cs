@@ -16,7 +16,7 @@ namespace BreadFlip.Movement
 
         [Header("Audio")]
         [SerializeField] private SoundManager _soundManager;
-        private bool startedInToaster;
+        public bool startedInToaster;
 
         public event Action OnCollidedToaster;
         public event Action OnCollidedBadThing;

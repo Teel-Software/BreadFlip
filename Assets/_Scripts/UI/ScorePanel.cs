@@ -26,6 +26,8 @@ namespace BreadFlip.UI
             uiManager.zoneController.OnCollidedBadThing += PrintTextOnLoseScreen;
         }
 
+        
+
         public int GetScore()
         {
             return _score;
@@ -33,7 +35,8 @@ namespace BreadFlip.UI
 
         private void UpdateTextOnScorePanel()
         {
-            _score++;
+            if (!uiManager.zoneController.startedInToaster) _score++;
+
             tmp.text = _score.ToString();
         }
 
