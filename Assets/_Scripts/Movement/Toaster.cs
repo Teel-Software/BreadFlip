@@ -16,6 +16,7 @@ namespace BreadFlip.Movement
         private Vector3 _maxHandlePosition;
         
         private Transform _toast;
+        private Transform _toastModel;
 
         private Transform ToastPosition => _toastPosition;
 
@@ -29,23 +30,27 @@ namespace BreadFlip.Movement
             _handle.position = _maxHandlePosition;
         }
 
-        public void SetToast(Transform toast)
+        public void SetToast(Transform toast, Transform toastModel)
         {
             _toast = toast;
             _toast.transform.position = ToastPosition.position;
+
+            _toastModel = toastModel;
         }
 
         public void SetHandlePosition(float getForcePercent)
         {
             _handle.position = Vector3.Lerp(_maxHandlePosition, _minHandlePosition, getForcePercent);
 
-            // var offset = _maxHandlePosition.y - _handle.position.y;
-            // _toast.position = ToastPosition.position + Vector3.down * offset / 2f;
+            var offset = _maxHandlePosition.y - _handle.position.y;
+            _toastModel.localPosition = Vector3.down * offset;
         }
 
         public void JumpUp()
         {
             _toast = null;
+
+            _toastModel.localPosition = Vector3.zero;
             _handle.DOMoveY(_maxHandlePosition.y, .25f).SetEase(Ease.OutElastic);
         }
     }

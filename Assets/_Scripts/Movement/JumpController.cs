@@ -29,6 +29,8 @@ namespace BreadFlip.Movement
         private const float _MAX_TIME = 1.3f;
         public Toaster CurrentToaster { get; set; }
 
+        public Transform ModelTransform => _modelTransform;
+
         private void OnValidate()
         {
             _rigidbody ??= gameObject.GetComponent<Rigidbody>();
@@ -111,7 +113,7 @@ namespace BreadFlip.Movement
         private void ResetRotation()
         {
             StopRotation();
-            _modelTransform.localRotation = Quaternion.identity;
+            ModelTransform.localRotation = Quaternion.identity;
 
             _speedMultiplicator = 1;
             
@@ -132,7 +134,7 @@ namespace BreadFlip.Movement
         {
             while (true)
             {
-                _modelTransform.Rotate(_rotateAxis, _rotationSpeed * _speedMultiplicator * Time.deltaTime);
+                ModelTransform.Rotate(_rotateAxis, _rotationSpeed * _speedMultiplicator * Time.deltaTime);
                 yield return null;
             }
         }
