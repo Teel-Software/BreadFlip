@@ -555,7 +555,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7899912485140786339, guid: b3c2dfeb5717c2345a52033ea52fe54c, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7899912485140786340, guid: b3c2dfeb5717c2345a52033ea52fe54c, type: 3}
       propertyPath: m_IsActive
@@ -783,7 +783,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiManager: {fileID: 5667851704598959125}
   loseScore: {fileID: 9138631100343739791}
-  recordScore: {fileID: 9138631101482513412}
+  recordScore: {fileID: 0}
 --- !u!1 &1924893623106048814 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 704330179225149209, guid: b3c2dfeb5717c2345a52033ea52fe54c, type: 3}

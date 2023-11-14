@@ -101,6 +101,8 @@ namespace BreadFlip.UI
             _mainMenu.SetActive(false);
             _gameUi.SetActive(true);
 
+            zoneController.startedInToaster = true;
+
             // запускаем таймер
             _timer.transform.gameObject.SetActive(true);
             _timer.StartTimerManually();

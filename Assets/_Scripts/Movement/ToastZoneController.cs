@@ -16,7 +16,8 @@ namespace BreadFlip.Movement
 
         [Header("Audio")]
         [SerializeField] private SoundManager _soundManager;
-        private bool startedInToaster;
+        
+        public bool startedInToaster;
 
         public event Action OnCollidedToaster;
         public event Action OnCollidedBadThing;
@@ -56,6 +57,7 @@ namespace BreadFlip.Movement
                 PlaySmoke();
                 PlayCrumbs();
 
+
                 OnCollidedToaster?.Invoke();
 
                 if (!startedInToaster)
@@ -71,15 +73,18 @@ namespace BreadFlip.Movement
 
         public void OnCollideBadThing(GameObject badThing)
         {
-            _collidedBadThing = true;
-            PlayCrumbs();
-            _jumpController.UnlockPhysicsRotation();
-            _jumpController.StopRotation();
-            
-            _jumpController.enabled = false;
-            OnCollidedBadThing?.Invoke();
+            if (!_collidedToaster)
+            {
+                _collidedBadThing = true;
+                PlayCrumbs();
+                _jumpController.UnlockPhysicsRotation();
+                _jumpController.StopRotation();
 
-            _soundManager.PlayFailedSound();
+                _jumpController.enabled = false;
+                OnCollidedBadThing?.Invoke();
+
+                _soundManager.PlayFailedSound();
+            }
         }
 
         public void OnExitFromCollider(GameObject toasterObj)

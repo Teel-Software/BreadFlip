@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using BreadFlip.Entities;
 using BreadFlip.Sound;
 using BreadFlip.UI;
@@ -18,7 +18,7 @@ namespace BreadFlip.Movement
 
         [Header("Audio")]
         [SerializeField] private SoundManager _soundManager;
-        
+
         private bool firstSoundPlayed;
         private bool secondSoundPlayed;
 
@@ -72,6 +72,7 @@ namespace BreadFlip.Movement
                 if (Input.GetMouseButton(0) && _startTime != 0)
                 {
                     CurrentToaster.SetHandlePosition(GetForcePercent());
+
                     _trajectoryRenderer.ShowTrajectory(gameObject.transform.position, GetForceVector());
 
                     // звук старта при прыжке, играет один раз
@@ -86,7 +87,7 @@ namespace BreadFlip.Movement
                 {
                     var forceVector = GetForceVector();
 
-                    if (forceVector.magnitude > 4)
+                    if (forceVector.magnitude > 3.5f)
                     {
                         CurrentToaster.JumpUp();
 
@@ -104,6 +105,10 @@ namespace BreadFlip.Movement
                             _soundManager.PlayJumpSecond();
                             secondSoundPlayed = true;
                         }
+                    }
+                    else
+                    {
+                        _trajectoryRenderer.ClearTrajectory();
                     }
 
                     _startTime = 0;
