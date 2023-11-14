@@ -1,4 +1,5 @@
 using System;
+using BreadFlip.Entities;
 using DG.Tweening;
 using UnityEngine;
 
@@ -17,6 +18,7 @@ namespace BreadFlip.Movement
         
         private Transform _toast;
         private Transform _toastModel;
+        private float _modelUpOffset;
 
         private Transform ToastPosition => _toastPosition;
 
@@ -29,13 +31,16 @@ namespace BreadFlip.Movement
 
             _handle.position = _maxHandlePosition;
         }
-
-        public void SetToast(Transform toast, Transform toastModel)
+        
+        public void SetToast(Transform toastMain, Toast toastModel)
         {
-            _toast = toast;
+            _toast = toastMain;
             _toast.transform.position = ToastPosition.position;
 
-            _toastModel = toastModel;
+            _modelUpOffset = toastModel.ModelUpOffset;
+
+            _toastModel = toastModel.ModelTransform;
+            _toastModel.localPosition += Vector3.up * _modelUpOffset;
         }
 
         public void SetHandlePosition(float getForcePercent)
@@ -43,7 +48,7 @@ namespace BreadFlip.Movement
             _handle.position = Vector3.Lerp(_maxHandlePosition, _minHandlePosition, getForcePercent);
 
             var offset = _maxHandlePosition.y - _handle.position.y;
-            _toastModel.localPosition = Vector3.down * offset;
+            _toastModel.localPosition = Vector3.down * (offset - _modelUpOffset);
         }
 
         public void JumpUp()
