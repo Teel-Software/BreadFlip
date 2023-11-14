@@ -16,6 +16,7 @@ namespace BreadFlip.Movement
 
         [Header("Audio")]
         [SerializeField] private SoundManager _soundManager;
+        
         public bool startedInToaster;
 
         public event Action OnCollidedToaster;
@@ -48,14 +49,14 @@ namespace BreadFlip.Movement
                 if (!toaster) return;
                 _jumpController.CurrentToaster = toaster;
 
-                var newPos = toaster.ToastPosition.position;
-                transform.position = newPos;
+                toaster.SetToast(transform, _jumpController.Toast);
 
                 _rigidbody.velocity = Vector3.zero;
                 _jumpController.Reset();
 
                 PlaySmoke();
                 PlayCrumbs();
+
 
                 OnCollidedToaster?.Invoke();
 

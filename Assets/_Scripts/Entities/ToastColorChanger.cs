@@ -7,8 +7,7 @@ namespace BreadFlip.Entities
 {
     public class ToastColorChanger : MonoBehaviour
     {
-        [SerializeField] private Renderer _PulpRenderer;
-        [SerializeField] private Renderer _CrustRenderer;
+        [SerializeField] private Toast _toast;
 
         [Header("Crust")]
         [SerializeField] private Color startCrustColor;
@@ -35,8 +34,8 @@ namespace BreadFlip.Entities
 
         private void ChangeColor(float tick)
         {
-            _CrustRenderer.material.color = Color.Lerp(startCrustColor, endCrustColor, tick / Timer.wholeTime);
-            _PulpRenderer.material.color = Color.Lerp(startPulpColor, endPulpColor, tick / Timer.wholeTime);
+            _toast.CrustRenderer.material.color = Color.Lerp(startCrustColor, endCrustColor, tick / Timer.wholeTime);
+            _toast.PulpRenderer.material.color = Color.Lerp(startPulpColor, endPulpColor, tick / Timer.wholeTime);
         }
 
         private IEnumerator ResetColorAnimation()
@@ -48,8 +47,8 @@ namespace BreadFlip.Entities
                 ChangeColor(currentTime * Timer.wholeTime / resetDuration);
                 yield return null;
             }
-            _PulpRenderer.material.color = startPulpColor;
-            _CrustRenderer.material.color = startCrustColor;
+            _toast.PulpRenderer.material.color = startPulpColor;
+            _toast.CrustRenderer.material.color = startCrustColor;
         }
 
         private void ResetColor()

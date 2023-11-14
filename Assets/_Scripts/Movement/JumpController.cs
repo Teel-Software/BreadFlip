@@ -1,8 +1,7 @@
-﻿using System;
 using System.Collections;
+using BreadFlip.Entities;
 using BreadFlip.Sound;
 using BreadFlip.UI;
-using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -10,12 +9,8 @@ namespace BreadFlip.Movement
 {
     public class JumpController : MonoBehaviour
     {
+        [SerializeField] private Toast _toast;
         [SerializeField] private Rigidbody _rigidbody;
-        [SerializeField] private Animator _animator;
-        [SerializeField] private Transform _modelTransform;
-
-        [SerializeField] private BoxCollider _collisionCollider;
-        [SerializeField] private BoxCollider _modelCollider;
 
         [SerializeField] private TrajectoryRenderer _trajectoryRenderer;
 
@@ -23,6 +18,7 @@ namespace BreadFlip.Movement
 
         [Header("Audio")]
         [SerializeField] private SoundManager _soundManager;
+
         private bool firstSoundPlayed;
         private bool secondSoundPlayed;
 
@@ -37,14 +33,12 @@ namespace BreadFlip.Movement
 
         private const float _MAX_TIME = 1.3f;
         public Toaster CurrentToaster { get; set; }
+        public Toast Toast => _toast;
 
         private void OnValidate()
         {
             _rigidbody ??= gameObject.GetComponent<Rigidbody>();
-            _animator ??= gameObject.GetComponent<Animator>();
             _trajectoryRenderer ??= gameObject.GetComponentInChildren<TrajectoryRenderer>();
-
-            if (_modelCollider) _modelCollider.enabled = false;
         }
 
         public void Reset()
@@ -77,7 +71,8 @@ namespace BreadFlip.Movement
 
                 if (Input.GetMouseButton(0) && _startTime != 0)
                 {
-                    //CurrentToaster.SetHandlePosition(GetForcePercent());
+                    CurrentToaster.SetHandlePosition(GetForcePercent());
+
                     _trajectoryRenderer.ShowTrajectory(gameObject.transform.position, GetForceVector());
 
                     // звук старта при прыжке, играет один раз
@@ -94,13 +89,13 @@ namespace BreadFlip.Movement
 
                     if (forceVector.magnitude > 3.5f)
                     {
+                        CurrentToaster.JumpUp();
+
                         _rigidbody.AddForce(forceVector, ForceMode.Impulse);
                         _trajectoryRenderer.ClearTrajectory();
 
                         _playRotateAnimation = PlayRotateAnimation();
                         StartCoroutine(_playRotateAnimation);
-
-                        CurrentToaster.JumpUp();
 
                         _inToaster = false;
 
@@ -151,7 +146,7 @@ namespace BreadFlip.Movement
         private void ResetRotation()
         {
             StopRotation();
-            _modelTransform.localRotation = Quaternion.identity;
+            Toast.ModelTransform.localRotation = Quaternion.identity;
 
             _speedMultiplicator = 1;
             
@@ -172,7 +167,7 @@ namespace BreadFlip.Movement
         {
             while (true)
             {
-                _modelTransform.Rotate(_rotateAxis, _rotationSpeed * _speedMultiplicator * Time.deltaTime);
+                Toast.ModelTransform.Rotate(_rotateAxis, _rotationSpeed * _speedMultiplicator * Time.deltaTime);
                 yield return null;
             }
         }
@@ -208,8 +203,7 @@ namespace BreadFlip.Movement
         public void UnlockPhysicsRotation()
         {
             _rigidbody.constraints = RigidbodyConstraints.None;
-            _modelCollider.enabled = true;
-            _collisionCollider.enabled = false;
+            Toast.ModelCollider.enabled = true;
         }
 
         public void StopRotation()

@@ -89,7 +89,7 @@ namespace BreadFlip.UI
             return onFailedWasInvoked;
         }
 
-        public void ReplayGame()
+        public void ReplayLogic()
         {
             PlayerPrefs.SetInt("gameNeedsToRestart", 1);
             ReloadScene();
