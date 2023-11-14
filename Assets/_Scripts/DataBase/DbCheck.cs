@@ -25,6 +25,7 @@ namespace BreadFlip
         public void UpdatePlayer()
         {
             var rec = int.Parse(record.text);
+            Debug.Log("new record " + record.text);
             DBInterface.UpdateRecord(rec);
         }
 

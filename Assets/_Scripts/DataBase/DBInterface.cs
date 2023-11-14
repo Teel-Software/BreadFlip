@@ -14,6 +14,8 @@ namespace BreadFlip
             Debug.Log(id);
             PlayerPrefs.SetInt("PlayerId", id);
             PlayerPrefs.SetString("PlayerName", name);
+            if(id != -1)
+                PlayerPrefs.SetInt("PlayerRecord", 0);
             return id;
         }
 
@@ -21,7 +23,9 @@ namespace BreadFlip
         {
             Debug.Log("updating record");
             var prevRecord = PlayerPrefs.GetInt("PlayerRecord", 0);
+            Debug.Log("current record" + prevRecord.ToString());
             if (prevRecord > record) return false;
+            Debug.Log("continue changing");
             var a = new DBRegPlayer();
             PlayerPrefs.SetInt("PlayerRecord", record);
             a.player = PlayerPrefs.GetInt("PlayerId", 404);
