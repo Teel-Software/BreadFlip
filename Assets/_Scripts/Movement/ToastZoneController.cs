@@ -72,15 +72,18 @@ namespace BreadFlip.Movement
 
         public void OnCollideBadThing(GameObject badThing)
         {
-            _collidedBadThing = true;
-            PlayCrumbs();
-            _jumpController.UnlockPhysicsRotation();
-            _jumpController.StopRotation();
-            
-            _jumpController.enabled = false;
-            OnCollidedBadThing?.Invoke();
+            if (!_collidedToaster)
+            {
+                _collidedBadThing = true;
+                PlayCrumbs();
+                _jumpController.UnlockPhysicsRotation();
+                _jumpController.StopRotation();
 
-            _soundManager.PlayFailedSound();
+                _jumpController.enabled = false;
+                OnCollidedBadThing?.Invoke();
+
+                _soundManager.PlayFailedSound();
+            }
         }
 
         public void OnExitFromCollider(GameObject toasterObj)

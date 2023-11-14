@@ -180,7 +180,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95bbfd382af9c7d4bbb77ba4a7bd2ed0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slider: {fileID: 327676538}
   zoneController: {fileID: 6556600626714998364}
   uiManager: {fileID: 0}
   ifGameStarted: 0
@@ -727,8 +726,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.67375374, z: 0.11294527}
-  m_Center: {x: 9.750376e-17, y: -0.024025917, z: -0.055638768}
+  m_Size: {x: 1, y: 0.67375374, z: 0.29080045}
+  m_Center: {x: 0, y: -0.024025917, z: -0.14456636}
 --- !u!114 &6556600626714998364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -746,6 +745,8 @@ MonoBehaviour:
   _smokeToasterPrefab: {fileID: 6650199810314842004, guid: 6bb1fae8a9cfde74491386067001224b, type: 3}
   _crumbsToastPrefab: {fileID: 8926923999424109659, guid: f5c856d9d28bb7249b1e9157d2c957f2, type: 3}
   _smokeSmokeDeadPrefab: {fileID: 5958478975733516079, guid: c0142d24daaf8654e94a65bc5d2a5bdb, type: 3}
+  _soundManager: {fileID: 0}
+  startedInToaster: 0
 --- !u!114 &4603831788449828374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -764,6 +765,8 @@ MonoBehaviour:
   _collisionCollider: {fileID: 3881330473007605310}
   _modelCollider: {fileID: 7031865968199225850}
   _trajectoryRenderer: {fileID: 4655393827151577850}
+  mainMenu: {fileID: 0}
+  _soundManager: {fileID: 0}
 --- !u!1 &6113963116517659634
 GameObject:
   m_ObjectHideFlags: 0
