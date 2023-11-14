@@ -9,20 +9,21 @@ namespace BreadFlip
 {
     public static class DBWorker
     {
-        private static string endpoint = "";
+        private static string endpoint = "";//http://localhost:8080
         public static DBTopRecords GetRecords()
         {
             initEndpoint();
             var request = UnityWebRequest.Get(endpoint + "/db");
             request.SendWebRequest();
             while (!request.isDone) { }
-            var a = JsonUtility.FromJson<DBTopRecords>(request.downloadHandler.text);
-            Debug.Log(a.record_list[0].player);
+            var a = new DBTopRecords();
+            if (request.error == null || request.error == "")
+                a = JsonUtility.FromJson<DBTopRecords>(request.downloadHandler.text);
             request.Dispose();
             return a;
         }
 
-        public static bool PutRecord(DBPlayer player)
+        public static int PutRecord(DBPlayer player)
         {
             initEndpoint();
             var str = JsonUtility.ToJson(player);
@@ -33,12 +34,17 @@ namespace BreadFlip
             request.SendWebRequest();
             while (!request.isDone) { }
             //var res = request.isError || request.isNetworkError || request.isHttpError;
-            var res = true;
+            Debug.Log(request.downloadHandler.text);
+
+            var res = -1;
+            Debug.Log(request.error);
+            if (request.error == null || request.error == "")
+                res = int.Parse(request.downloadHandler.text);
             request.Dispose();
             return res;
         }
 
-        public static void UpdateRecord(DBPlayer player)
+        public static bool UpdateRecord(DBRegPlayer player)
         {
             initEndpoint();
             var str = JsonUtility.ToJson(player);
@@ -48,7 +54,11 @@ namespace BreadFlip
             request.SetRequestHeader("size", str.Length.ToString());
             request.SendWebRequest();
             while (!request.isDone) { }
+            var res = true;
+            if (request.error != null) res = false;
             request.Dispose();
+            Debug.Log(res);
+            return res;
         }
 
         private static void initEndpoint()
@@ -64,6 +74,13 @@ namespace BreadFlip
     public struct DBPlayer
     {
         public string player;
+        public int record;
+    }
+
+    [Serializable]
+    public struct DBRegPlayer
+    {
+        public int player;
         public int record;
     }
 
