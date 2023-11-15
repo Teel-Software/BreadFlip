@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using BreadFlip.Entities;
 using BreadFlip.Sound;
@@ -30,6 +31,7 @@ namespace BreadFlip.Movement
         private IEnumerator _playRotateAnimation;
         private Vector3 _rotateAxis;
         private int _speedMultiplicator = 1;
+        private bool _canDoubleJump;
 
         private const float _MAX_TIME = 1.3f;
         public Toaster CurrentToaster { get; set; }
@@ -48,7 +50,7 @@ namespace BreadFlip.Movement
             
             firstSoundPlayed = false;
             secondSoundPlayed = false;
-
+            _canDoubleJump = false;
 
             ResetRotation();
         }
@@ -87,8 +89,10 @@ namespace BreadFlip.Movement
                 {
                     var forceVector = GetForceVector();
 
-                    if (forceVector.magnitude > 3.5f)
+                    if (forceVector.magnitude > 5f)
                     {
+                        StartCoroutine(Wait(.25f, () => _canDoubleJump = true));
+                        
                         CurrentToaster.JumpUp();
 
                         _rigidbody.AddForce(forceVector, ForceMode.Impulse);
@@ -116,8 +120,16 @@ namespace BreadFlip.Movement
             }
         }
 
+        private IEnumerator Wait(float time, Func<bool> action)
+        {
+            yield return new WaitForSeconds(time);
+            action?.Invoke();
+        }
+
         private void TryDoubleJump()
         {
+            if (!_canDoubleJump) return;
+            
             if (Input.GetMouseButtonDown(0) && !_isDoubleJumpPressed && !UiManager.pauseButtonPressed)
             {
                 if (_rigidbody.velocity.y < 0)
@@ -158,13 +170,14 @@ namespace BreadFlip.Movement
             StopRotation();
             
             _rotateAxis = -_rotateAxis;
-            _playRotateAnimation = PlayRotateAnimation();
+            _playRotateAnimation = PlayRotateAnimation(true);
             _speedMultiplicator = 1;
             StartCoroutine(_playRotateAnimation);
         }
 
-        private IEnumerator PlayRotateAnimation()
+        private IEnumerator PlayRotateAnimation(bool ignoreDelay = false)
         {
+            if (!ignoreDelay) yield return new WaitForSeconds(.75f);
             while (true)
             {
                 Toast.ModelTransform.Rotate(_rotateAxis, _rotationSpeed * _speedMultiplicator * Time.deltaTime);

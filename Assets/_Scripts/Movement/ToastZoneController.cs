@@ -1,6 +1,7 @@
 using BreadFlip.Sound;
 using BreadFlip.UI;
 using System;
+using System.Reflection;
 using UnityEngine;
 
 namespace BreadFlip.Movement
@@ -44,6 +45,7 @@ namespace BreadFlip.Movement
             if (!_collidedBadThing)
             {
                 _collidedToaster = true;
+                Debug.Log(MethodBase.GetCurrentMethod());
 
                 var toaster = toasterObj.GetComponent<Toaster>();
                 if (!toaster) return;
@@ -75,6 +77,8 @@ namespace BreadFlip.Movement
         {
             if (!_collidedToaster)
             {
+                Debug.Log(MethodBase.GetCurrentMethod());
+                
                 _collidedBadThing = true;
                 PlayCrumbs();
                 _jumpController.UnlockPhysicsRotation();
@@ -89,6 +93,8 @@ namespace BreadFlip.Movement
 
         public void OnExitFromCollider(GameObject toasterObj)
         {
+            Debug.Log(MethodBase.GetCurrentMethod());
+            
             PlaySmoke();
             PlayCrumbs();
             OnColliderExit?.Invoke();

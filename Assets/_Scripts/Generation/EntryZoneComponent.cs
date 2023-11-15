@@ -59,7 +59,6 @@ namespace BreadFlip.Generation
             if (IsZoneTrigger)
             {
                 _onEnteredZone.Invoke(gameObject);
-                Debug.Log("Trigger");
             }
         }
 
@@ -68,7 +67,6 @@ namespace BreadFlip.Generation
             if (IsZoneTrigger)
             {
                 _onExitZone.Invoke(gameObject);
-                Debug.Log("EXIT Trigger");
             }
         }
 

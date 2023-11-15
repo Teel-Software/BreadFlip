@@ -813,6 +813,7 @@ MonoBehaviour:
   _crumbsToastPrefab: {fileID: 8926923999424109659, guid: f5c856d9d28bb7249b1e9157d2c957f2, type: 3}
   _smokeSmokeDeadPrefab: {fileID: 5958478975733516079, guid: c0142d24daaf8654e94a65bc5d2a5bdb, type: 3}
   _soundManager: {fileID: 0}
+  startedInToaster: 0
 --- !u!114 &4603831788449828374
 MonoBehaviour:
   m_ObjectHideFlags: 0
