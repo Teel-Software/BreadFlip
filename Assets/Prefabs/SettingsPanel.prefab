@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: db8aa56c53efea04b92f66480380a6af, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8fd459db6487b114a877dc0c54619387, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -537,6 +537,8 @@ GameObject:
   - component: {fileID: 4668471603048488000}
   - component: {fileID: 4668471603048488001}
   - component: {fileID: 4668471603048488002}
+  - component: {fileID: 368358197010542243}
+  - component: {fileID: 3917736441853997060}
   m_Layer: 5
   m_Name: BackButton
   m_TagString: Untagged
@@ -593,7 +595,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2be67e1dba787404b8b0c72ec8bfa03a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 42631b44e4902664c98bf452bfedad46, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -622,7 +624,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.59607846, g: 0.39607844, b: 0.2784314, a: 1}
@@ -633,7 +635,7 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 21300000, guid: 3c965fd9affedb6439d91f18d93b093e, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -671,6 +673,66 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &368358197010542243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4668471603048488005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a2747f46cf9e8541a78490c137d161c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultColor: {r: 0.22745098, g: 0.14509805, b: 0.09019608, a: 1}
+  pressedColor: {r: 0.92156863, g: 0.827451, b: 0.7647059, a: 1}
+  buttonText: {fileID: 4668471604113920802}
+--- !u!114 &3917736441853997060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4668471603048488005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 368358197010542243}
+          m_TargetAssemblyTypeName: BreadFlip.UI.ChangeTextColor, Assembly-CSharp
+          m_MethodName: ChangeColorOnPressed
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 368358197010542243}
+          m_TargetAssemblyTypeName: BreadFlip.UI.ChangeTextColor, Assembly-CSharp
+          m_MethodName: ChangeColorToDefault
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &4668471603199398803
 GameObject:
   m_ObjectHideFlags: 0
@@ -776,7 +838,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: db8aa56c53efea04b92f66480380a6af, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8fd459db6487b114a877dc0c54619387, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -941,7 +1003,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.000024796, y: -0.0067139}
-  m_SizeDelta: {x: 900, y: 1250}
+  m_SizeDelta: {x: 900, y: 1110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4668471603852173476
 CanvasRenderer:
@@ -971,7 +1033,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d90d395b10493804e9b091ee1b4de85b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b6de9c6387d10c34b918857b772a1b77, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

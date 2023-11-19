@@ -52,10 +52,10 @@ MonoBehaviour:
   _defaultSpawnedChunks:
   - {fileID: 711575022894392987}
   - {fileID: 8596140174245339603}
-  _offsetDistanceToLastChunkX: 15
+  _offsetDistanceToLastChunkX: 75
   _offsetDistanceToFirstChunkX: 15
-  _minSpawnedChunks: 3
-  _maxSpawnedChunks: 4
+  _minSpawnedChunks: 4
+  _maxSpawnedChunks: 5
   _emptySpaceVariant: {fileID: 0}
   _emptySpaceValue: 3
 --- !u!1001 &3791160194031347349

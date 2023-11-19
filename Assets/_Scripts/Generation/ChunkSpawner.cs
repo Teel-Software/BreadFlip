@@ -39,6 +39,19 @@ namespace BreadFlip.Generation
             }
         }
 
+        private void OnDrawGizmosSelected()
+        {
+            if (!_player) return;
+            
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(_player.transform.position - _offsetDistanceToLastChunkX * Vector3.right, 1f);
+            Gizmos.DrawSphere(_player.transform.position + _offsetDistanceToFirstChunkX * Vector3.right, 1f);
+            
+            Gizmos.color = Color.green;
+            Gizmos.DrawSphere(_spawnedChunks.Last().EndSpawnPoint.transform.position - _offsetDistanceToFirstChunkX * Vector3.right, 1f);
+            Gizmos.DrawSphere(_spawnedChunks.First().StartSpawnPoint.transform.position + _offsetDistanceToLastChunkX * Vector3.right, 1f);
+        }
+
         private void Start()
         {
             var player = FindObjectOfType<ToastZoneController>();

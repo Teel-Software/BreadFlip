@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6a0a775663ecb9d47ac449814d6c64cb
+guid: 39417413c95dc374589063c05d137d59
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,8 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: TableBlue
-    second: {fileID: 2100000, guid: 4c7f9277171b4014ea5acd4bbcd1483f, type: 2}
+      name: Bread.001
+    second: {fileID: 2100000, guid: 5aa74d7e0bd5e5e4695de39e4ceabe20, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bread.002
+    second: {fileID: 2100000, guid: 05c68c32e492ec6489a30196db31705b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -40,7 +45,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 3
+    globalScale: 0.7
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -93,7 +98,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 3
+    globalScale: 0.0069999998
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
