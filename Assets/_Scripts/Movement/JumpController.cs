@@ -41,13 +41,9 @@ namespace BreadFlip.Movement
         private void Start()
         {
             Timer.TimeOvered += () => _canStartJump = false;
+            //SwipeDetection.SwipeDownEvent += JumpDown;
+            //SwipeDetection.SwipeUpEvent += TryDoubleJump;
         }
-
-        //private void OnDestroy()
-        //{
-        //    Timer.TimeOvered -= () => _canStartJump = false;
-        //}
-
         private void OnValidate()
         {
             _rigidbody ??= gameObject.GetComponent<Rigidbody>();
@@ -236,5 +232,10 @@ namespace BreadFlip.Movement
         {
             if (_playRotateAnimation != null) StopCoroutine(_playRotateAnimation);
         }
+
+        //private void JumpDown()
+        //{
+        //    _rigidbody.AddForce(GetForceVector());
+        //}
     }
 }
