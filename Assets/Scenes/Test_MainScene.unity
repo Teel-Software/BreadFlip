@@ -1999,6 +1999,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 963194227}
     - target: {fileID: 4603831788449828374, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
+      propertyPath: _timer
+      value: 
+      objectReference: {fileID: 327676539}
+    - target: {fileID: 4603831788449828374, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
       propertyPath: mainMenu
       value: 
       objectReference: {fileID: 190059056}
