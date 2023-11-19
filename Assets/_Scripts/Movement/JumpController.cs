@@ -80,7 +80,7 @@ namespace BreadFlip.Movement
                     // звук старта при прыжке, играет один раз
                     if (!firstSoundPlayed)
                     {
-                        _soundManager.PlayJumpFirst();
+                        //_soundManager.PlayJumpFirst();
                         firstSoundPlayed = true;
                     }
                 }

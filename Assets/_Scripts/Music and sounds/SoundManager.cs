@@ -6,7 +6,7 @@ namespace BreadFlip.Sound
 {
     public class SoundManager : MonoBehaviour
     {
-        [SerializeField] private AudioClip jumpFirst;
+        //[SerializeField] private AudioClip jumpFirst;
         [SerializeField] private AudioClip jumpSecond;
         [SerializeField] private AudioClip failed;
         [SerializeField] private AudioClip doubleJump;
@@ -19,7 +19,7 @@ namespace BreadFlip.Sound
             source = GetComponent<AudioSource>();
         }
 
-        public void PlayJumpFirst() { source.PlayOneShot(jumpFirst); }
+        //public void PlayJumpFirst() { source.PlayOneShot(jumpFirst); }
         public void PlayJumpSecond() {  source.PlayOneShot(jumpSecond); }
         public void PlayFailedSound() { source.PlayOneShot(failed); }
         public void PlayDoubleJump () { source.PlayOneShot(doubleJump); }

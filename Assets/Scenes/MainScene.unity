@@ -1055,7 +1055,7 @@ MonoBehaviour:
   jumpSecond: {fileID: 8300000, guid: 58a17f21aef54bc4b8e1aa32e31cc7b8, type: 3}
   failed: {fileID: 8300000, guid: f8e2de3364b403f4ba4dd9d3d1b9a70c, type: 3}
   doubleJump: {fileID: 8300000, guid: 86b9e4a1c6b5f604ebee0af881275ca6, type: 3}
-  landedInToaster: {fileID: 8300000, guid: e6b0e3982044dd843bbeef2d39b47433, type: 3}
+  landedInToaster: {fileID: 8300000, guid: 6637d6dc752f0dd4a942e67c167072e2, type: 3}
 --- !u!1 &1487771678
 GameObject:
   m_ObjectHideFlags: 0
@@ -1092,6 +1092,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1488057975 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1234029334738532760, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
+  m_PrefabInstance: {fileID: 2139659192}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36b31031dafe424099e3515401ad7b65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1617710718 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1924893622841926920, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
@@ -1512,6 +1523,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
       objectReference: {fileID: 327676539}
+    - target: {fileID: 3844732170423778428, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4855778870755685955, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
       propertyPath: m_Name
       value: UICanvas
