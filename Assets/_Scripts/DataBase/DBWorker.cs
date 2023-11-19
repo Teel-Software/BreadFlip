@@ -30,7 +30,8 @@ namespace BreadFlip
             Debug.Log(str);
 
             var request = UnityWebRequest.Put(endpoint + "/add", Encoding.UTF8.GetBytes(str));
-            request.SetRequestHeader("size", str.Length.ToString());
+            byte[] bytes = Encoding.UTF8.GetBytes(str);
+            request.SetRequestHeader("size", bytes.Length.ToString());
             request.SendWebRequest();
             while (!request.isDone) { }
             //var res = request.isError || request.isNetworkError || request.isHttpError;
@@ -51,7 +52,8 @@ namespace BreadFlip
             Debug.Log(str);
 
             var request = UnityWebRequest.Put(endpoint + "/change", Encoding.UTF8.GetBytes(str));
-            request.SetRequestHeader("size", str.Length.ToString());
+            byte[] bytes = Encoding.UTF8.GetBytes(str);
+            request.SetRequestHeader("size", bytes.Length.ToString());
             request.SendWebRequest();
             while (!request.isDone) { }
             var res = true;
