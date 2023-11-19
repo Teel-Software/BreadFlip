@@ -20,13 +20,14 @@ namespace BreadFlip.Movement
         [Header("Audio")]
         [SerializeField] private SoundManager _soundManager;
 
-        private bool firstSoundPlayed;
+        //private bool firstSoundPlayed;
         private bool secondSoundPlayed;
 
         private bool _isDoubleJumpPressed;
         private float _startTime;
         private bool _inToaster;
         private float _rotationSpeed = 563f;
+        private bool _canStartJump;
         
         private IEnumerator _playRotateAnimation;
         private Vector3 _rotateAxis;
@@ -36,6 +37,16 @@ namespace BreadFlip.Movement
         private const float _MAX_TIME = 1.3f;
         public Toaster CurrentToaster { get; set; }
         public Toast Toast => _toast;
+
+        private void Start()
+        {
+            Timer.TimeOvered += () => _canStartJump = false;
+        }
+
+        //private void OnDestroy()
+        //{
+        //    Timer.TimeOvered -= () => _canStartJump = false;
+        //}
 
         private void OnValidate()
         {
@@ -47,8 +58,10 @@ namespace BreadFlip.Movement
         {
             _isDoubleJumpPressed = false;
             _inToaster = true;
-            
-            firstSoundPlayed = false;
+
+            _canStartJump = true;
+
+            //firstSoundPlayed = false;
             secondSoundPlayed = false;
             _canDoubleJump = false;
 
@@ -64,7 +77,7 @@ namespace BreadFlip.Movement
 
         private void PrepareToJump()
         {
-            if (!mainMenu.activeSelf)
+            if (!mainMenu.activeSelf && _canStartJump)
             {
                 if (Input.GetMouseButtonDown(0))
                 {
@@ -78,20 +91,20 @@ namespace BreadFlip.Movement
                     _trajectoryRenderer.ShowTrajectory(gameObject.transform.position, GetForceVector());
 
                     // звук старта при прыжке, играет один раз
-                    if (!firstSoundPlayed)
-                    {
-                        //_soundManager.PlayJumpFirst();
-                        firstSoundPlayed = true;
-                    }
+                    //if (!firstSoundPlayed)
+                    //{
+                    //    _soundManager.PlayJumpFirst();
+                    //    firstSoundPlayed = true;
+                    //}
                 }
 
                 if (Input.GetMouseButtonUp(0) && _startTime != 0)
                 {
                     var forceVector = GetForceVector();
 
-                    if (forceVector.magnitude > 5f)
+                    if (forceVector.magnitude > 6f)
                     {
-                        StartCoroutine(Wait(.25f, () => _canDoubleJump = true));
+                        StartCoroutine(Wait(.45f, () => _canDoubleJump = true));
                         
                         CurrentToaster.JumpUp();
 
