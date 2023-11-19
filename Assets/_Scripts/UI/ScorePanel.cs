@@ -13,7 +13,6 @@ namespace BreadFlip.UI
 
         private TMP_Text tmp;
 
-
         private void Start()
         {
             _score = 0;
@@ -42,24 +41,30 @@ namespace BreadFlip.UI
 
         private void PrintTextOnLoseScreen()
         {
-            if (PlayerPrefs.HasKey("record"))
-            {
-                if (_score > PlayerPrefs.GetInt("record"))
-                {
-                    PlayerPrefs.SetInt("record", _score);
-                    recordScore.text = _score.ToString();
-                }
-                else
-                {
-                    recordScore.text = PlayerPrefs.GetInt("record").ToString();
-                }
-            }
-            else
-            {
-                PlayerPrefs.SetInt("record", _score);
-                recordScore.text = _score.ToString();
-            }
-            
+            DBInterface.UpdateRecord(_score);
+            recordScore.text = PlayerPrefs.GetInt("PlayerRecord", 0).ToString();
+
+            Debug.Log(DBInterface.GetRecords().record_list[1].player + " :: " + DBInterface.GetRecords().record_list[1].record);
+
+            //if (PlayerPrefs.HasKey("record"))
+            //{
+            //    if (_score > PlayerPrefs.GetInt("record"))
+            //    {
+            //        PlayerPrefs.SetInt("record", _score);
+            //        
+            //        recordScore.text = _score.ToString();
+            //    }
+            //    else
+            //    {
+            //        recordScore.text = PlayerPrefs.GetInt("record").ToString();
+            //    }
+            //}
+            //else
+            //{
+            //    PlayerPrefs.SetInt("record", _score);
+            //    recordScore.text = _score.ToString();
+            //}
+
             loseScore.text = _score.ToString();
         }
     }
