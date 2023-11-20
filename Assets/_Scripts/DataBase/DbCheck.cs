@@ -5,6 +5,7 @@ using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
+using Crosstales.BWF;
 
 namespace BreadFlip
 {
@@ -24,6 +25,7 @@ namespace BreadFlip
 
         public void UpdatePlayer()
         {
+            bool isNotOk = BWFManager.Contains(record.text);
             var rec = int.Parse(record.text);
             Debug.Log("new record " + record.text);
             DBInterface.UpdateRecord(rec);
@@ -31,6 +33,7 @@ namespace BreadFlip
 
         public void UpdateList()
         {
+
             var a = DBInterface.GetRecords();
             if(a.record_list == null)
             {
