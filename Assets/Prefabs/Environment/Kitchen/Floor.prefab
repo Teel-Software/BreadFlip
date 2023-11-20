@@ -180,7 +180,11 @@ MonoBehaviour:
   _onEnteredZone:
     m_PersistentCalls:
       m_Calls: []
-  _activeHighlight: 1
+  _onExitZone:
+    m_PersistentCalls:
+      m_Calls: []
+  _activeHighlight: 0
+  _isToaster: 0
   _color: {r: 0, g: 1, b: 0, a: 1}
 --- !u!114 &8562240437642264439
 MonoBehaviour:
@@ -196,6 +200,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tables: []
   _tableVariants: []
+  _entryZoneComponents:
+  - {fileID: 4592825254324607092}
   StartSpawnPoint: {fileID: 1857764225012215875}
   EndSpawnPoint: {fileID: 1857764225937817832}
   ChanceFromDistance:

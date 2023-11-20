@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace BreadFlip.UI
@@ -13,7 +12,7 @@ namespace BreadFlip.UI
 
         private Toggle toggle;
 
-        void OnEnable()
+        void Start()
         {
             StartAction();
         }
@@ -27,7 +26,6 @@ namespace BreadFlip.UI
 
         private void MoveIndicator(bool value)
         {
-            Debug.Log("Я зашёл");
             if (value)
             {
                 on.SetActive(true);
@@ -46,11 +44,5 @@ namespace BreadFlip.UI
             isOn = toggle.isOn;
             MoveIndicator(isOn);
         }
-
-        //public void OnPointerDown(PointerEventData eventData)
-        //{
-        //isOn = toggle.isOn;
-        //MoveIndicator(!isOn);
-        //}
     }
 }

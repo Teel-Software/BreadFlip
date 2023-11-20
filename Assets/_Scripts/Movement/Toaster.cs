@@ -1,4 +1,5 @@
 using System;
+using BreadFlip.Entities;
 using DG.Tweening;
 using UnityEngine;
 
@@ -8,28 +9,54 @@ namespace BreadFlip.Movement
     {
         [SerializeField] private Transform _toastPosition;
         [SerializeField] private Transform _handle;
+        
+        [SerializeField] private Transform _minHandleHeightPosition;
         [SerializeField] private Transform _maxHandleHeightPosition;
 
-        private Vector3 _defaultHandlePosition;
-        private float _maxHandleHeight;
+        private Vector3 _minHandlePosition;
+        private Vector3 _maxHandlePosition;
+        
+        private Transform _toast;
+        private Transform _toastModel;
+        private float _modelUpOffset;
 
-        public Transform ToastPosition => _toastPosition;
-        public Transform Handle => _handle;
+        private Transform ToastPosition => _toastPosition;
 
         private void Start()
         {
-            _defaultHandlePosition = _handle.transform.position;
-            _maxHandleHeight = _maxHandleHeightPosition.position.y;
+            var handlePosition = _handle.position;
+            
+            _minHandlePosition = new Vector3(handlePosition.x, _minHandleHeightPosition.position.y, handlePosition.z);
+            _maxHandlePosition = new Vector3(handlePosition.x, _maxHandleHeightPosition.position.y, handlePosition.z);
+
+            _handle.position = _maxHandlePosition;
+        }
+        
+        public void SetToast(Transform toastMain, Toast toastModel)
+        {
+            _toast = toastMain;
+            _toast.transform.position = ToastPosition.position;
+
+            _modelUpOffset = toastModel.ModelUpOffset;
+
+            _toastModel = toastModel.ModelTransform;
+            _toastModel.localPosition += Vector3.up * _modelUpOffset;
         }
 
         public void SetHandlePosition(float getForcePercent)
         {
-            _handle.transform.position = _defaultHandlePosition + Vector3.up * (getForcePercent * _maxHandleHeight);
+            _handle.position = Vector3.Lerp(_maxHandlePosition, _minHandlePosition, getForcePercent);
+
+            var offset = _maxHandlePosition.y - _handle.position.y;
+            _toastModel.localPosition = Vector3.down * (offset - _modelUpOffset);
         }
 
         public void JumpUp()
         {
-            _handle.DOMoveY(_maxHandleHeight, .25f).SetEase(Ease.OutElastic);
+            _toast = null;
+
+            _toastModel.localPosition = Vector3.zero;
+            _handle.DOMoveY(_maxHandlePosition.y, .25f).SetEase(Ease.OutElastic);
         }
     }
 }

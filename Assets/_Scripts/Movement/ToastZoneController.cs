@@ -1,4 +1,7 @@
+using BreadFlip.Sound;
+using BreadFlip.UI;
 using System;
+using System.Reflection;
 using UnityEngine;
 
 namespace BreadFlip.Movement
@@ -12,41 +15,91 @@ namespace BreadFlip.Movement
         [SerializeField] private ParticleSystem _crumbsToastPrefab;
         [SerializeField] private ParticleSystem _smokeSmokeDeadPrefab;
 
+        [Header("Audio")]
+        [SerializeField] private SoundManager _soundManager;
+        
+        public bool startedInToaster;
+
         public event Action OnCollidedToaster;
         public event Action OnCollidedBadThing;
         public event Action OnColliderExit;
 
+        private bool _collidedToaster;
+        private bool _collidedBadThing;
+
+        private void Start()
+        {
+            _collidedBadThing = false;
+            _collidedToaster = false;
+            startedInToaster = true;
+            Timer.TimeOvered += PlayDeadSmoke;
+        }
+
+        private void OnDestroy()
+        {
+            Timer.TimeOvered -= PlayDeadSmoke;
+        }
+
         public void OnCollideToaster(GameObject toasterObj)
         {
-            var toaster = toasterObj.GetComponent<Toaster>();
-            if (!toaster) return;
-            _jumpController.CurrentToaster = toaster;
+            if (!_collidedBadThing)
+            {
+                _collidedToaster = true;
+                Debug.Log(MethodBase.GetCurrentMethod());
 
-            var newPos = toaster.ToastPosition.position;
-            transform.position = newPos;
-            
-            _rigidbody.velocity = Vector3.zero;
-            _jumpController.Reset();
-            
-            PlaySmoke();
+                var toaster = toasterObj.GetComponent<Toaster>();
+                if (!toaster) return;
+                _jumpController.CurrentToaster = toaster;
 
-            OnCollidedToaster?.Invoke();
+                toaster.SetToast(transform, _jumpController.Toast);
+
+                _rigidbody.velocity = Vector3.zero;
+                _jumpController.Reset();
+
+                PlaySmoke();
+                PlayCrumbs();
+
+
+                OnCollidedToaster?.Invoke();
+
+                if (!startedInToaster)
+                {
+                    _soundManager.PlayLandedInToasterSound();
+                }
+                else
+                {
+                    startedInToaster = false;
+                }
+            }
         }
 
         public void OnCollideBadThing(GameObject badThing)
         {
-            PlayCrumbs();
-            _jumpController.UnlockPhysicsRotation();
-            _jumpController.StopRotation();
-            
-            _jumpController.enabled = false;
-            OnCollidedBadThing?.Invoke();
+            if (!_collidedToaster)
+            {
+                Debug.Log(MethodBase.GetCurrentMethod());
+                
+                _collidedBadThing = true;
+                PlayCrumbs();
+                _jumpController.UnlockPhysicsRotation();
+                _jumpController.StopRotation();
+
+                _jumpController.enabled = false;
+                OnCollidedBadThing?.Invoke();
+
+                _soundManager.PlayFailedSound();
+            }
         }
 
         public void OnExitFromCollider(GameObject toasterObj)
         {
+            Debug.Log(MethodBase.GetCurrentMethod());
+            
             PlaySmoke();
+            PlayCrumbs();
             OnColliderExit?.Invoke();
+            _collidedToaster = false;
+            _collidedBadThing = false;
         }
 
         private void PlayCrumbs()
