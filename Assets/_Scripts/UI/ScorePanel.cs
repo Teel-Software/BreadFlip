@@ -44,8 +44,6 @@ namespace BreadFlip.UI
             DBInterface.UpdateRecord(_score);
             recordScore.text = PlayerPrefs.GetInt("PlayerRecord", 0).ToString();
 
-            Debug.Log(DBInterface.GetRecords().record_list[1].player + " :: " + DBInterface.GetRecords().record_list[1].record);
-
             //if (PlayerPrefs.HasKey("record"))
             //{
             //    if (_score > PlayerPrefs.GetInt("record"))
