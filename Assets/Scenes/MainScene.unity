@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.1733872, g: 0.21673915, b: 0.29880828, a: 1}
+  m_IndirectSpecularColor: {r: 0.17338738, g: 0.21673954, b: 0.29880902, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1051,7 +1051,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b616a6b022b2ca64886ad6dd41be1463, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpFirst: {fileID: 8300000, guid: a6cb3c3fa7a0b2a42b3b911abd3dbeac, type: 3}
   jumpSecond: {fileID: 8300000, guid: 58a17f21aef54bc4b8e1aa32e31cc7b8, type: 3}
   failed: {fileID: 8300000, guid: f8e2de3364b403f4ba4dd9d3d1b9a70c, type: 3}
   doubleJump: {fileID: 8300000, guid: 86b9e4a1c6b5f604ebee0af881275ca6, type: 3}
@@ -1092,17 +1091,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1488057975 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1234029334738532760, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
-  m_PrefabInstance: {fileID: 2139659192}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36b31031dafe424099e3515401ad7b65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1617710718 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1924893622841926920, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
@@ -1275,6 +1263,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1250370827298616237, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1250370827298616238, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1295,12 +1287,28 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1250370827596167783, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1250370827749982363, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1250370828110241191, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1250370828385105227, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1250370828568221159, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1924893622362227941, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1924893622685479685, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
@@ -1415,12 +1423,24 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -135
       objectReference: {fileID: 0}
+    - target: {fileID: 1924893622929116664, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1924893623106048817, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1924893623588772061, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1924893623588772063, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1924893624208531296, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2724007399504014228, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
@@ -1503,8 +1523,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -35
       objectReference: {fileID: 0}
+    - target: {fileID: 3844732170019490986, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3844732170297724146, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
       propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3844732170297724147, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3844732170423778370, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
@@ -1678,6 +1706,30 @@ PrefabInstance:
     - target: {fileID: 9138631099805517296, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ReplayGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138631100018637311, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138631100020826201, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138631100301995029, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138631100343739791, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138631100970019376, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138631101482513412, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9138631101522550932, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
       propertyPath: m_RootOrder
