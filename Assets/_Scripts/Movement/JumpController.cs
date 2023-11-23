@@ -44,6 +44,7 @@ namespace BreadFlip.Movement
             //SwipeDetection.SwipeDownEvent += JumpDown;
             //SwipeDetection.SwipeUpEvent += TryDoubleJump;
         }
+        
         private void OnValidate()
         {
             _rigidbody ??= gameObject.GetComponent<Rigidbody>();

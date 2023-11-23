@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace BreadFlip.Movement
@@ -39,7 +37,7 @@ namespace BreadFlip.Movement
 
             if (_swipeDelta.magnitude > _deadzone)
             {
-                // свайп вниз
+                // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
                 if (MathF.Abs(_swipeDelta.y) > Mathf.Abs(_swipeDelta.x) &&
                     _swipeDelta.y < 0)
                 {
@@ -47,7 +45,7 @@ namespace BreadFlip.Movement
                     ResetSwipe();
                 }
                 
-                // свайп вверх
+                // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
                 else if (MathF.Abs(_swipeDelta.y) > Mathf.Abs(_swipeDelta.x) &&
                     _swipeDelta.y > 0)
                 {
