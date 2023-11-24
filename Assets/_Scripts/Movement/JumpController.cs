@@ -168,7 +168,7 @@ namespace BreadFlip.Movement
         private void ResetRotation()
         {
             StopRotation();
-            Toast.ModelTransform.localRotation = Quaternion.identity;
+            Toast.ModelCollider.transform.localRotation = Quaternion.identity;
 
             _speedMultiplicator = 1;
             
@@ -190,7 +190,7 @@ namespace BreadFlip.Movement
             if (!ignoreDelay) yield return new WaitForSeconds(.75f);
             while (true)
             {
-                Toast.ModelTransform.Rotate(_rotateAxis, _rotationSpeed * _speedMultiplicator * Time.deltaTime);
+                Toast.ModelCollider.transform.Rotate(_rotateAxis, _rotationSpeed * _speedMultiplicator * Time.deltaTime);
                 yield return null;
             }
         }
@@ -226,7 +226,6 @@ namespace BreadFlip.Movement
         public void UnlockPhysicsRotation()
         {
             _rigidbody.constraints = RigidbodyConstraints.None;
-            Toast.ModelCollider.enabled = true;
         }
 
         public void StopRotation()
