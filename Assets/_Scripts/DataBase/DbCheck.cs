@@ -5,6 +5,7 @@ using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
+using Crosstales.BWF;
 
 namespace BreadFlip
 {
@@ -31,6 +32,7 @@ namespace BreadFlip
 
         public void UpdateList()
         {
+
             var a = DBInterface.GetRecords();
             if(a.record_list == null)
             {
