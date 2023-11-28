@@ -53,6 +53,9 @@ MonoBehaviour:
   - {fileID: 538679584, guid: b3d0b289fd3d1404a89ab27a64741d6a, type: 3}
   - {fileID: 538679584, guid: 2399a70008ff9ee4b8dff533f2243f63, type: 3}
   - {fileID: 538679584, guid: cb4cbc32754938d4787364ebf2147ef4, type: 3}
+  _propsElements:
+  - {fileID: 7097017957375340708, guid: 16b2ee648d2ca034c9299537a602f8a3, type: 3}
+  - {fileID: -6316938326730329473, guid: eca35afe3ed66ed49a13465ecb6dc9ad, type: 3}
   _defaultSpawnedChunks:
   - {fileID: 2713404046927575699}
   - {fileID: 5461920935522241696}

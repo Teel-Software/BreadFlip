@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace BreadFlip.Generation
 {
     public class ChunkElementVariant : MonoBehaviour
     {
+        [SerializeField] private EntryZoneComponent[] _entryZoneComponents;
+        [SerializeField] private ChunkType _chunkType = ChunkType.Table;
+        [SerializeField] private List<Transform> _propsPoints;
+        
         public GameObject StartSpawnPoint;
         public GameObject EndSpawnPoint;
 
@@ -13,9 +18,9 @@ namespace BreadFlip.Generation
 
         public GameObject Visual;
 
-        [SerializeField] private EntryZoneComponent[] _entryZoneComponents;
-
         public IReadOnlyCollection<EntryZoneComponent> EntryZoneComponents => _entryZoneComponents;
+        public ChunkType ChunkType => _chunkType;
+        public IReadOnlyCollection<Transform> PropsPoints => _propsPoints;
 
         private void OnValidate()
         {

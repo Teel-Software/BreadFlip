@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using BreadFlip.Movement;
+using JetBrains.Annotations;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -12,6 +13,7 @@ namespace BreadFlip.Generation
         [SerializeField] private Transform _spawnParent;
 
         [SerializeField] private List<Chunk> _chunkPrefabs = new();
+        [SerializeField] private List<PropsElement> _propsElements;
 
         [SerializeField] private Chunk[] _defaultSpawnedChunks;
 
@@ -59,7 +61,7 @@ namespace BreadFlip.Generation
             _player = player;
             if (_emptySpaceVariant) InitEmptySpaceVariant();
                 
-            InitStartTables();
+            InitStartChunks();
             Spawn();
         }
 
@@ -86,26 +88,21 @@ namespace BreadFlip.Generation
             if (_spawnedChunks.Count > _maxSpawnedChunks ||
                 (_spawnedChunks.Count > _minSpawnedChunks &&
                  _player.transform.position.x < firstTableStartPosition.x - _offsetDistanceToFirstChunkX))
-                DestroyTable();
+                DestroyChunk();
         }
 
-        private void DestroyTable()
+        private void DestroyChunk()
         {
             Destroy(_spawnedChunks[0].gameObject);
             _spawnedChunks.RemoveAt(0);
         }
 
-        [ContextMenu("Spawn")]
         private void Spawn()
         {
-            var newChunk = Instantiate(_chunkPrefabs[Random.Range(0, _chunkPrefabs.Count)] /*GetRandomTableVariant()*/,
+            var newChunk = Instantiate(_chunkPrefabs[Random.Range(0, _chunkPrefabs.Count)] /*GetRandomChunkVariant()*/,
                 _spawnParent);
 
-            newChunk.ReplacePrefabInChunk();
-            newChunk.RegisterEntryZones(_player);
-            
-            UpdatePosition(newChunk, _spawnedChunks.Last());
-            _spawnedChunks.Add(newChunk);
+            UpdateSpawnedChunk(newChunk, _spawnedChunks[^1]);
         }
 
         private void UpdatePosition(Chunk newChunk, Chunk lastChunk)
@@ -116,20 +113,20 @@ namespace BreadFlip.Generation
             newChunk.transform.position = lastTableEndPosition - newChunk.transform.localScale.x * newTableStartPosition;
         }
 
-        private Chunk GetRandomTableVariant()
+        private Chunk GetRandomChunkVariant()
         {
             var chances = new List<float>();
 
-            foreach (var tableVariant in _chunkPrefabs)
+            foreach (var chunkVariant in _chunkPrefabs)
             {
-                var chance = tableVariant.ChanceFromDistance.Evaluate(-_player.transform.position.x);
+                var chance = chunkVariant.ChanceFromDistance.Evaluate(-_player.transform.position.x);
                 chances.Add(chance);
             }
 
             var randomChance = Random.Range(0, chances.Sum());
             var currentChance = 0f;
 
-            for (int i = 0; i < chances.Count; i++)
+            for (var i = 0; i < chances.Count; i++)
             {
                 currentChance += chances[i];
 
@@ -139,23 +136,30 @@ namespace BreadFlip.Generation
                 }
             }
 
-            return _chunkPrefabs[_chunkPrefabs.Count - 1];
+            return _chunkPrefabs[^1];
         }
 
-        private void InitStartTables()
+        private void InitStartChunks()
         {
             for (var i = 0; i < _defaultSpawnedChunks.Length; i++)
             {
-                var spawnedTable = _defaultSpawnedChunks[i];
-                _spawnedChunks.Add(spawnedTable);
-                spawnedTable.ReplacePrefabInChunk();
-                spawnedTable.RegisterEntryZones(_player);
+                var spawnedChunk = _defaultSpawnedChunks[i];
 
-                if (i > 0)
-                {
-                    var prevChunk = _defaultSpawnedChunks[i - 1];
-                    UpdatePosition(spawnedTable, prevChunk);
-                }
+                var previousChunk = i > 0 ? _defaultSpawnedChunks[i - 1] : null;
+                UpdateSpawnedChunk(spawnedChunk, previousChunk);
+            }
+        }
+
+        private void UpdateSpawnedChunk(Chunk spawnedChunk,  [CanBeNull] Chunk previousChunk)
+        {
+            _spawnedChunks.Add(spawnedChunk);
+            spawnedChunk.ReplacePrefabInChunk();
+            spawnedChunk.SpawnProps(_propsElements);
+            spawnedChunk.RegisterEntryZones(_player);
+
+            if (previousChunk)
+            {
+                UpdatePosition(spawnedChunk, previousChunk);
             }
         }
     }

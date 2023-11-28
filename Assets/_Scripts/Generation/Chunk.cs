@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using BreadFlip.Movement;
 using UnityEngine;
@@ -13,6 +14,8 @@ namespace BreadFlip.Generation
 
         [SerializeField] private EntryZoneComponent[] _entryZoneComponents;
 
+        private List<PropsElement> _spawnedProps = new();
+        
         public GameObject StartSpawnPoint;
         public GameObject EndSpawnPoint;
 
@@ -48,6 +51,34 @@ namespace BreadFlip.Generation
         
             lastTableEndPosition = _tables[^1].EndSpawnPoint.transform.position;
             EndSpawnPoint.transform.position = lastTableEndPosition;
+        }
+
+        public void SpawnProps(IReadOnlyCollection<PropsElement> propsPrefabs)
+        {
+            if (_tables.Length == 0 || propsPrefabs.Count == 0) return;
+            
+            foreach (var table in _tables)
+            {
+                var suitableProps = propsPrefabs
+                    .Where(p => p.ChunkTypes.HasFlag((ChunkTypes)table.ChunkType))
+                    .ToList();
+
+                if (suitableProps.Count == 0) continue;
+                
+                var rndPropsIndex = Random.Range(0, suitableProps.Count);
+                var rndPropsPositionIndex = Random.Range(0, table.PropsPoints.Count);
+
+                var rndPropPoint = table.PropsPoints.ElementAt(rndPropsPositionIndex);
+
+                var propsPrefab = suitableProps.ElementAt(rndPropsIndex);
+                
+                var rotation = Quaternion.identity;
+                if (propsPrefab.CanRotate) rotation *= Quaternion.Euler(0, Random.Range(0, 360), 0);
+
+                var spawnedPropsElement = Instantiate(propsPrefab, rndPropPoint.position, rotation, rndPropPoint);
+                
+                _spawnedProps.Add(spawnedPropsElement);
+            }
         }
 
         public void RegisterEntryZones(ToastZoneController toastZoneController)
