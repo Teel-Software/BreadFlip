@@ -14,8 +14,8 @@ namespace BreadFlip.Entities
 
         private void OnValidate()
         {
-            ModelTransform ??= transform;
-            ModelCollider ??= GetComponentInChildren<BoxCollider>();
+            ModelTransform ??= transform.GetChild(0);
+            ModelCollider ??= GetComponent<BoxCollider>();
             if (ModelCollider) ModelCollider.enabled = true;
         }
     }
