@@ -187,7 +187,7 @@ namespace BreadFlip.Movement
 
         private IEnumerator PlayRotateAnimation(bool ignoreDelay = false)
         {
-            if (!ignoreDelay) yield return new WaitForSeconds(.75f);
+            if (!ignoreDelay) yield return new WaitForSeconds(.15f);
             while (true)
             {
                 Toast.ModelCollider.transform.Rotate(_rotateAxis, _rotationSpeed * _speedMultiplicator * Time.deltaTime);
