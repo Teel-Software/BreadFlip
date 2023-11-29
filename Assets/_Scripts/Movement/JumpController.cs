@@ -3,6 +3,7 @@ using System.Collections;
 using BreadFlip.Entities;
 using BreadFlip.Sound;
 using BreadFlip.UI;
+using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -19,6 +20,12 @@ namespace BreadFlip.Movement
 
         [Header("Audio")]
         [SerializeField] private SoundManager _soundManager;
+
+        [Header("Colors")]
+        [SerializeField] private Material lineRedererMaterial;
+        [SerializeField] private Color defaultColor;
+        [SerializeField] private Color redColor;
+        
 
         //private bool firstSoundPlayed;
         private bool secondSoundPlayed;
@@ -85,7 +92,19 @@ namespace BreadFlip.Movement
                 {
                     CurrentToaster.SetHandlePosition(GetForcePercent());
 
+                    lineRedererMaterial.color = Color.Lerp(defaultColor, redColor, .01f);
                     _trajectoryRenderer.ShowTrajectory(gameObject.transform.position, GetForceVector());
+
+                    var forceVector = GetForceVector();
+                    if (forceVector.magnitude > 6f)
+                    {
+                        lineRedererMaterial.color = Color.Lerp(defaultColor, redColor, .01f);
+                    }
+                    else
+                    {
+                        
+                        lineRedererMaterial.color = Color.Lerp(redColor, defaultColor, Time.deltaTime - _startTime);
+                    }
 
                     // звук старта при прыжке, играет один раз
                     //if (!firstSoundPlayed)
@@ -102,7 +121,7 @@ namespace BreadFlip.Movement
                     if (forceVector.magnitude > 6f)
                     {
                         StartCoroutine(Wait(.45f, () => _canDoubleJump = true));
-                        
+                     
                         CurrentToaster.JumpUp();
 
                         _rigidbody.AddForce(forceVector, ForceMode.Impulse);
@@ -135,6 +154,10 @@ namespace BreadFlip.Movement
             yield return new WaitForSeconds(time);
             action?.Invoke();
         }
+        
+        // private IEnumerator ChangeColor(Color from, Color to){
+                
+        // }
 
         private void TryDoubleJump()
         {
