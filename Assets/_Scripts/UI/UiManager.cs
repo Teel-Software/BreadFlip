@@ -68,7 +68,7 @@ namespace BreadFlip.UI
 
         public void OnFailed()
         {
-            if (!onFailedWasInvoked)
+            if (!onFailedWasInvoked && !Input.GetMouseButtonDown(0))
             {
                 _actionUI.SetActive(false);
                 StartCoroutine(Fail());

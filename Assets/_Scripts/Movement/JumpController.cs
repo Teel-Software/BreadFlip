@@ -102,7 +102,6 @@ namespace BreadFlip.Movement
                     }
                     else
                     {
-                        
                         lineRedererMaterial.color = Color.Lerp(redColor, defaultColor, Time.deltaTime - _startTime);
                     }
 

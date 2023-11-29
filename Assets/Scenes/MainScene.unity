@@ -1669,6 +1669,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2139659193}
     - target: {fileID: 5667851704598959125, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: _jumpController
+      value: 
+      objectReference: {fileID: 2139659199}
+    - target: {fileID: 5667851704598959125, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
       propertyPath: _toasterCollider
       value: 
       objectReference: {fileID: 0}
@@ -2061,3 +2065,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5558297991977380195, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
   m_PrefabInstance: {fileID: 2139659192}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2139659199 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4603831788449828374, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
+  m_PrefabInstance: {fileID: 2139659192}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b549f1cc8c34c128753d2cd3bf69715, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
