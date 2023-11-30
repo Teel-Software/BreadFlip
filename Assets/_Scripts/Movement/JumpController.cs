@@ -42,6 +42,7 @@ namespace BreadFlip.Movement
         private bool _canDoubleJump;
 
         private const float _MAX_TIME = 1.3f;
+        private const float _MAGNITUDE = 5f;
         public Toaster CurrentToaster { get; set; }
         public Toast Toast => _toast;
 
@@ -83,6 +84,8 @@ namespace BreadFlip.Movement
         {
             if (!mainMenu.activeSelf && _canStartJump)
             {
+                var forceVector = GetForceVector();
+
                 if (Input.GetMouseButtonDown(0))
                 {
                     _startTime = Time.time;
@@ -95,8 +98,8 @@ namespace BreadFlip.Movement
                     lineRedererMaterial.color = Color.Lerp(defaultColor, redColor, .01f);
                     _trajectoryRenderer.ShowTrajectory(gameObject.transform.position, GetForceVector());
 
-                    var forceVector = GetForceVector();
-                    if (forceVector.magnitude > 6f)
+                    
+                    if (forceVector.magnitude > _MAGNITUDE)
                     {
                         lineRedererMaterial.color = Color.Lerp(defaultColor, redColor, .01f);
                     }
@@ -115,9 +118,7 @@ namespace BreadFlip.Movement
 
                 if (Input.GetMouseButtonUp(0) && _startTime != 0)
                 {
-                    var forceVector = GetForceVector();
-
-                    if (forceVector.magnitude > 6f)
+                    if (forceVector.magnitude > _MAGNITUDE)
                     {
                         StartCoroutine(Wait(.45f, () => _canDoubleJump = true));
                      
@@ -154,8 +155,8 @@ namespace BreadFlip.Movement
             action?.Invoke();
         }
         
-        // private IEnumerator ChangeColor(Color from, Color to){
-                
+        // public bool Get_isDoubleJumpPressed(){
+        //     return _isDoubleJumpPressed;
         // }
 
         private void TryDoubleJump()
