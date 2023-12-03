@@ -20,6 +20,12 @@ namespace BreadFlip.Movement
         [Header("Audio")]
         [SerializeField] private SoundManager _soundManager;
 
+        [Header("Colors")]
+        [SerializeField] private Material lineRedererMaterial;
+        [SerializeField] private Color defaultColor;
+        [SerializeField] private Color redColor;
+        
+
         //private bool firstSoundPlayed;
         private bool secondSoundPlayed;
 
@@ -35,12 +41,19 @@ namespace BreadFlip.Movement
         private bool _canDoubleJump;
 
         private const float _MAX_TIME = 1.3f;
+        private const float _MAGNITUDE = 5f;
         public Toaster CurrentToaster { get; set; }
         public Toast Toast => _toast;
+
+        public Rigidbody Rigidbody => _rigidbody;
 
         private void Start()
         {
             Timer.TimeOvered += () => _canStartJump = false;
+            
+            // при вызове строки ниже - вылетает ошибка о destroy скрипта JumpController
+            // UiManager.SurvivedAfterFail += ContinueRotation;
+            
             //SwipeDetection.SwipeDownEvent += JumpDown;
             //SwipeDetection.SwipeUpEvent += TryDoubleJump;
         }
@@ -67,6 +80,7 @@ namespace BreadFlip.Movement
 
         private void Update()
         {
+            Debug.LogWarning(Rigidbody.velocity);
             if (!_inToaster)
                 TryDoubleJump();
             else PrepareToJump();
@@ -76,6 +90,8 @@ namespace BreadFlip.Movement
         {
             if (!mainMenu.activeSelf && _canStartJump)
             {
+                var forceVector = GetForceVector();
+
                 if (Input.GetMouseButtonDown(0))
                 {
                     _startTime = Time.time;
@@ -85,7 +101,18 @@ namespace BreadFlip.Movement
                 {
                     CurrentToaster.SetHandlePosition(GetForcePercent());
 
+                    lineRedererMaterial.color = Color.Lerp(defaultColor, redColor, .01f);
                     _trajectoryRenderer.ShowTrajectory(gameObject.transform.position, GetForceVector());
+
+                    
+                    if (forceVector.magnitude > _MAGNITUDE)
+                    {
+                        lineRedererMaterial.color = Color.Lerp(defaultColor, redColor, .01f);
+                    }
+                    else
+                    {
+                        lineRedererMaterial.color = Color.Lerp(redColor, defaultColor, Time.deltaTime - _startTime);
+                    }
 
                     // звук старта при прыжке, играет один раз
                     //if (!firstSoundPlayed)
@@ -97,12 +124,10 @@ namespace BreadFlip.Movement
 
                 if (Input.GetMouseButtonUp(0) && _startTime != 0)
                 {
-                    var forceVector = GetForceVector();
-
-                    if (forceVector.magnitude > 6f)
+                    if (forceVector.magnitude > _MAGNITUDE)
                     {
                         StartCoroutine(Wait(.45f, () => _canDoubleJump = true));
-                        
+                     
                         CurrentToaster.JumpUp();
 
                         _rigidbody.AddForce(forceVector, ForceMode.Impulse);
@@ -135,6 +160,10 @@ namespace BreadFlip.Movement
             yield return new WaitForSeconds(time);
             action?.Invoke();
         }
+        
+        // public bool Get_isDoubleJumpPressed(){
+        //     return _isDoubleJumpPressed;
+        // }
 
         private void TryDoubleJump()
         {
@@ -160,6 +189,7 @@ namespace BreadFlip.Movement
                 _rigidbody.velocity =
                     new Vector3(_rigidbody.velocity.x, _rigidbody.velocity.y / 2f, _rigidbody.velocity.z);
 
+            
                 // остановить double jump sound
                 _soundManager.StopDoubleJumpSound();
             }
@@ -232,6 +262,12 @@ namespace BreadFlip.Movement
         {
             if (_playRotateAnimation != null) StopCoroutine(_playRotateAnimation);
         }
+
+        // public void ContinueRotation()
+        // {
+        //     _playRotateAnimation = PlayRotateAnimation(true);
+        //     StartCoroutine(_playRotateAnimation);
+        // }
 
         //private void JumpDown()
         //{

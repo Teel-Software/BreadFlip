@@ -1,3 +1,4 @@
+using BreadFlip.Movement;
 using TMPro;
 using UnityEngine;
 
@@ -39,8 +40,7 @@ namespace BreadFlip.UI
             tmp.text = _score.ToString();
         }
 
-        private void PrintTextOnLoseScreen()
-        {
+        private void PrintTextOnLoseScreen(){
             DBInterface.UpdateRecord(_score);
             recordScore.text = PlayerPrefs.GetInt("PlayerRecord", 0).ToString();
 
@@ -64,6 +64,11 @@ namespace BreadFlip.UI
             //}
 
             loseScore.text = _score.ToString();
+        }
+
+        private void PrintTextOnLoseScreen(Vector3 _)
+        {
+            PrintTextOnLoseScreen();
         }
     }
 }

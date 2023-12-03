@@ -21,7 +21,7 @@ namespace BreadFlip.Movement
         public bool startedInToaster;
 
         public event Action OnCollidedToaster;
-        public event Action OnCollidedBadThing;
+        public event Action<Vector3> OnCollidedBadThing;
         public event Action OnColliderExit;
 
         private bool _collidedToaster;
@@ -84,8 +84,8 @@ namespace BreadFlip.Movement
                 _jumpController.UnlockPhysicsRotation();
                 _jumpController.StopRotation();
 
-                _jumpController.enabled = false;
-                OnCollidedBadThing?.Invoke();
+                // _jumpController.enabled = false;
+                OnCollidedBadThing?.Invoke(_jumpController.Rigidbody.velocity);
 
                 _soundManager.PlayFailedSound();
             }
