@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using System.Text;
 using System;
+using System.Threading.Tasks;
 
 namespace BreadFlip
 {
@@ -45,7 +46,7 @@ namespace BreadFlip
             return res;
         }
 
-        public static bool UpdateRecord(DBRegPlayer player)
+        public static async Task UpdateRecord(DBRegPlayer player)
         {
             initEndpoint();
             var str = JsonUtility.ToJson(player);
@@ -55,12 +56,14 @@ namespace BreadFlip
             byte[] bytes = Encoding.UTF8.GetBytes(str);
             request.SetRequestHeader("size", bytes.Length.ToString());
             request.SendWebRequest();
-            while (!request.isDone) { }
-            var res = true;
-            if (request.error != null) res = false;
+            while (!request.isDone) {
+                await Task.Yield();
+            }
+
+            if (request.error != null) PlayerPrefs.SetInt("RetryRecord", 1);
+            else PlayerPrefs.SetInt("RetryRecord", 0);
+
             request.Dispose();
-            Debug.Log(res);
-            return res;
         }
 
         private static void initEndpoint()

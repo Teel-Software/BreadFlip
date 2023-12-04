@@ -18,7 +18,6 @@ namespace BreadFlip
         public void RegPlayer()
         {
             var text = player.text;
-            //PlayerPrefs.Se
             Debug.Log(text);
             Debug.Log(DBInterface.RegisterPlayer(text));
         }
@@ -28,6 +27,8 @@ namespace BreadFlip
             var rec = int.Parse(record.text);
             Debug.Log("new record " + record.text);
             DBInterface.UpdateRecord(rec);
+            Debug.Log("ended changing");
+            UpdateList();
         }
 
         public void UpdateList()
