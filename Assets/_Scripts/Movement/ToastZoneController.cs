@@ -40,6 +40,13 @@ namespace BreadFlip.Movement
             Timer.TimeOvered -= PlayDeadSmoke;
         }
 
+        public void OnCollideCoin(GameObject coinObj)
+        {
+            Debug.Log("**COIN** collided");
+
+            
+        }
+
         public void OnCollideToaster(GameObject toasterObj)
         {
             if (!_collidedBadThing)
