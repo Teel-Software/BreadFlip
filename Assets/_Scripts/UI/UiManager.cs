@@ -78,7 +78,7 @@ namespace BreadFlip.UI
             onFailedWasInvoked = true;
             yield return new WaitForSeconds(_failUIDelay);
             
-            if (/* Vector3.Dot(Vector3.up, vel) < 0 && */ vel.y > -0.1f)
+            if (Vector3.Dot(Vector3.up, vel) < 0 && vel.y > -0.1f)
             {
                 onFailedWasInvoked = false;
                 SurvivedAfterFail?.Invoke();
