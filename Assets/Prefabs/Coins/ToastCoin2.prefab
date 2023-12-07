@@ -9,9 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1579183691873128198}
+  - component: {fileID: 6114660784175042937}
+  - component: {fileID: 199850698417803282}
   m_Layer: 0
   m_Name: ToastCoin2
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,6 +34,41 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6114660784175042937
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8384041005287701595}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9814122, y: 0.96962214, z: 0.23500167}
+  m_Center: {x: 0.020358503, y: -0.0029224157, z: 0.0003907457}
+--- !u!114 &199850698417803282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8384041005287701595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49a8255bb61893f489b5f470533c8188, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _triggerZone: {fileID: 6114660784175042937}
+  _onEnteredZone:
+    m_PersistentCalls:
+      m_Calls: []
+  _onExitZone:
+    m_PersistentCalls:
+      m_Calls: []
+  _activeHighlight: 1
+  _isToaster: 0
+  _color: {r: 0, g: 0.5, b: 0, a: 0.2509804}
 --- !u!1001 &7684724919756317
 PrefabInstance:
   m_ObjectHideFlags: 0
