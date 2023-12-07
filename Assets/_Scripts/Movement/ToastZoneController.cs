@@ -20,6 +20,7 @@ namespace BreadFlip.Movement
         
         public bool startedInToaster;
 
+        public event Action OnCollidedCoinAction;
         public event Action OnCollidedToaster;
         public event Action<Vector3> OnCollidedBadThing;
         public event Action OnColliderExit;
@@ -42,9 +43,10 @@ namespace BreadFlip.Movement
 
         public void OnCollideCoin(GameObject coinObj)
         {
-            Debug.Log("**COIN** collided");
+            // Debug.Log("**COIN** collided");
+            coinObj.SetActive(false);
 
-            
+            OnCollidedCoinAction?.Invoke();
         }
 
         public void OnCollideToaster(GameObject toasterObj)
