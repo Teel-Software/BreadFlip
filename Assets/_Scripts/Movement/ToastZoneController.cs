@@ -47,6 +47,7 @@ namespace BreadFlip.Movement
             coinObj.SetActive(false);
 
             OnCollidedCoinAction?.Invoke();
+            _soundManager.PlayRewardSound();
         }
 
         public void OnCollideToaster(GameObject toasterObj)
