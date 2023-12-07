@@ -47,6 +47,12 @@ namespace BreadFlip.Movement
 
         public Rigidbody Rigidbody => _rigidbody;
 
+        public bool CanDoubleJump 
+        {
+            get {return _canDoubleJump; }
+            set {_canDoubleJump = value;}
+        }
+
         private void Start()
         {
             Timer.TimeOvered += () => _canStartJump = false;
@@ -80,7 +86,9 @@ namespace BreadFlip.Movement
 
         private void Update()
         {
-            Debug.LogWarning(Rigidbody.velocity);
+            /* var temp = Rigidbody.velocity;
+            if (temp.y > 0.1f) */
+                // Debug.LogWarning($"Update: {Rigidbody.velocity.y}");
             if (!_inToaster)
                 TryDoubleJump();
             else PrepareToJump();
@@ -101,17 +109,17 @@ namespace BreadFlip.Movement
                 {
                     CurrentToaster.SetHandlePosition(GetForcePercent());
 
-                    lineRedererMaterial.color = Color.Lerp(defaultColor, redColor, .01f);
+                    lineRedererMaterial.color = Color.Lerp(defaultColor, redColor, .1f);
                     _trajectoryRenderer.ShowTrajectory(gameObject.transform.position, GetForceVector());
 
                     
                     if (forceVector.magnitude > _MAGNITUDE)
                     {
-                        lineRedererMaterial.color = Color.Lerp(defaultColor, redColor, .01f);
+                        lineRedererMaterial.color = Color.Lerp(defaultColor, redColor, .1f);
                     }
                     else
                     {
-                        lineRedererMaterial.color = Color.Lerp(redColor, defaultColor, Time.deltaTime - _startTime);
+                        lineRedererMaterial.color = Color.Lerp(redColor, defaultColor, .1f/* Time.deltaTime - _startTime */);
                     }
 
                     // звук старта при прыжке, играет один раз

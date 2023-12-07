@@ -1969,15 +1969,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4603831788449828374, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
       propertyPath: defaultColor.b
-      value: 0.2509804
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4603831788449828374, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
       propertyPath: defaultColor.g
-      value: 0.45490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4603831788449828374, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
       propertyPath: defaultColor.r
-      value: 0.65882355
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4603831788449828374, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
       propertyPath: lineRedererMaterial

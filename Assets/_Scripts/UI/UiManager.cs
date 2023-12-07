@@ -74,6 +74,7 @@ namespace BreadFlip.UI
 
         public IEnumerator Fail(Vector3 vel)
         {
+            _jumpController.CanDoubleJump = false;
             if (onFailedWasInvoked) yield break;
             onFailedWasInvoked = true;
             yield return new WaitForSeconds(_failUIDelay);
