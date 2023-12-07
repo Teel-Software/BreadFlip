@@ -248,6 +248,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coins_0
       objectReference: {fileID: 0}
+    - target: {fileID: 1841354762659286264, guid: 235fcbad89ce8304cb48a5c1d2600ad9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7800732280269731071, guid: 235fcbad89ce8304cb48a5c1d2600ad9, type: 3}
       propertyPath: m_RootOrder
       value: 5

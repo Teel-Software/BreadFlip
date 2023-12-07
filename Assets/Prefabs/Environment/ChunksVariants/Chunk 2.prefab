@@ -191,6 +191,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coins_2
       objectReference: {fileID: 0}
+    - target: {fileID: 5565698720934864806, guid: a69960d2d3f6a7249a381c6d9828bcfd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a69960d2d3f6a7249a381c6d9828bcfd, type: 3}
 --- !u!114 &517756577722570662 stripped
