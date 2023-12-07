@@ -2,7 +2,6 @@
 using BreadFlip.Movement;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace BreadFlip.UI
 {
@@ -63,7 +62,7 @@ namespace BreadFlip.UI
             if (currentTime >= 6)
             {
                 // перенести подписку на событие в менеджер
-                StartCoroutine(uiManager.Fail());
+                StartCoroutine(uiManager.Fail(Vector3.zero));
                 TimeOvered?.Invoke();
             }
         }

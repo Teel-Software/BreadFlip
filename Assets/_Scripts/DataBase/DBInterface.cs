@@ -26,15 +26,11 @@ namespace BreadFlip
             Debug.Log("current record" + prevRecord.ToString());
             if (prevRecord > record) return false;
             Debug.Log("continue changing");
-            var a = new DBRegPlayer();
+            var playerReq = new DBRegPlayer();
             PlayerPrefs.SetInt("PlayerRecord", record);
-            a.player = PlayerPrefs.GetInt("PlayerId", 404);
-            a.record = record;
-            var ok = DBWorker.UpdateRecord(a);
-            if (!ok)
-                PlayerPrefs.SetInt("RetryRecord", 1);
-            else
-                PlayerPrefs.SetInt("RetryRecord", 0);
+            playerReq.player = PlayerPrefs.GetInt("PlayerId", 404);
+            playerReq.record = record;
+            DBWorker.UpdateRecord(playerReq);
             return true;
         }
 

@@ -100,14 +100,26 @@ namespace BreadFlip.Generation
         private static void RegisterEntryZone(ToastZoneController toastZoneController, EntryZoneComponent entryZoneComponent)
         {
             var zoneCallback = new UnityGameObjectEvent();
-            zoneCallback.AddListener(entryZoneComponent.IsToaster
-                ? toastZoneController.OnCollideToaster
-                : toastZoneController.OnCollideBadThing);
+            if (entryZoneComponent.IsToaster)
+            {
+                zoneCallback.AddListener(toastZoneController.OnCollideToaster);
+            }
+            else
+            {
+                if (entryZoneComponent.gameObject.tag == "Coin") zoneCallback.AddListener(toastZoneController.OnCollideCoin);
+                else zoneCallback.AddListener(toastZoneController.OnCollideBadThing);
+            }
+            // zoneCallback.AddListener(entryZoneComponent.IsToaster
+            //     ? toastZoneController.OnCollideToaster
+            //     : toastZoneController.OnCollideBadThing);
             entryZoneComponent.SetZoneEnteredEvent(zoneCallback);
 
             var zoneExitCallback = new UnityGameObjectEvent();
             if (entryZoneComponent.IsToaster) zoneExitCallback.AddListener(toastZoneController.OnExitFromCollider);
             entryZoneComponent.SetZoneExitEvent(zoneExitCallback);
+
+            // var coinZoneEneteredCallback = new UnityGameObjectEvent();
+            // if (entryZoneComponent.gameObject.tag == "Coin") coinZoneEneteredCallback.AddListener(toastZoneController.OnCollideCoin);
         }
     }
 }

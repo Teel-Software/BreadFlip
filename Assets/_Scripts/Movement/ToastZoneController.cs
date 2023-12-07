@@ -20,8 +20,9 @@ namespace BreadFlip.Movement
         
         public bool startedInToaster;
 
+        public event Action OnCollidedCoinAction;
         public event Action OnCollidedToaster;
-        public event Action OnCollidedBadThing;
+        public event Action<Vector3> OnCollidedBadThing;
         public event Action OnColliderExit;
 
         private bool _collidedToaster;
@@ -38,6 +39,15 @@ namespace BreadFlip.Movement
         private void OnDestroy()
         {
             Timer.TimeOvered -= PlayDeadSmoke;
+        }
+
+        public void OnCollideCoin(GameObject coinObj)
+        {
+            // Debug.Log("**COIN** collided");
+            coinObj.SetActive(false);
+
+            OnCollidedCoinAction?.Invoke();
+            _soundManager.PlayRewardSound();
         }
 
         public void OnCollideToaster(GameObject toasterObj)
@@ -84,8 +94,8 @@ namespace BreadFlip.Movement
                 _jumpController.UnlockPhysicsRotation();
                 _jumpController.StopRotation();
 
-                _jumpController.enabled = false;
-                OnCollidedBadThing?.Invoke();
+                // _jumpController.enabled = false;
+                OnCollidedBadThing?.Invoke(_jumpController.Rigidbody.velocity);
 
                 _soundManager.PlayFailedSound();
             }
