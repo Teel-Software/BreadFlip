@@ -1462,6 +1462,10 @@ PrefabInstance:
       propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3844732170423778369, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3844732170423778370, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
       propertyPath: m_SizeDelta.x
       value: 220
@@ -1479,9 +1483,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 327676539}
     - target: {fileID: 3844732170423778428, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3844732170423778428, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4614380712577566193, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 327676536}
+    - target: {fileID: 4614380712577566193, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 327676539}
     - target: {fileID: 4855778870755685955, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
       propertyPath: m_Name
       value: UICanvas
@@ -1592,6 +1608,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6278465049517144425, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
       propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6545924444384041273, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7862851211859672503, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}

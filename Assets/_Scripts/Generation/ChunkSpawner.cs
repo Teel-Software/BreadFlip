@@ -23,7 +23,7 @@ namespace BreadFlip.Generation
         [SerializeField] private int _maxSpawnedChunks = 10;
 
         [Space, SerializeField] private Chunk _emptySpaceVariant;
-        [SerializeField] private float _emptySpaceValue = 3f;
+        [SerializeField] private float _emptySpaceValue = 2f;
 
         private ToastZoneController _player;
         private readonly List<Chunk> _spawnedChunks = new();

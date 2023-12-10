@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace BreadFlip.Generation
@@ -15,6 +16,34 @@ namespace BreadFlip.Generation
         /// </summary>
         [SerializeField] private Vector3 _finalPos;
 
+        // public void SpawnCoins(int coinsAmount)
+        // {
+            
+        //     int coinsDistance = points.Length / coinsAmount;
+
+        //     for(var i = 10; i < points.Length; i += coinsDistance)
+        //     {
+                
+        //     }
+        // }
+
+        // private Vector3[] GetCoinPoints(Vector3 origin, float minY)
+        // {
+        //     var points = new Vector3[100];
+
+        //     for (var i = 0; i < points.Length; i++)
+        //     {
+        //         var time = i * 0.1f;
+
+        //         points[i] = origin + speed * time + Physics.gravity * time * time / 2f;
+
+        //         if (points[i].y < minY)
+        //         {
+        //             break;
+        //         }
+        //     }
+        //     return points;
+        // }
         
 #region Unnecessary
         // [SerializeField] private Vector3 _rangeBetweenCoins = new Vector3 (0, 2, 3);
