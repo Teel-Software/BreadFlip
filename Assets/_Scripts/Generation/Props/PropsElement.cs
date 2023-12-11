@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace BreadFlip.Generation
+namespace BreadFlip.Generation.Props
 {
     public class PropsElement : MonoBehaviour
     {

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17338738, g: 0.21673954, b: 0.29880902, a: 1}
+  m_IndirectSpecularColor: {r: 0.1733872, g: 0.21673915, b: 0.29880828, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1455,6 +1455,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1979663221}
     m_Modifications:
+    - target: {fileID: 1943253348, guid: c17ec8282440f004b99930206e28f4d2, type: 3}
+      propertyPath: _propsElements.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4467943634110867954, guid: c17ec8282440f004b99930206e28f4d2, type: 3}
       propertyPath: m_Name
       value: Walls (2Floor)
