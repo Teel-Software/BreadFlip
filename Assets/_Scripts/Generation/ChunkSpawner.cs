@@ -23,8 +23,12 @@ namespace BreadFlip.Generation
         [SerializeField] private int _maxSpawnedChunks = 10;
 
         [Space, SerializeField] private Chunk _emptySpaceVariant;
-        [SerializeField] private float _emptySpaceValue = 3f;
+        [SerializeField] private float _emptySpaceValue = 2f;
 
+        // [SerializeField] private GameObject coinPrefab;
+
+        // private readonly List<GameObject> _spawnedCoins = new();
+        
         private ToastZoneController _player;
         private readonly List<Chunk> _spawnedChunks = new();
 
@@ -95,6 +99,9 @@ namespace BreadFlip.Generation
         {
             Destroy(_spawnedChunks[0].gameObject);
             _spawnedChunks.RemoveAt(0);
+
+            // Destroy(_spawnedCoins[0].gameObject);
+            // _spawnedCoins.RemoveAt(0);
         }
 
         private void Spawn()
@@ -104,6 +111,49 @@ namespace BreadFlip.Generation
 
             UpdateSpawnedChunk(newChunk, _spawnedChunks[^1]);
         }
+
+        // public void SpawnCoins(int coinsAmount, Vector3[] points)
+        // {
+        //     // for (var i = 1; i < _spawnedChunks.Count(); i++)
+        //     // {
+        //     //     int coinsDistance = _spawnedChunks[i];
+
+        //     //     for(var y = 10; y < points.Length; y += coinsDistance)
+        //     //     {
+                
+        //     //     }
+        //     // }
+        //     int pointInPoints;
+
+        //     for (var i = 1; i <= coinsAmount; i++)
+        //     {
+        //         pointInPoints =  (points.Length / coinsAmount) * i;
+
+        //         var newCoin = Instantiate(coinPrefab, points[pointInPoints], Quaternion.identity);
+        //         _spawnedCoins.Add(newCoin);
+        //     }
+        // }
+
+        // private Vector3[] GetCoinPoints(Vector3 origin, float minY/* , Vector3 end */)
+        // {
+        //     var direction = -transform.forward;
+        //     Vector3 speed = new Vector3 (direction.x * 0.5f, 0.5f, direction.z * 0.5f);
+
+        //     var points = new Vector3[100];
+
+        //     for (var i = 0; i < points.Length; i++)
+        //     {
+        //         var time = i * 0.1f;
+
+        //         points[i] = origin + speed * time + Physics.gravity * time * time / 2f;
+
+        //         if (points[i].y < minY)
+        //         {
+        //             break;
+        //         }
+        //     }
+        //     return points;
+        // }
 
         private void UpdatePosition(Chunk newChunk, Chunk lastChunk)
         {
