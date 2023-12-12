@@ -34,7 +34,7 @@ namespace BreadFlip
         public void UpdateList()
         {
 
-            var a = DBInterface.GetRecords();
+            var a = DBInterface.GetRecords(0, 5);
             if(a.record_list == null)
             {
                 output.text = "no connection";

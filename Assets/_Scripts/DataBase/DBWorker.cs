@@ -11,10 +11,12 @@ namespace BreadFlip
     public static class DBWorker
     {
         private static string endpoint = "";//http://localhost:8080
-        public static DBTopRecords GetRecords()
+        public static DBTopRecords GetRecords(int offset, int count)
         {
             initEndpoint();
-            var request = UnityWebRequest.Get(endpoint + "/db");
+            var request = UnityWebRequest.Get(endpoint + "/getrecords");
+            request.SetRequestHeader("offset", offset.ToString());
+            request.SetRequestHeader("count", count.ToString());
             request.SendWebRequest();
             while (!request.isDone) { }
             var a = new DBTopRecords();
