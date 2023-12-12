@@ -5,63 +5,81 @@ namespace BreadFlip.Movement
 {
     public class SwipeDetection : MonoBehaviour
     {
+        private Vector2 _startTouchPosition;
+        private Vector2 _movedTouchPosition;
+
+        private static bool _touchMoved;
+
+        public static bool TouchMoved
+        {
+            get {return _touchMoved;}
+        }
+
         public static event Action SwipeDownEvent;
-        public static event Action SwipeUpEvent;
 
-        private Vector2 _firstPos;
-        private Vector2 _swipeDelta;
+        // private JumpController _jumpController;
 
-        private float _deadzone = 80f;
+        // private void Start() {
+        //     _jumpController = GetComponent<JumpController>();
+        // }
 
-        private bool _isSwiping;
+        private void Update() {
 
-        private void Update()
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                _isSwiping = true;
-                _firstPos = Input.mousePosition;
-            }
-
-            CheckSwipe();
-        }
-
-        private void CheckSwipe()
-        {
-            _swipeDelta = Vector2.zero;
-
-            if (_isSwiping)
-            {
-                _swipeDelta = (Vector2)Input.mousePosition - _firstPos;
-            }
-
-            if (_swipeDelta.magnitude > _deadzone)
-            {
-                // ����� ����
-                if (MathF.Abs(_swipeDelta.y) > Mathf.Abs(_swipeDelta.x) &&
-                    _swipeDelta.y < 0)
+              if (Input.GetMouseButtonDown(0))
                 {
-                    SwipeDownEvent?.Invoke();
-                    ResetSwipe();
-                }
-                
-                // ����� �����
-                else if (MathF.Abs(_swipeDelta.y) > Mathf.Abs(_swipeDelta.x) &&
-                    _swipeDelta.y > 0)
-                {
-                    SwipeUpEvent?.Invoke();
-                    ResetSwipe();
+                    _startTouchPosition = Input.mousePosition;
                 }
 
-            }
-        }
+                if (Input.GetMouseButton(0))
+                {
+                    _movedTouchPosition = Input.mousePosition;
+                    if (Math.Abs(_movedTouchPosition.y - _startTouchPosition.y) > 0.01f && _movedTouchPosition.y < _startTouchPosition.y)
+                    {
+                        _touchMoved = true;
+                        SwipeDownEvent?.Invoke();
+                    }
+                    else
+                    {
+                        _touchMoved = false;
+                    }
+                }
 
-        private void ResetSwipe()
-        {
-            _isSwiping = false;
+#region Touch
+//             if (Input.touchCount > 0)
+//             {
+//                 if (Input.GetTouch(0).phase == TouchPhase.Began)
+//                 {
+//                     _startTouchPosition = Input.GetTouch(0).position;
+//                 }
 
-            _firstPos = Vector2.zero;
-            _swipeDelta = Vector2.zero;
+//                 if (Input.GetTouch(0).phase == TouchPhase.Moved)
+//                 {
+//                     _movedTouchPosition = Input.GetTouch(0).position;
+//                     if (Math.Abs(_movedTouchPosition.y - _startTouchPosition.y) > 0.05f)
+//                     {
+//                         _touchMoved = true;
+//                         SwipeDownEvent?.Invoke();
+//                     }
+//                     else
+//                     {
+//                         _touchMoved = false;
+//                     }
+//                 }
+
+//                 // if (Input.GetTouch(0).phase == TouchPhase.Ended)
+//                 // {
+//                 //     _endTouchPosition = Input.GetTouch(0).position;
+
+//                 //     if (_endTouchPosition.y < _startTouchPosition.y && (_startTouchPosition.y - _endTouchPosition.y > 2f))
+//                 //     {
+//                 //         // var currentSwipe = (Vector2)Input.mousePosition - _startTouchPosition;
+// 			    //         // Debug.Log(currentSwipe+", "+currentSwipe.normalized);
+//                 //         // _jumpController.JumpDown();
+//                 //         SwipeDownEvent?.Invoke();
+//                 //     }
+//                 // }
+//             }
+#endregion
         }
     }
 }

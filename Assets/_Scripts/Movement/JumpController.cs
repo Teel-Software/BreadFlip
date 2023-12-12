@@ -39,6 +39,7 @@ namespace BreadFlip.Movement
         private Vector3 _rotateAxis;
         private int _speedMultiplicator = 1;
         private bool _canDoubleJump;
+        private bool _jumpDownSoundPlayed;
 
         private const float _MAX_TIME = 1.3f;
         private const float _MAGNITUDE = 5f;
@@ -56,6 +57,8 @@ namespace BreadFlip.Movement
         private void Start()
         {
             Timer.TimeOvered += () => _canStartJump = false;
+
+            SwipeDetection.SwipeDownEvent += JumpDown;
             
             // при вызове строки ниже - вылетает ошибка о destroy скрипта JumpController
             // UiManager.SurvivedAfterFail += ContinueRotation;
@@ -110,7 +113,7 @@ namespace BreadFlip.Movement
                     CurrentToaster.SetHandlePosition(GetForcePercent());
 
                     lineRedererMaterial.color = Color.Lerp(defaultColor, redColor, .1f);
-                    _trajectoryRenderer.ShowTrajectory(gameObject.transform.position, GetForceVector());
+                    _trajectoryRenderer.ShowTrajectory(gameObject.transform.position, forceVector/* GetForceVector() */);
 
                     
                     if (forceVector.magnitude > _MAGNITUDE)
@@ -177,19 +180,24 @@ namespace BreadFlip.Movement
         {
             if (!_canDoubleJump) return;
             
-            if (Input.GetMouseButtonDown(0) && !_isDoubleJumpPressed && !UiManager.pauseButtonPressed)
+            if (Input.GetMouseButtonDown(0) && !_isDoubleJumpPressed && !UiManager.pauseButtonPressed && !SwipeDetection.TouchMoved)
             {
-                if (_rigidbody.velocity.y < 0)
-                    _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0f, _rigidbody.velocity.z);
+                    if (_rigidbody.velocity.y < 0)
+                        _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0f, _rigidbody.velocity.z);
 
-                _rigidbody.AddForce(new Vector3(0, 10f, 0f), ForceMode.Impulse);
+                    _rigidbody.AddForce(new Vector3(0, 10f, 0f), ForceMode.Impulse);
 
-                InverseRotation();
+                    InverseRotation();
 
-                _isDoubleJumpPressed = true;
+                    _isDoubleJumpPressed = true;
 
-                // начать double jump sound
-                _soundManager.PlayDoubleJump();
+                    // начать double jump sound
+                    _soundManager.PlayDoubleJump();
+            }
+
+            else if (SwipeDetection.TouchMoved)
+            {
+              _soundManager.StopJumpSound();
             }
 
             if (Input.GetMouseButtonUp(0) && _isDoubleJumpPressed && _rigidbody.velocity.y > 0)
@@ -199,8 +207,13 @@ namespace BreadFlip.Movement
 
             
                 // остановить double jump sound
-                _soundManager.StopDoubleJumpSound();
+                _soundManager.StopJumpSound();
             }
+        }
+
+        private IEnumerator WaitForSwipe()
+        {
+            yield return new WaitForSeconds(0.4f);
         }
 
         private void ResetRotation()
@@ -277,9 +290,21 @@ namespace BreadFlip.Movement
         //     StartCoroutine(_playRotateAnimation);
         // }
 
-        //private void JumpDown()
-        //{
-        //    _rigidbody.AddForce(GetForceVector());
-        //}
+        public void JumpDown()
+        {
+            if (_rigidbody != null && !_inToaster){
+                // _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0f, _rigidbody.velocity.z);
+            
+                _rigidbody.AddForce(new Vector3(0f, -5f/* (7f + Math.Abs(0 - _rigidbody.velocity.y)) * -1 */, 0), ForceMode.Impulse);
+            
+                // InverseRotation();   
+            }
+            // _soundManager.StopAnySound();
+            // if (!_jumpDownSoundPlayed)
+            // {
+            //     _soundManager.PlayJumpDown();
+            //     _jumpDownSoundPlayed = true;
+            // }
+        }
     }
 }
