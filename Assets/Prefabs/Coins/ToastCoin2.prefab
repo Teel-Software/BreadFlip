@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1579183691873128198}
   - component: {fileID: 6114660784175042937}
   - component: {fileID: 199850698417803282}
+  - component: {fileID: 6854728642761716260}
   m_Layer: 0
   m_Name: ToastCoin2
   m_TagString: Coin
@@ -69,6 +70,26 @@ MonoBehaviour:
   _activeHighlight: 1
   _isToaster: 0
   _color: {r: 0, g: 0.5, b: 0, a: 0.2509804}
+--- !u!95 &6854728642761716260
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8384041005287701595}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9d34a31ffc6b26c43a25f6fdb3e96a97, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1001 &7684724919756317
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -123,6 +144,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a7e1b387b7facf346b158d1e126660be, type: 3}
       propertyPath: m_Name
       value: toastcoin
+      objectReference: {fileID: 0}
+    - target: {fileID: 5050422055867433376, guid: a7e1b387b7facf346b158d1e126660be, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7e1b387b7facf346b158d1e126660be, type: 3}

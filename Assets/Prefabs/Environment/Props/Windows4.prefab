@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 629006002731354677}
   - component: {fileID: 5752934913108631077}
   m_Layer: 0
-  m_Name: Window
+  m_Name: Windows4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,13 +98,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2855972732021514305, guid: 8e5be9f6879d3ea4ba0c63cf1fd640a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -721042955910235497, guid: 8e5be9f6879d3ea4ba0c63cf1fd640a4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -55869706896985094, guid: 8e5be9f6879d3ea4ba0c63cf1fd640a4, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8e5be9f6879d3ea4ba0c63cf1fd640a4, type: 3}
       propertyPath: m_Name
-      value: window_2
+      value: windows
+      objectReference: {fileID: 0}
+    - target: {fileID: 6876881759261058730, guid: 8e5be9f6879d3ea4ba0c63cf1fd640a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648422208372322809, guid: 8e5be9f6879d3ea4ba0c63cf1fd640a4, type: 3}
       propertyPath: m_IsActive
