@@ -12,6 +12,10 @@ namespace BreadFlip.Sound
         [SerializeField] private AudioClip doubleJump;
         [SerializeField] private AudioClip landedInToaster;
         [SerializeField] private AudioClip rewardSound;
+        [SerializeField] private AudioClip jumpDown;
+
+        [Header("Jump Source")]
+        [SerializeField] private AudioSource jumpSource;
 
         private AudioSource source;
 
@@ -20,11 +24,15 @@ namespace BreadFlip.Sound
             source = GetComponent<AudioSource>();
         }
 
-        public void PlayJumpSecond() => source.PlayOneShot(jumpSecond);
-        public void PlayFailedSound() => source.PlayOneShot(failed);
-        public void PlayDoubleJump () => source.PlayOneShot(doubleJump); 
-        public void StopDoubleJumpSound() => source.Stop();
-        public void PlayLandedInToasterSound() => source.PlayOneShot(landedInToaster);
-        public void PlayRewardSound() => source.PlayOneShot(rewardSound);
+        public void PlayJumpSecond() => source?.PlayOneShot(jumpSecond);
+        public void PlayFailedSound() => source?.PlayOneShot(failed);
+        public void PlayDoubleJump () => jumpSource?.PlayOneShot(doubleJump); 
+        public void StopJumpSound() {
+            jumpSource?.Stop();
+        }
+        public void PlayLandedInToasterSound() => source?.PlayOneShot(landedInToaster);
+        public void PlayRewardSound() => source?.PlayOneShot(rewardSound);
+
+        public void PlayJumpDown() => jumpSource?.PlayOneShot(jumpDown);
     }
 }
