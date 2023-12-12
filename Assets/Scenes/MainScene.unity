@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17338738, g: 0.21673954, b: 0.29880902, a: 1}
+  m_IndirectSpecularColor: {r: 0.1733872, g: 0.21673915, b: 0.29880828, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1578,6 +1578,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1979663221}
     m_Modifications:
+    - target: {fileID: 1943253348, guid: c17ec8282440f004b99930206e28f4d2, type: 3}
+      propertyPath: _propsElements.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4467943634110867954, guid: c17ec8282440f004b99930206e28f4d2, type: 3}
       propertyPath: m_Name
       value: Walls (2Floor)
@@ -1740,70 +1744,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 963194227}
-    - target: {fileID: 305120401438410742, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2804874352396634752, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4603831788449828374, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
       propertyPath: mainMenu
       value: 
       objectReference: {fileID: 190059056}
     - target: {fileID: 4603831788449828374, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
-      propertyPath: redColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4603831788449828374, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
-      propertyPath: redColor.b
-      value: 0.16522783
-      objectReference: {fileID: 0}
-    - target: {fileID: 4603831788449828374, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
-      propertyPath: redColor.g
-      value: 0.23830582
-      objectReference: {fileID: 0}
-    - target: {fileID: 4603831788449828374, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
-      propertyPath: redColor.r
-      value: 0.745283
-      objectReference: {fileID: 0}
-    - target: {fileID: 4603831788449828374, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
       propertyPath: _soundManager
       value: 
       objectReference: {fileID: 1493755432}
-    - target: {fileID: 4603831788449828374, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
-      propertyPath: defaultColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4603831788449828374, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
-      propertyPath: defaultColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4603831788449828374, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
-      propertyPath: defaultColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4603831788449828374, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
-      propertyPath: defaultColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4603831788449828374, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
-      propertyPath: lineRedererMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: 08d588173a91ba342bcae5661179a18d, type: 2}
-    - target: {fileID: 4655393827151577851, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
-      propertyPath: m_Parameters.colorGradient.key0.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4655393827151577851, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
-      propertyPath: m_Parameters.colorGradient.key0.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4655393827151577851, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
-      propertyPath: m_Parameters.colorGradient.key0.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5073544946718634969, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
       propertyPath: m_Name
       value: PlayerToast
