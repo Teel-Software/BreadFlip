@@ -293,7 +293,7 @@ namespace BreadFlip.Movement
         public void JumpDown()
         {
             if (_rigidbody != null && !_inToaster){
-                // _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0f, _rigidbody.velocity.z);
+                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0f, _rigidbody.velocity.z);
             
                 _rigidbody.AddForce(new Vector3(0f, -5f/* (7f + Math.Abs(0 - _rigidbody.velocity.y)) * -1 */, 0), ForceMode.Impulse);
             
