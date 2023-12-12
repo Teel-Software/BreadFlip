@@ -833,6 +833,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1493755432 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2312743658425994644, guid: 3c07d6c53e161054e967aa53a0bdc9a2, type: 3}
+  m_PrefabInstance: {fileID: 1332389459}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b616a6b022b2ca64886ad6dd41be1463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1617710718 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1924893622841926920, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
@@ -985,6 +996,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6912410602040569719, guid: be17455fd5b165347a9ed91481dd00e7, type: 3}
+      propertyPath: manager
+      value: 
+      objectReference: {fileID: 1493755432}
     - target: {fileID: 6912410602040569722, guid: be17455fd5b165347a9ed91481dd00e7, type: 3}
       propertyPath: m_Name
       value: BackgroundMusic
@@ -1725,6 +1740,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 963194227}
+    - target: {fileID: 305120401438410742, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804874352396634752, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4603831788449828374, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
       propertyPath: mainMenu
       value: 
@@ -1748,7 +1771,7 @@ PrefabInstance:
     - target: {fileID: 4603831788449828374, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
       propertyPath: _soundManager
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1493755432}
     - target: {fileID: 4603831788449828374, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
       propertyPath: defaultColor.a
       value: 1
@@ -1832,7 +1855,7 @@ PrefabInstance:
     - target: {fileID: 6556600626714998364, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
       propertyPath: _soundManager
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1493755432}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
 --- !u!114 &2139659193 stripped

@@ -863,6 +863,7 @@ GameObject:
   - component: {fileID: 6556600626714998364}
   - component: {fileID: 4603831788449828374}
   - component: {fileID: 2139659203}
+  - component: {fileID: 6581707821822194863}
   m_Layer: 0
   m_Name: PlayerToast
   m_TagString: Player
@@ -942,6 +943,9 @@ MonoBehaviour:
   _trajectoryRenderer: {fileID: 4655393827151577850}
   mainMenu: {fileID: 0}
   _soundManager: {fileID: 0}
+  lineRedererMaterial: {fileID: 0}
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  redColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &2139659203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -961,6 +965,18 @@ MonoBehaviour:
   endPulpColor: {r: 0.4, g: 0.3379592, b: 0.23183675, a: 1}
   _zoneController: {fileID: 6556600626714998364}
   resetDuration: 1.5
+--- !u!114 &6581707821822194863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5073544946718634969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85e323b404cb5b84886bfaf2f6e404d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6113963116517659634
 GameObject:
   m_ObjectHideFlags: 0
