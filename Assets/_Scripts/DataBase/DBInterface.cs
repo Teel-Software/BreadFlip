@@ -34,9 +34,9 @@ namespace BreadFlip
             return true;
         }
 
-        public static DBTopRecords GetRecords()
+        public static DBTopRecords GetRecords(int offset, int count)
         {
-            return DBWorker.GetRecords();
+            return DBWorker.GetRecords(offset, count);
         }
     }
 }
