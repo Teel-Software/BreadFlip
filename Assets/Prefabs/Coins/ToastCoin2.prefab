@@ -145,6 +145,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: toastcoin
       objectReference: {fileID: 0}
+    - target: {fileID: 5050422055867433376, guid: a7e1b387b7facf346b158d1e126660be, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7e1b387b7facf346b158d1e126660be, type: 3}
 --- !u!4 &545485628783231478 stripped

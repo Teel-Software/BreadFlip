@@ -591,7 +591,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5831159848707659496
 Transform:
   m_ObjectHideFlags: 0
@@ -686,7 +686,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ModelTransform>k__BackingField: {fileID: 477525820954373044}
   <ModelUpOffset>k__BackingField: 0.1
-  <ModelCollider>k__BackingField: {fileID: 0}
+  <ModelCollider>k__BackingField: {fileID: 816373970022726577}
   <PulpRenderer>k__BackingField: {fileID: 6392261171645819986}
   <CrustRenderer>k__BackingField: {fileID: 5085768755244732877}
 --- !u!65 &816373970022726577
@@ -970,14 +970,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b549f1cc8c34c128753d2cd3bf69715, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _toast: {fileID: 1274631294690530397}
+  _toast: {fileID: 8005237435177736288}
   _rigidbody: {fileID: 5380029066633624961}
   _trajectoryRenderer: {fileID: 4655393827151577850}
   mainMenu: {fileID: 0}
   _soundManager: {fileID: 0}
-  lineRedererMaterial: {fileID: 0}
-  defaultColor: {r: 0, g: 0, b: 0, a: 0}
-  redColor: {r: 0, g: 0, b: 0, a: 0}
+  lineRedererMaterial: {fileID: 2100000, guid: 08d588173a91ba342bcae5661179a18d, type: 2}
+  defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  redColor: {r: 0.745283, g: 0.23830582, b: 0.16522783, a: 1}
 --- !u!114 &2139659203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -990,7 +990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88f1a8966ee699143b64bbfe2d28a450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _toast: {fileID: 1274631294690530397}
+  _toast: {fileID: 8005237435177736288}
   startCrustColor: {r: 0.6862745, g: 0.4627451, b: 0.18431373, a: 1}
   endCrustColor: {r: 0.13, g: 0.08765713, b: 0.034914277, a: 1}
   startPulpColor: {r: 0.9607843, g: 0.8117647, b: 0.5568628, a: 1}
@@ -1014,7 +1014,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6683221210942746423
 Transform:
   m_ObjectHideFlags: 0
@@ -1230,7 +1230,7 @@ PrefabInstance:
     - target: {fileID: -7763165926407007621, guid: ac5d913dbeef21c41aef7de3bd81624a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 1a724b69340605045b26428105bfa361, type: 2}
+      objectReference: {fileID: 2100000, guid: 9fc35da6a1b4ffa46902d996661a24c4, type: 2}
     - target: {fileID: 919132149155446097, guid: ac5d913dbeef21c41aef7de3bd81624a, type: 3}
       propertyPath: m_Name
       value: toast_cat
@@ -1426,6 +1426,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 08d588173a91ba342bcae5661179a18d, type: 2}
+    - target: {fileID: 3645481625055281084, guid: 8c6543d3d03e71846882066ab8230960, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645481625055281084, guid: 8c6543d3d03e71846882066ab8230960, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3645481625055281084, guid: 8c6543d3d03e71846882066ab8230960, type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
       value: 0.5
