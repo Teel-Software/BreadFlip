@@ -20,7 +20,7 @@ namespace BreadFlip.Movement
         private Transform _toastModel;
         private float _modelUpOffset;
 
-        private Transform ToastPosition => _toastPosition;
+        public Transform ToastPosition => _toastPosition;
 
         private void Start()
         {

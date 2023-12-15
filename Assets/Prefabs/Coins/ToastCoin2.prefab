@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6114660784175042937}
   - component: {fileID: 199850698417803282}
   - component: {fileID: 6854728642761716260}
+  - component: {fileID: 2897017333165529456}
   m_Layer: 0
   m_Name: ToastCoin2
   m_TagString: Coin
@@ -90,6 +91,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &2897017333165529456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8384041005287701595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0434fd9285bba642855888bdc57bc27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <entryZoneComponent>k__BackingField: {fileID: 199850698417803282}
 --- !u!1001 &7684724919756317
 PrefabInstance:
   m_ObjectHideFlags: 0

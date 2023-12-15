@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using BreadFlip.Entities;
 using BreadFlip.Generation.Props;
 using BreadFlip.Movement;
 using UnityEngine;
@@ -13,7 +14,7 @@ namespace BreadFlip.Generation
         [SerializeField] private ChunkElementVariant[] _tables;
         [SerializeField] private ChunkElementVariant[] _tableVariants;
 
-        [SerializeField] private EntryZoneComponent[] _entryZoneComponents;
+        [SerializeField] private List<EntryZoneComponent> _entryZoneComponents;
 
         private List<PropsElement> _spawnedProps = new();
         
@@ -22,10 +23,12 @@ namespace BreadFlip.Generation
 
         public AnimationCurve ChanceFromDistance;
 
+        public ChunkElementVariant FirstTable => _tables != null && _tables.Length > 0 ? _tables[0] : null;
+
         private void OnValidate()
         {
-            if (_entryZoneComponents is { Length: 0 })
-                _entryZoneComponents = GetComponentsInChildren<EntryZoneComponent>();
+            if (_entryZoneComponents is { Count: 0 })
+                _entryZoneComponents = GetComponentsInChildren<EntryZoneComponent>().ToList();
         }
 
         public void ReplacePrefabInChunk()
@@ -52,6 +55,11 @@ namespace BreadFlip.Generation
         
             lastTableEndPosition = _tables[^1].EndSpawnPoint.transform.position;
             EndSpawnPoint.transform.position = lastTableEndPosition;
+        }
+
+        public void AddNewEntryZones(Coin coin)
+        {
+            _entryZoneComponents.Add(coin.entryZoneComponent);
         }
 
         public void SpawnProps(IReadOnlyCollection<PropsElement> propsPrefabs)
@@ -107,7 +115,7 @@ namespace BreadFlip.Generation
             }
             else
             {
-                if (entryZoneComponent.gameObject.tag == "Coin") zoneCallback.AddListener(toastZoneController.OnCollideCoin);
+                if (entryZoneComponent.gameObject.CompareTag("Coin")) zoneCallback.AddListener(toastZoneController.OnCollideCoin);
                 else zoneCallback.AddListener(toastZoneController.OnCollideBadThing);
             }
             // zoneCallback.AddListener(entryZoneComponent.IsToaster
