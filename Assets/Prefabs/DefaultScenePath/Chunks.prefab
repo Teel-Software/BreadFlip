@@ -62,6 +62,7 @@ MonoBehaviour:
   - {fileID: 1558449005192368452, guid: 9f708e30d63fbf1478d73a06a0a5da7b, type: 3}
   - {fileID: 922125484395826432, guid: 70de91628af469a4190a4ee68d2883e6, type: 3}
   - {fileID: -2320515733637056228, guid: 4f69044af4455d944bf052382ba48069, type: 3}
+  _coinPrefab: {fileID: 2897017333165529456, guid: 87fd0a7e06d0ff047935b20763d83037, type: 3}
   _defaultSpawnedChunks:
   - {fileID: 2713404046927575699}
   - {fileID: 5461920935522241696}

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using BreadFlip.Entities;
 using BreadFlip.Generation.Props;
 using BreadFlip.Movement;
 using JetBrains.Annotations;
@@ -15,6 +16,7 @@ namespace BreadFlip.Generation
 
         [SerializeField] private List<Chunk> _chunkPrefabs = new();
         [SerializeField] private List<PropsElement> _propsElements;
+        [SerializeField] private Coin _coinPrefab;
 
         [SerializeField] private Chunk[] _defaultSpawnedChunks;
 
@@ -25,6 +27,10 @@ namespace BreadFlip.Generation
 
         [Space, SerializeField] private Chunk _emptySpaceVariant;
         [SerializeField] private float _emptySpaceValue = 2f;
+
+        private Vector3 END_OFFSET = new Vector3(1.75f, 2f, 0f);
+        private const float HEIGHT = 1.5f;
+        private const int COINS_AMOUNT = 7;
 
         // [SerializeField] private GameObject coinPrefab;
 
@@ -113,48 +119,63 @@ namespace BreadFlip.Generation
             UpdateSpawnedChunk(newChunk, _spawnedChunks[^1]);
         }
 
-        // public void SpawnCoins(int coinsAmount, Vector3[] points)
-        // {
-        //     // for (var i = 1; i < _spawnedChunks.Count(); i++)
-        //     // {
-        //     //     int coinsDistance = _spawnedChunks[i];
+        public void SpawnCoins(Coin _coinPrefab, Chunk currentChunk, Chunk previousChunk)
+        {
+            if (currentChunk.FirstTable == null) return;
+            // TODO: продебажить минусы и плюсы
+            Vector3 endPosition = currentChunk
+            .FirstTable.EntryZoneComponents
+            .First(zone => zone.TryGetComponent<Toaster>(out var _))
+            .GetComponent<Toaster>().ToastPosition.position
+            + END_OFFSET
+            ;
+            
+            if (previousChunk.FirstTable == null) return;
+            Vector3 startPosition = previousChunk
+            .FirstTable.EntryZoneComponents
+            .First(zone => zone.TryGetComponent<Toaster>(out var _))
+            .GetComponent<Toaster>().ToastPosition.position
+            // + offset
+            ;
 
-        //     //     for(var y = 10; y < points.Length; y += coinsDistance)
-        //     //     {
-                
-        //     //     }
-        //     // }
-        //     int pointInPoints;
+            int pointInPoints;
 
-        //     for (var i = 1; i <= coinsAmount; i++)
-        //     {
-        //         pointInPoints =  (points.Length / coinsAmount) * i;
+            var points = GetCoinPoints(startPosition, endPosition, HEIGHT);
 
-        //         var newCoin = Instantiate(coinPrefab, points[pointInPoints], Quaternion.identity);
-        //         _spawnedCoins.Add(newCoin);
-        //     }
-        // }
+            for (var i = 1; i <= COINS_AMOUNT; i++)
+            {
+                pointInPoints =  (points.Length / COINS_AMOUNT * i) - 1;
 
-        // private Vector3[] GetCoinPoints(Vector3 origin, float minY/* , Vector3 end */)
-        // {
-        //     var direction = -transform.forward;
-        //     Vector3 speed = new Vector3 (direction.x * 0.5f, 0.5f, direction.z * 0.5f);
+                var newCoin = Instantiate(_coinPrefab, points[pointInPoints], Quaternion.identity, currentChunk.transform);
+                currentChunk.AddNewEntryZones(newCoin);
+                // _spawnedCoins.Add(newCoin);
+            }
+        }
 
-        //     var points = new Vector3[100];
+        public Vector3 ParabolaPoint(Vector3 start, Vector3 end, float height, float t)
+        {
+            Func<float, float> f = x => -4 * height * x * x + 4 * height * x;
 
-        //     for (var i = 0; i < points.Length; i++)
-        //     {
-        //         var time = i * 0.1f;
+            var mid = Vector3.Lerp(start, end, t);
 
-        //         points[i] = origin + speed * time + Physics.gravity * time * time / 2f;
+            return new Vector3(mid.x, f(t) + Mathf.Lerp(start.y, end.y, t), mid.z);
+        }
 
-        //         if (points[i].y < minY)
-        //         {
-        //             break;
-        //         }
-        //     }
-        //     return points;
-        // }
+        private Vector3[] GetCoinPoints(Vector3 origin, Vector3 end, float height)
+        {
+            var direction = -transform.forward;
+            // Vector3 speed = new Vector3 (direction.x * 0.5f, 0.5f, direction.z * 0.5f);
+
+            var points = new Vector3[100];
+
+            for (var i = 0; i < points.Length; i++)
+            {
+                var t = i * 0.01f;
+
+                points[i] = ParabolaPoint(origin, end, height, t);
+            }
+            return points;
+        }
 
         private void UpdatePosition(Chunk newChunk, Chunk lastChunk)
         {
@@ -199,6 +220,7 @@ namespace BreadFlip.Generation
                 var previousChunk = i > 0 ? _defaultSpawnedChunks[i - 1] : null;
                 UpdateSpawnedChunk(spawnedChunk, previousChunk);
             }
+            // SpawnDefaultCoins(_coinPrefab);
         }
 
         private void UpdateSpawnedChunk(Chunk spawnedChunk,  [CanBeNull] Chunk previousChunk)
@@ -206,12 +228,14 @@ namespace BreadFlip.Generation
             _spawnedChunks.Add(spawnedChunk);
             spawnedChunk.ReplacePrefabInChunk();
             spawnedChunk.SpawnProps(_propsElements);
-            spawnedChunk.RegisterEntryZones(_player);
 
             if (previousChunk)
             {
                 UpdatePosition(spawnedChunk, previousChunk);
+                if (_coinPrefab != null) SpawnCoins(_coinPrefab, spawnedChunk, previousChunk);
             }
+
+            spawnedChunk.RegisterEntryZones(_player);
         }
     }
 }

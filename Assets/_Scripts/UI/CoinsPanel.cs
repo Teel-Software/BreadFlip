@@ -1,6 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using BreadFlip.Entities;
 using BreadFlip.UI;
 using TMPro;
 using UnityEngine;
@@ -9,29 +7,48 @@ namespace BreadFlip
 {
     public class CoinsPanel : MonoBehaviour
     {
-        private int _coins;
+        public int Coins {get; private set;}
 
         [SerializeField] private UiManager uiManager;
-
-        public int CollectedCoins
-        {
-            get {return _coins;}
-        }
+        [SerializeField] private TMP_Text _coinsOutput;
         
         private TMP_Text tmp;
 
         private void Start() {
-            _coins = 0;
+            Coins = 0;
 
             tmp = transform.GetComponentInChildren<TMP_Text>();
 
             uiManager.zoneController.OnCollidedCoinAction += UpdateCoinScreen;
+            Timer.TimeOvered += PrintCoinsOnLoseScreen;
+
+            uiManager.zoneController.OnCollidedBadThing += PrintCoinsOnLoseScreen;
         }
 
         private void UpdateCoinScreen()
         {
-            _coins++;
-            tmp.text = _coins.ToString();
+            Coins++;
+            tmp.text = Coins.ToString();
+        }
+
+        private void PrintCoinsOnLoseScreen()
+        {
+            if (PlayerPrefs.HasKey("all_coins"))
+            {
+                var coinsWas = PlayerPrefs.GetInt("all_coins");
+               PlayerPrefs.SetInt("all_coins", coinsWas + Coins);
+            }
+            else
+            {
+               PlayerPrefs.SetInt("all_coins", Coins);
+            }
+            _coinsOutput.text = $"+{Coins}";
+        
+        }
+
+        private void PrintCoinsOnLoseScreen(Vector3 _)
+        {
+            PrintCoinsOnLoseScreen();
         }
     }
 }
