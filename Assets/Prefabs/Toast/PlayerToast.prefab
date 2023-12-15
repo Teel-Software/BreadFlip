@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zoneController: {fileID: 6556600626714998364}
-  uiManager: {fileID: 0}
+  uiManager: {fileID: 5667851704598959125, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
   ifGameStarted: 0
 --- !u!1 &702851447
 GameObject:

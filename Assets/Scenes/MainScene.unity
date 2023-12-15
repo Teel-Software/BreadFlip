@@ -1044,7 +1044,7 @@ PrefabInstance:
     - target: {fileID: 803828767, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
       propertyPath: recordScore
       value: 
-      objectReference: {fileID: 1129514924}
+      objectReference: {fileID: 0}
     - target: {fileID: 1098811649, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -1462,10 +1462,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 327676539}
     - target: {fileID: 5667851704598959125, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
-      propertyPath: _failUIDelay
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5667851704598959125, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
       propertyPath: zoneController
       value: 
       objectReference: {fileID: 2139659193}
@@ -1517,17 +1513,13 @@ PrefabInstance:
       propertyPath: uiManager
       value: 
       objectReference: {fileID: 1877933766}
+    - target: {fileID: 8662463834190607174, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: _coinsOutput
+      value: 
+      objectReference: {fileID: 1129514924}
     - target: {fileID: 9002855797719003557, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9138631099805517296, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9138631099805517296, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ReplayGame
       objectReference: {fileID: 0}
     - target: {fileID: 9138631100018637311, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
       propertyPath: m_RaycastTarget
@@ -1549,8 +1541,16 @@ PrefabInstance:
       propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9138631101482513410, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_Name
+      value: Coins
+      objectReference: {fileID: 0}
     - target: {fileID: 9138631101482513412, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
       propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138631101522550931, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9138631101522550932, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
@@ -1740,10 +1740,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 327676539, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
-      propertyPath: uiManager
-      value: 
-      objectReference: {fileID: 1877933766}
     - target: {fileID: 754873546, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
       propertyPath: m_Camera
       value: 

@@ -120,7 +120,7 @@ MonoBehaviour:
   _actionUI: {fileID: 9002855797719003557}
   losePanel: {fileID: 9138631101522550931}
   _timer: {fileID: 0}
-  _failUIDelay: 0.5
+  _failUIDelay: 1.5
   zoneController: {fileID: 0}
   _jumpController: {fileID: 0}
 --- !u!1001 &1400848310355086391
@@ -567,10 +567,6 @@ PrefabInstance:
       value: XX
       objectReference: {fileID: 0}
     - target: {fileID: 7899912485649844679, guid: b3c2dfeb5717c2345a52033ea52fe54c, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7899912485649844679, guid: b3c2dfeb5717c2345a52033ea52fe54c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
       objectReference: {fileID: 0}
@@ -578,10 +574,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5667851704598959125}
-    - target: {fileID: 7899912485649844679, guid: b3c2dfeb5717c2345a52033ea52fe54c, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ReplayGame
-      objectReference: {fileID: 0}
     - target: {fileID: 7899912485649844679, guid: b3c2dfeb5717c2345a52033ea52fe54c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: BreadFlip.UI.UiManager, Assembly-CSharp
