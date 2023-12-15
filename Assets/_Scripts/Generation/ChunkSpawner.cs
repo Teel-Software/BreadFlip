@@ -28,9 +28,9 @@ namespace BreadFlip.Generation
         [Space, SerializeField] private Chunk _emptySpaceVariant;
         [SerializeField] private float _emptySpaceValue = 2f;
 
-        private Vector3 offset = new Vector3(-0.19f, 1.21f, 0.64f);
-        private const float HEIGHT = 2.5f;
-        private const int COINS_AMOUNT = 5;
+        private Vector3 END_OFFSET = new Vector3(1.75f, 2f, 0f);
+        private const float HEIGHT = 1.5f;
+        private const int COINS_AMOUNT = 7;
 
         // [SerializeField] private GameObject coinPrefab;
 
@@ -127,7 +127,7 @@ namespace BreadFlip.Generation
             .FirstTable.EntryZoneComponents
             .First(zone => zone.TryGetComponent<Toaster>(out var _))
             .GetComponent<Toaster>().ToastPosition.position
-            // - offset
+            + END_OFFSET
             ;
             
             if (previousChunk.FirstTable == null) return;
