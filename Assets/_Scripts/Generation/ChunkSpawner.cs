@@ -30,7 +30,7 @@ namespace BreadFlip.Generation
 
         private Vector3 END_OFFSET = new Vector3(1.75f, 2f, 0f);
         private const float HEIGHT = 1.5f;
-        private const int COINS_AMOUNT = 7;
+        private const int COINS_AMOUNT = 5;
 
         // [SerializeField] private GameObject coinPrefab;
 
