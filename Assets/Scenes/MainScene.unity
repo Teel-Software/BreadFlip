@@ -1369,6 +1369,26 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4614380712577566193, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4614380712577566193, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 327676536}
+    - target: {fileID: 4614380712577566193, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4614380712577566193, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 4614380712577566193, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4855778870755685955, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
       propertyPath: m_Name
       value: UICanvas
@@ -1740,6 +1760,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 327676536, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 754873546, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
       propertyPath: m_Camera
       value: 
