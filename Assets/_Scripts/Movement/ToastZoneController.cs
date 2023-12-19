@@ -43,7 +43,6 @@ namespace BreadFlip.Movement
 
         public void OnCollideCoin(GameObject coinObj)
         {
-            // Debug.Log("**COIN** collided");
             coinObj.SetActive(false);
 
             OnCollidedCoinAction?.Invoke();

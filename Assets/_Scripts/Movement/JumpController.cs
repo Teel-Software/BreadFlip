@@ -99,6 +99,7 @@ namespace BreadFlip.Movement
 
         private void PrepareToJump()
         {
+            SwipeDetection.SwipeEnabled = false;
             if (!mainMenu.activeSelf && _canStartJump)
             {
                 var forceVector = GetForceVector();
@@ -179,7 +180,7 @@ namespace BreadFlip.Movement
         private void TryDoubleJump()
         {
             if (!_canDoubleJump) return;
-            
+            SwipeDetection.SwipeEnabled = true;
             if (Input.GetMouseButtonDown(0) && !_isDoubleJumpPressed && !UiManager.pauseButtonPressed && !SwipeDetection.TouchMoved)
             {
                     if (_rigidbody.velocity.y < 0)
