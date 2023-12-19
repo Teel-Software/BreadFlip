@@ -14,16 +14,17 @@ namespace BreadFlip.UI
         public static int wholeTime => 6;
         private static int currentTime = 0;
 
-        public bool ifGameStarted = false;
+        public bool TimerEnabled { get; set;}
 
         public static event Action TimeOvered;
         public static event Action<float> TimerTicked;
 
         private void OnEnable()
         {
-            currentTime = 0;
+            TimerEnabled = true;
             zoneController.OnCollidedToaster += StartTimer;
             zoneController.OnColliderExit += DisableComponent;
+            currentTime = 0;
             StartCoroutine(WaitUntillFail());
         }
 
@@ -32,6 +33,11 @@ namespace BreadFlip.UI
             zoneController.OnCollidedToaster -= StartTimer;
             zoneController.OnColliderExit -= DisableComponent;
         }
+
+        // public void TimerInit() {
+        //     IfGameStarted = true;
+        //     gameObject.SetActive(true);
+        // }
 
         private void DisableComponent()
         {
@@ -62,24 +68,16 @@ namespace BreadFlip.UI
             if (currentTime >= 6)
             {
                 // перенести подписку на событие в менеджер
-                StartCoroutine(uiManager.Fail(Vector3.zero));
+                // StartCoroutine(uiManager.Fail(Vector3.zero));
                 TimeOvered?.Invoke();
             }
         }
 
-        private void StartTimer()
+        public void StartTimer()
         {
-            if (ifGameStarted) gameObject.SetActive(true);
-        }
-
-        public void StartGame(bool start)
-        {
-            ifGameStarted = start;
-        }
-
-        public void StartTimerManually()
-        {
-            ifGameStarted = true;
+            // currentTime = 0;
+            // StartCoroutine(WaitUntillFail());
+            if (TimerEnabled) gameObject.SetActive(true);
         }
     }
 }
