@@ -1525,6 +1525,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9138631099805517297, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6068fcb032905d040b28fb28a0f24c75, type: 3}
+    - target: {fileID: 9138631099805517297, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9138631099940917590, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -1569,8 +1577,7 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 9138631099805517297, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
 --- !u!224 &1877933765 stripped
 RectTransform:
