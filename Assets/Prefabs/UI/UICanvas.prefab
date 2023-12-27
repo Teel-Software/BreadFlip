@@ -776,7 +776,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiManager: {fileID: 5667851704598959125}
   loseScore: {fileID: 9138631100343739791}
-  recordScore: {fileID: 0}
 --- !u!1 &1924893623106048814 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 704330179225149209, guid: b3c2dfeb5717c2345a52033ea52fe54c, type: 3}
@@ -868,10 +867,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 3152046714966707053}
-    - target: {fileID: 364123250572401147, guid: ae0499a24b696264fba9c7417a352ddc, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 364123250572401147, guid: ae0499a24b696264fba9c7417a352ddc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 

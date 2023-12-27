@@ -40,6 +40,8 @@ namespace BreadFlip.UI
                 RestartGame();
                 PlayerPrefs.DeleteKey("gameNeedsToRestart");
             }
+
+            Timer.TimeOvered += OnFailed;
         }
 
         public void PressPauseButton()
@@ -70,21 +72,33 @@ namespace BreadFlip.UI
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-        public void OnFailed(Vector3 velocity) => StartCoroutine(Fail(velocity));
-
-        public IEnumerator Fail(Vector3 vel)
+        private void OnFailed()
         {
-            _jumpController.CanDoubleJump = false;
-            if (onFailedWasInvoked) yield break;
+            OnFailed(Vector3.zero);
+        }
+
+        public void OnFailed(Vector3 velocity)
+        {
+            if (!onFailedWasInvoked)
+            {
+                StartCoroutine(Fail()/* (velocity) */);
+            }
             onFailedWasInvoked = true;
+        }
+
+        public IEnumerator Fail(/* Vector3 vel */)
+        {
+            // _jumpController.CanDoubleJump = false;
+            // if (onFailedWasInvoked) yield break;
+            // onFailedWasInvoked = true;
             yield return new WaitForSeconds(_failUIDelay);
             
-            if (Vector3.Dot(Vector3.up, vel) < 0 && vel.y > -0.1f)
-            {
-                onFailedWasInvoked = false;
-                SurvivedAfterFail?.Invoke();
-                yield break;
-            }
+            // if (Vector3.Dot(Vector3.up, vel) < 0 && vel.y > -0.1f)
+            // {
+            //     onFailedWasInvoked = false;
+            //     SurvivedAfterFail?.Invoke();
+            //     yield break;
+            // }
 
             _actionUI.SetActive(false);
             losePanel.SetActive(true);
@@ -107,12 +121,12 @@ namespace BreadFlip.UI
             // переключаем экраны
             _mainMenu.SetActive(false);
             _gameUi.SetActive(true);
-
+            onFailedWasInvoked = false;
             zoneController.startedInToaster = true;
 
             // запускаем таймер
             _timer.transform.gameObject.SetActive(true);
-            _timer.StartTimerManually();
+            _timer.StartTimer();
         }
     }
 }

@@ -39,18 +39,19 @@ trahat
 анал\b
 \bаналь
 бзд(ё|е)нок#
-\bбля
+\bбля\w*
 \bблеа
-\bпробля
-\bвыбля
+\bпробля\w*
+\bвыбля\w*
+сволочь
 блядки#
 блядовать#
 блядство#
-блядь#whore
+бля(д|т)ь#whore
 в пизду#
 встать раком#
 вы(ё|е)бываться#
-\bвагин
+\bвагин\w*
 г(о|а)ндон
 \bгеи
 \bг(о|а)м(о|а)сек
@@ -59,8 +60,8 @@ trahat
 г(о|а)внюк#
 дать пизды#
 дерьмо#
-д(о|а)лб(о|а)еб
-дроч#e.g. дрочить - "wank" (oneself or someone).
+д(о|а)лб(о|а)(е|ё)б
+дроч\w*#e.g. дрочить - "wank" (oneself or someone).
 (ё|е)б твою мать#
 (ё|е)барь#
 (ё|е)бать#to fuck.
@@ -82,19 +83,19 @@ trahat
 кацап#Katsap or kacap or kacapas Ukrainian: кацап, Lithuanian: kacapas, disparaging terms for Russians used in Ukraine, Belarus, Poland, and Lithuania.
 курите мою трубку#
 лысого в кулаке гонять#
-\bлоховск
+\bлоховск\w*
 \bлох\b
 \bлох(а|у|и|)\b
-\bлошар
+\bлошар\w*
 малофя#
 манда#cunt
-\bманд
+\bманд\w*
 мандавошка#
 мент#
-муда#
+муда\w*#
 мудак#"stupid ass", "git". Also historically means "castrated piglet".
-муде#"testicles"
-муди#"testicles"
+\bмуде\w*#"testicles"
+\bмуди\w*#"testicles"
 мудило#which bears an abstract offensive meaning and is somewhat equal to "motherfucker."
 мудозмон#
 \bмуд(а|ил|л)
@@ -104,7 +105,7 @@ trahat
 на хуй#
 на хую вертеть#
 на хуя#
-наебать#
+\bнаеб\w*#
 наебениться#
 наебнуться#
 нахуячиться#
@@ -127,23 +128,23 @@ trahat
 \bпедик
 п(и|е)д(о|а|и|е)р
 пидорас#a bastardization of pederast "fag", meaning a homosexual male in Russian.
-п(и|е)зд#cunt
+п(и|е)зд\w*#cunt
 пиздеть#to talk a lot or to lie.
 пиздец#"deep shit" is often used as an exclamation. Also means death or end of something.
 пиздить#"to steal" or "to beat somebody".
 \bпис(ю|я)
-\bписьк
+\bписьк\w*
 поебень
 половое сношение#
-пр(о|а)ститу
+пр(о|а)ститу\w*
 с(е|э)кс
 \bскс
 сиски#
-сиськ#
+сиськ\w*#
 срать
 срал
-сран
-срак
+сран\w*
+срак\w*
 cрет\b
 отсос
 сос(и|ет|ал|нул|ни)
@@ -154,7 +155,7 @@ cрет\b
 ссать#
 сука#"traitor", "rascal", "scumbag"; despite original meaning "bitch" (female dog), the term is unisex and is often used to refer to men and has a dangerously pejorative connotation in the criminal world.
 сучка#literally "little bitch", meaning "whore", "prostitute", "wanton", "jilt"
-\bсуч
+\bсуч\w*
 траxать#
 \bтрах
 фарья#a dialectal variant of манда ("cunt"). Extremely rarely used.
@@ -188,5 +189,5 @@ cрет\b
 \bчмош
 \bчмо\b
 \bчлен
-шалав
-шлюх
+шалав\w*
+шлюх\w*

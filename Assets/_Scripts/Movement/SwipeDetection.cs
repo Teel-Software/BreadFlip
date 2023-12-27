@@ -17,15 +17,19 @@ namespace BreadFlip.Movement
 
         public static event Action SwipeDownEvent;
 
+        public static bool SwipeEnabled {get; set;}
+
         // private JumpController _jumpController;
 
         // private void Start() {
         //     _jumpController = GetComponent<JumpController>();
         // }
 
-        private void Update() {
-
-              if (Input.GetMouseButtonDown(0))
+        private void Update() 
+        {
+            if (SwipeEnabled)
+            {
+                if (Input.GetMouseButtonDown(0))
                 {
                     _startTouchPosition = Input.mousePosition;
                 }
@@ -43,6 +47,7 @@ namespace BreadFlip.Movement
                         _touchMoved = false;
                     }
                 }
+            }
 
 #region Touch
 //             if (Input.touchCount > 0)
