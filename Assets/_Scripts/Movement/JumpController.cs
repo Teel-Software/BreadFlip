@@ -102,8 +102,6 @@ namespace BreadFlip.Movement
             SwipeDetection.SwipeEnabled = false;
             if (!mainMenu.activeSelf && _canStartJump)
             {
-                var forceVector = GetForceVector();
-
                 if (Input.GetMouseButtonDown(0))
                 {
                     _startTime = Time.time;
@@ -111,10 +109,11 @@ namespace BreadFlip.Movement
 
                 if (Input.GetMouseButton(0) && _startTime != 0)
                 {
+                    var forceVector = GetForceVector();
                     CurrentToaster.SetHandlePosition(GetForcePercent());
 
                     lineRedererMaterial.color = Color.Lerp(defaultColor, redColor, .1f);
-                    _trajectoryRenderer.ShowTrajectory(gameObject.transform.position, forceVector/* GetForceVector() */);
+                    _trajectoryRenderer.ShowTrajectory(gameObject.transform.position, forceVector);
 
                     
                     if (forceVector.magnitude > _MAGNITUDE)
@@ -136,6 +135,8 @@ namespace BreadFlip.Movement
 
                 if (Input.GetMouseButtonUp(0) && _startTime != 0)
                 {
+                    var forceVector = GetForceVector();
+                    
                     if (forceVector.magnitude > _MAGNITUDE)
                     {
                         StartCoroutine(Wait(.45f, () => _canDoubleJump = true));
@@ -294,7 +295,7 @@ namespace BreadFlip.Movement
         public void JumpDown()
         {
             if (_rigidbody != null && !_inToaster){
-                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0f, _rigidbody.velocity.z);
+                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x / 1.5f, 0f, _rigidbody.velocity.z);
             
                 _rigidbody.AddForce(new Vector3(0f, -15f/* (7f + Math.Abs(0 - _rigidbody.velocity.y)) * -1 */, 0), ForceMode.Impulse);
             
