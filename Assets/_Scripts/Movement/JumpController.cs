@@ -40,6 +40,9 @@ namespace BreadFlip.Movement
         private int _speedMultiplicator = 1;
         private bool _canDoubleJump;
         private bool _jumpDownSoundPlayed;
+        private Vector3 forceVector;
+
+        private bool bylo;
 
         private const float _MAX_TIME = 1.3f;
         private const float _MAGNITUDE = 5f;
@@ -84,8 +87,17 @@ namespace BreadFlip.Movement
 
         private void Update()
         {
-            // if (temp.y > 0.1f) */
-                // Debug.LogWarning($"Update: {Rigidbody.velocity.y}");
+            // if (_inToaster && !bylo)
+            // {
+            //     Debug.LogWarning("Sleep");
+            //     bylo = true;
+            // }
+            // if (!_inToaster)
+            // {   
+            //     bylo = false;
+            //     Debug.LogWarning($"Update: {Rigidbody.velocity}");
+            // }
+            
             if (!_inToaster)
                 TryDoubleJump();
             else PrepareToJump();
@@ -103,7 +115,7 @@ namespace BreadFlip.Movement
 
                 if (Input.GetMouseButton(0) && _startTime != 0)
                 {
-                    var forceVector = GetForceVector();
+                    forceVector = GetForceVector();
                     CurrentToaster.SetHandlePosition(GetForcePercent());
 
                     lineRedererMaterial.color = Color.Lerp(defaultColor, redColor, .1f);
@@ -116,21 +128,22 @@ namespace BreadFlip.Movement
                     }
                     else
                     {
-                        lineRedererMaterial.color = Color.Lerp(redColor, defaultColor, .1f/* Time.deltaTime - _startTime */);
+                        lineRedererMaterial.color = Color.Lerp(redColor, defaultColor, .1f);
                     }
                 }
 
                 if (Input.GetMouseButtonUp(0) && _startTime != 0)
                 {
-                    var forceVector = GetForceVector();
+                    // var forceVector = GetForceVector();
                     
-                    if (forceVector.magnitude > _MAGNITUDE)
+                    if (forceVector.magnitude > _MAGNITUDE && _rigidbody.velocity.y >= 0f)
                     {
                         StartCoroutine(Wait(.45f, () => _canDoubleJump = true));
                      
                         CurrentToaster.JumpUp();
 
-                        _rigidbody.AddForce(forceVector, ForceMode.Impulse);
+                        // _rigidbody.AddForce(forceVector, ForceMode.Impulse);
+                        _rigidbody.velocity += forceVector;
                         _trajectoryRenderer.ClearTrajectory();
 
                         _playRotateAnimation = PlayRotateAnimation();
@@ -280,8 +293,7 @@ namespace BreadFlip.Movement
             {
                 _rigidbody.velocity = new Vector3(_rigidbody.velocity.x / 1.5f, 0f, _rigidbody.velocity.z);
             
-                _rigidbody.AddForce(new Vector3(0f, -15f/* (7f + Math.Abs(0 - _rigidbody.velocity.y)) * -1 */, 0), ForceMode.Impulse);
-            
+                _rigidbody.AddForce(new Vector3(0f, -15f, 0), ForceMode.Impulse);
             }
         }
     }
