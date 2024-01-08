@@ -1,6 +1,7 @@
 using BreadFlip.Sound;
 using BreadFlip.UI;
 using System;
+using System.Collections;
 using System.Reflection;
 using UnityEngine;
 
@@ -15,6 +16,8 @@ namespace BreadFlip.Movement
         [SerializeField] private ParticleSystem _crumbsToastPrefab;
         [SerializeField] private ParticleSystem _smokeSmokeDeadPrefab;
 
+        private IEnumerator _waitingCoroutine;
+
         [Header("Audio")]
         [SerializeField] private SoundManager _soundManager;
         
@@ -22,7 +25,7 @@ namespace BreadFlip.Movement
 
         public event Action OnCollidedCoinAction;
         public event Action OnCollidedToaster;
-        public event Action<Vector3> OnCollidedBadThing;
+        public event Action OnCollidedBadThing;
         public event Action OnColliderExit;
 
         private bool _collidedToaster;
@@ -51,9 +54,18 @@ namespace BreadFlip.Movement
 
         public void OnCollideToaster(GameObject toasterObj)
         {
-            if (!_collidedBadThing)
+            if (_collidedBadThing) 
             {
+                Debug.LogWarning("задели пол перед тостером");
+                Debug.LogWarning($"{_waitingCoroutine}");
+                StopCoroutine(_waitingCoroutine);
+                _waitingCoroutine = null;
+            }
+            
+            // if (!_collidedBadThing)
+            // {
                 _collidedToaster = true;
+
                 Debug.Log(MethodBase.GetCurrentMethod());
 
                 var toaster = toasterObj.GetComponent<Toaster>();
@@ -64,6 +76,7 @@ namespace BreadFlip.Movement
 
                 _rigidbody.velocity = Vector3.zero;
                 _jumpController.Reset();
+                _jumpController.ResetConstraints();
 
                 PlaySmoke();
                 PlayCrumbs();
@@ -79,7 +92,7 @@ namespace BreadFlip.Movement
                 {
                     startedInToaster = false;
                 }
-            }
+            // }
         }
 
         public void OnCollideBadThing(GameObject badThing)
@@ -88,16 +101,27 @@ namespace BreadFlip.Movement
             {
                 Debug.Log(MethodBase.GetCurrentMethod());
                 
-                _collidedBadThing = true;
                 PlayCrumbs();
                 _jumpController.UnlockPhysicsRotation();
                 _jumpController.StopRotation();
 
-                // _jumpController.enabled = false;
-                OnCollidedBadThing?.Invoke(_jumpController.Rigidbody.velocity);
-
                 _soundManager.PlayFailedSound();
+
+                if (_waitingCoroutine == null)
+                {
+                    _waitingCoroutine = WaitBeforeInvokeBadCollide();
+                    StartCoroutine(_waitingCoroutine);
+                }
+                
+                
+                _collidedBadThing = true;
             }
+        }
+
+        private IEnumerator WaitBeforeInvokeBadCollide()
+        {
+            yield return new WaitForSeconds(2f);
+            OnCollidedBadThing?.Invoke();
         }
 
         public void OnExitFromCollider(GameObject toasterObj)
