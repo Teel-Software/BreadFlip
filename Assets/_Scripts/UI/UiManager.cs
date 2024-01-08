@@ -18,7 +18,7 @@ namespace BreadFlip.UI
 
         [SerializeField] private Timer _timer;
 
-        [SerializeField] private float _failUIDelay = 0.5f;
+        [SerializeField] private float _failUIDelay = 0f;/* 0.5f; */
         
         [SerializeField] public ToastZoneController zoneController;
         [SerializeField] private JumpController _jumpController;
@@ -72,34 +72,20 @@ namespace BreadFlip.UI
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-        private void OnFailed()
-        {
-            OnFailed(Vector3.zero);
-        }
-
-        public void OnFailed(Vector3 velocity)
+        public void OnFailed()
         {
             if (!onFailedWasInvoked)
             {
-                StartCoroutine(Fail()/* (velocity) */);
+                StartCoroutine(Fail());
             }
             onFailedWasInvoked = true;
         }
 
-        public IEnumerator Fail(/* Vector3 vel */)
+        public IEnumerator Fail()
         {
-            // _jumpController.CanDoubleJump = false;
-            // if (onFailedWasInvoked) yield break;
-            // onFailedWasInvoked = true;
-            yield return new WaitForSeconds(_failUIDelay);
+            if (_failUIDelay > 0)
+                yield return new WaitForSeconds(_failUIDelay);
             
-            // if (Vector3.Dot(Vector3.up, vel) < 0 && vel.y > -0.1f)
-            // {
-            //     onFailedWasInvoked = false;
-            //     SurvivedAfterFail?.Invoke();
-            //     yield break;
-            // }
-
             _actionUI.SetActive(false);
             losePanel.SetActive(true);
             SetTimeScale(false);

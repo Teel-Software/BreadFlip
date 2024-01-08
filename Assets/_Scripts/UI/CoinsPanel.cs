@@ -45,10 +45,5 @@ namespace BreadFlip
             _coinsOutput.text = $"+{Coins}";
         
         }
-
-        private void PrintCoinsOnLoseScreen(Vector3 _)
-        {
-            PrintCoinsOnLoseScreen();
-        }
     }
 }

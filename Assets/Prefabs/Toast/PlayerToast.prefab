@@ -182,7 +182,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zoneController: {fileID: 6556600626714998364}
   uiManager: {fileID: 5667851704598959125, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
-  ifGameStarted: 0
 --- !u!1 &702851447
 GameObject:
   m_ObjectHideFlags: 0
@@ -945,8 +944,8 @@ MonoBehaviour:
   mainMenu: {fileID: 0}
   _soundManager: {fileID: 0}
   lineRedererMaterial: {fileID: 2100000, guid: 08d588173a91ba342bcae5661179a18d, type: 2}
-  defaultColor: {r: 1, g: 1, b: 1, a: 1}
-  redColor: {r: 0.745283, g: 0.23830582, b: 0.16522783, a: 1}
+  defaultColor: {r: 1, g: 1, b: 1, a: 0.5019608}
+  redColor: {r: 0.745283, g: 0.23830582, b: 0.16522783, a: 0.5019608}
 --- !u!114 &2139659203
 MonoBehaviour:
   m_ObjectHideFlags: 0

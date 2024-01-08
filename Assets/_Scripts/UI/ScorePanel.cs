@@ -64,10 +64,5 @@ namespace BreadFlip.UI
 
             loseScore.text = _score.ToString();
         }
-
-        private void PrintTextOnLoseScreen(Vector3 _)
-        {
-            PrintTextOnLoseScreen();
-        }
     }
 }
