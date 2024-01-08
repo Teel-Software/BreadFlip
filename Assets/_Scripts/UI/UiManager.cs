@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Agava.YandexGames;
 using BreadFlip.Movement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -67,7 +68,18 @@ namespace BreadFlip.UI
             }
         }
 
-        public void ReloadScene()
+        public void ReloadScene() // в редакторе только дебаг, в вебе - показ интера и по калбеку закрытия - переход
+        {
+#if UNITY_WEBGL && UNITY_EDITOR
+            Debug.Log("Inter");
+            LoadLevel();
+#endif
+#if UNITY_WEBGL && !UNITY_EDITOR
+            InterstitialAd.Show(onCloseCallback:_ => LoadLevel());
+#endif
+        }
+
+        private void LoadLevel()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }

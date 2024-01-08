@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: VertexColor
+  m_Name: VertexColor-1.75
   m_Shader: {fileID: -6465566751694194690, guid: 83562b3a4673b66459bd7448e294b1ba, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -41,7 +41,7 @@ Material:
     m_Floats:
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
-    - _SATURATION: 3
+    - _SATURATION: 1.75
     m_Colors:
     - _Color: {r: 0.9716981, g: 0.9716981, b: 0.9716981, a: 1}
   m_BuildTextureStacks: []
