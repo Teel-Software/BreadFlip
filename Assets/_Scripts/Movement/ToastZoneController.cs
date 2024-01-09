@@ -1,3 +1,4 @@
+using BreadFlip.Generation;
 using BreadFlip.Sound;
 using BreadFlip.UI;
 using System;
@@ -31,12 +32,17 @@ namespace BreadFlip.Movement
         private bool _collidedToaster;
         private bool _collidedBadThing;
 
+        private float _secondsToDie = .1f;
+        private bool _exitedFromCollider;
+
         private void Start()
         {
             _collidedBadThing = false;
             _collidedToaster = false;
             startedInToaster = true;
             Timer.TimeOvered += PlayDeadSmoke;
+
+            _exitedFromCollider = true;
         }
 
         private void OnDestroy()
@@ -54,16 +60,17 @@ namespace BreadFlip.Movement
 
         public void OnCollideToaster(GameObject toasterObj)
         {
-            if (_collidedBadThing) 
+            if (_collidedBadThing)
             {
-                Debug.LogWarning("задели пол перед тостером");
-                Debug.LogWarning($"{_waitingCoroutine}");
+                // Debug.LogWarning("задели пол перед тостером");
+                // Debug.LogWarning($"{_waitingCoroutine}");
                 StopCoroutine(_waitingCoroutine);
                 _waitingCoroutine = null;
             }
             
             // if (!_collidedBadThing)
             // {
+                _exitedFromCollider = true;
                 _collidedToaster = true;
 
                 Debug.Log(MethodBase.GetCurrentMethod());
@@ -97,6 +104,7 @@ namespace BreadFlip.Movement
 
         public void OnCollideBadThing(GameObject badThing)
         {
+            // Debug.LogWarning($"ЗАШЛИ: {badThing.name}");
             if (!_collidedToaster)
             {
                 Debug.Log(MethodBase.GetCurrentMethod());
@@ -107,24 +115,28 @@ namespace BreadFlip.Movement
 
                 _soundManager.PlayFailedSound();
 
-                if (_waitingCoroutine == null)
-                {
+                // if (_waitingCoroutine == null)
+                // {
                     _waitingCoroutine = WaitBeforeInvokeBadCollide();
                     StartCoroutine(_waitingCoroutine);
-                }
-                
-                
+                // }
+
+                _exitedFromCollider = false;
                 _collidedBadThing = true;
             }
         }
 
         private IEnumerator WaitBeforeInvokeBadCollide()
         {
-            yield return new WaitForSeconds(2f);
-            OnCollidedBadThing?.Invoke();
+            yield return new WaitForSeconds(_secondsToDie);
+            // Debug.LogError(_exitedFromCollider);
+            if (!_exitedFromCollider)
+            {
+                OnCollidedBadThing?.Invoke();
+            }
         }
 
-        public void OnExitFromCollider(GameObject toasterObj)
+        public void OnExitFromTrigger(GameObject triggeredObj)
         {
             Debug.Log(MethodBase.GetCurrentMethod());
             
@@ -133,6 +145,12 @@ namespace BreadFlip.Movement
             OnColliderExit?.Invoke();
             _collidedToaster = false;
             _collidedBadThing = false;
+        }
+
+        public void OnExitFromCollider(GameObject collidedObj)
+        {
+            // Debug.LogWarning($"вышли из коллайдера: {collidedObj.name}");
+            _exitedFromCollider = true;
         }
 
         private void PlayCrumbs()
@@ -149,5 +167,7 @@ namespace BreadFlip.Movement
         {
             Instantiate(_smokeSmokeDeadPrefab, transform.position, Quaternion.identity);
         }
+
+
     }
 }
