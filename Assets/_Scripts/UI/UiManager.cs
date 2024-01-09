@@ -19,7 +19,7 @@ namespace BreadFlip.UI
 
         [SerializeField] private Timer _timer;
 
-        [SerializeField] private float _failUIDelay = 0f;/* 0.5f; */
+        // [SerializeField] private float _failUIDelay = 0f;/* 0.5f; */
         
         [SerializeField] public ToastZoneController zoneController;
         [SerializeField] private JumpController _jumpController;
@@ -88,20 +88,23 @@ namespace BreadFlip.UI
         {
             if (!onFailedWasInvoked)
             {
-                StartCoroutine(Fail());
+                // StartCoroutine(Fail());
+                _actionUI.SetActive(false);
+                losePanel.SetActive(true);
+                SetTimeScale(false);
             }
             onFailedWasInvoked = true;
         }
 
-        public IEnumerator Fail()
-        {
-            if (_failUIDelay > 0)
-                yield return new WaitForSeconds(_failUIDelay);
+        // public IEnumerator Fail()
+        // {
+        //     if (_failUIDelay > 0)
+        //         yield return new WaitForSeconds(_failUIDelay);
             
-            _actionUI.SetActive(false);
-            losePanel.SetActive(true);
-            SetTimeScale(false);
-        }
+        //     _actionUI.SetActive(false);
+        //     losePanel.SetActive(true);
+        //     SetTimeScale(false);
+        // }
 
         public bool Get_onFailedWasInvoked()
         {

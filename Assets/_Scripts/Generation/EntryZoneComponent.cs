@@ -45,14 +45,14 @@ namespace BreadFlip.Generation
             }
         }
 
-        //private void OnCollisionExit(Collision collision)
-        //{
-        //    if (!IsZoneTrigger)
-        //    {
-        //        _onExitZone.Invoke(gameObject);
-        //        Debug.Log("Collision");
-        //    }
-        //}
+        private void OnCollisionExit(Collision collision)
+        {
+           if (!IsZoneTrigger)
+           {
+               _onExitZone.Invoke(gameObject);
+               Debug.Log("Collision");
+           }
+        }
 
         private void OnTriggerEnter(Collider other)
         {
