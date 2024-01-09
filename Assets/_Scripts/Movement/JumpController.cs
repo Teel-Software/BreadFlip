@@ -118,17 +118,17 @@ namespace BreadFlip.Movement
                     forceVector = GetForceVector();
                     CurrentToaster.SetHandlePosition(GetForcePercent());
 
-                    lineRedererMaterial.color = Color.Lerp(defaultColor, redColor, .1f);
+                    lineRedererMaterial.color = defaultColor; //Color.Lerp(defaultColor, redColor, .1f);
                     _trajectoryRenderer.ShowTrajectory(gameObject.transform.position, forceVector);
 
                     
                     if (forceVector.magnitude > _MAGNITUDE)
                     {
-                        lineRedererMaterial.color = Color.Lerp(defaultColor, redColor, .1f);
+                        lineRedererMaterial.color = defaultColor; //Color.Lerp(defaultColor, redColor, .1f);
                     }
                     else
                     {
-                        lineRedererMaterial.color = Color.Lerp(redColor, defaultColor, .1f);
+                        lineRedererMaterial.color = redColor; //Color.Lerp(redColor, defaultColor, .1f);
                     }
                 }
 
