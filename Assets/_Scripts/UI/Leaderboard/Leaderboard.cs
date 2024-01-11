@@ -6,7 +6,7 @@ namespace BreadFlip
 {
     public class Leaderboard : MonoBehaviour
     {
-        private const int count = 10;
+        private const int count = 6;
         private List<GameObject> items = new List<GameObject>();
 
         [SerializeField] GameObject ItemPrefab;
@@ -16,7 +16,7 @@ namespace BreadFlip
         private void OnEnable()
         {
             from = -count;
-            ShowNext();
+            ShowNext(true);
         }
 
         private void AddItem(DBPlayer player, int id)
@@ -35,8 +35,10 @@ namespace BreadFlip
             items.Clear();
         }
 
-        public void ShowNext()
+        public void ShowNext(bool prosimPokazat)
         {
+            Debug.LogWarning(items.Count);
+            if (items.Count < count && !prosimPokazat) return;
             ClearSpace();
             from += count;
             var players = DBInterface.GetRecords(from, count);
@@ -51,6 +53,7 @@ namespace BreadFlip
 
         public void ShowPrevious()
         {
+            if (from == 0) return;
             ClearSpace();
             from -= count;
             var players = DBInterface.GetRecords(from, count);
