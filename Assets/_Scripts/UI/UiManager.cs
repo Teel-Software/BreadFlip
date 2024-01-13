@@ -9,8 +9,6 @@ namespace BreadFlip.UI
 {
     public class UiManager : MonoBehaviour
     {
-        public static event Action SurvivedAfterFail;
-
         [Header("Main UI Elements")]
         [SerializeField] private GameObject _mainMenu;
         [SerializeField] private GameObject _gameUi;

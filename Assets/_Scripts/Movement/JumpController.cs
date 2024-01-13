@@ -39,7 +39,7 @@ namespace BreadFlip.Movement
         private Vector3 _rotateAxis;
         private int _speedMultiplicator = 1;
         private bool _canDoubleJump;
-        private bool _jumpDownSoundPlayed;
+        private bool _playerFailed;
         private Vector3 forceVector;
 
         private bool bylo;
@@ -61,6 +61,8 @@ namespace BreadFlip.Movement
         {
             Timer.TimeOvered += () => _canStartJump = false;
 
+            gameObject.GetComponent<ToastZoneController>().OnCollidedBadThing += () => _playerFailed = true;
+
             SwipeDetection.SwipeDownEvent += JumpDown;
         }
         
@@ -79,6 +81,8 @@ namespace BreadFlip.Movement
 
             secondSoundPlayed = false;
             _canDoubleJump = false;
+
+            SwipeDetection.Reset();
 
             transform.rotation = Quaternion.Euler(new Vector3 (0f, 90f, 0));
 
@@ -190,12 +194,13 @@ namespace BreadFlip.Movement
                     _isDoubleJumpPressed = true;
 
                     // начать double jump sound
-                    _soundManager.PlayDoubleJump();
+                    if (!_playerFailed)
+                        _soundManager.PlayDoubleJump();
             }
 
             else if (SwipeDetection.TouchMoved)
             {
-              _soundManager.StopJumpSound();
+                _soundManager.StopJumpSound();
             }
 
             if (Input.GetMouseButtonUp(0) && _isDoubleJumpPressed && _rigidbody.velocity.y > 0)

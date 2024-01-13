@@ -19,6 +19,14 @@ namespace BreadFlip.Movement
 
         public static bool SwipeEnabled {get; set;}
 
+        private static bool _swipeWas;
+
+        public static void Reset() {
+            SwipeEnabled = false;
+            _swipeWas = false;
+            _touchMoved = false;
+        }
+
         // private JumpController _jumpController;
 
         // private void Start() {
@@ -27,7 +35,7 @@ namespace BreadFlip.Movement
 
         private void Update() 
         {
-            if (SwipeEnabled)
+            if (SwipeEnabled && !_swipeWas)
             {
                 if (Input.GetMouseButtonDown(0))
                 {
@@ -41,6 +49,7 @@ namespace BreadFlip.Movement
                     {
                         _touchMoved = true;
                         SwipeDownEvent?.Invoke();
+                        _swipeWas = true;
                     }
                     else
                     {

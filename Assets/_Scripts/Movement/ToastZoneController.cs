@@ -73,7 +73,7 @@ namespace BreadFlip.Movement
                 _exitedFromCollider = true;
                 _collidedToaster = true;
 
-                Debug.Log(MethodBase.GetCurrentMethod());
+                // Debug.Log(MethodBase.GetCurrentMethod());
 
                 var toaster = toasterObj.GetComponent<Toaster>();
                 if (!toaster) return;
@@ -107,7 +107,7 @@ namespace BreadFlip.Movement
             // Debug.LogWarning($"ЗАШЛИ: {badThing.name}");
             if (!_collidedToaster)
             {
-                Debug.Log(MethodBase.GetCurrentMethod());
+                // Debug.Log(MethodBase.GetCurrentMethod());
                 
                 PlayCrumbs();
                 _jumpController.UnlockPhysicsRotation();
