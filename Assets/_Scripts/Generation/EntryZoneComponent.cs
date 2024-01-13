@@ -41,7 +41,7 @@ namespace BreadFlip.Generation
             if (!IsZoneTrigger)
             {
                 _onEnteredZone.Invoke(gameObject);
-                Debug.Log("Collision");
+                // Debug.Log("Collision");
             }
         }
 
@@ -50,7 +50,7 @@ namespace BreadFlip.Generation
            if (!IsZoneTrigger)
            {
                _onExitZone.Invoke(gameObject);
-               Debug.Log("Collision");
+            //    Debug.Log("Collision");
            }
         }
 
