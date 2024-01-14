@@ -24,7 +24,7 @@ namespace BreadFlip
 
         public void SetData(DBPlayer player, int id)
         {
-            Num.text = id.ToString();
+            Num.text = id.ToString() + ".";
             Login.text = player.player;
             Record.text = player.record.ToString();
         }
