@@ -1218,6 +1218,18 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4603831788449828374, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
+      propertyPath: redColor.b
+      value: 0.068841234
+      objectReference: {fileID: 0}
+    - target: {fileID: 4603831788449828374, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
+      propertyPath: redColor.g
+      value: 0.17021513
+      objectReference: {fileID: 0}
+    - target: {fileID: 4603831788449828374, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
+      propertyPath: redColor.r
+      value: 0.8584906
+      objectReference: {fileID: 0}
+    - target: {fileID: 4603831788449828374, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
       propertyPath: _soundManager
       value: 
       objectReference: {fileID: 1493755432}
@@ -1240,6 +1252,18 @@ PrefabInstance:
     - target: {fileID: 4655393827151577845, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4655393827151577851, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4655393827151577851, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4655393827151577851, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
+      propertyPath: m_Parameters.colorGradient.m_Mode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5073544946718634969, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
       propertyPath: m_Name
