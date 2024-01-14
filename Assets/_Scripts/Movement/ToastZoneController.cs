@@ -138,7 +138,7 @@ namespace BreadFlip.Movement
 
         public void OnExitFromTrigger(GameObject triggeredObj)
         {
-            Debug.Log(MethodBase.GetCurrentMethod());
+            // Debug.Log(MethodBase.GetCurrentMethod());
             
             PlaySmoke();
             PlayCrumbs();
