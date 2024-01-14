@@ -1,14 +1,13 @@
 using BreadFlip.Movement;
 using BreadFlip.UI;
 using System.Collections;
+using BreadFlip.Entities.Skins;
 using UnityEngine;
 
 namespace BreadFlip.Entities
 {
-    public class ToastColorChanger : MonoBehaviour
+    public class ToastColorChanger : AbstractSkinNeedy
     {
-        [SerializeField] private Toast _toast;
-
         [Header("Crust")]
         [SerializeField] private Color startCrustColor;
         [SerializeField] private Color endCrustColor;
@@ -34,8 +33,8 @@ namespace BreadFlip.Entities
 
         private void ChangeColor(float tick)
         {
-            _toast.CrustRenderer.material.color = Color.Lerp(startCrustColor, endCrustColor, tick / Timer.wholeTime);
-            _toast.PulpRenderer.material.color = Color.Lerp(startPulpColor, endPulpColor, tick / Timer.wholeTime);
+            SkinChanger.CurrentSkin.CrustRenderer.material.color = Color.Lerp(startCrustColor, endCrustColor, tick / Timer.wholeTime);
+            SkinChanger.CurrentSkin.PulpRenderer.material.color = Color.Lerp(startPulpColor, endPulpColor, tick / Timer.wholeTime);
         }
 
         private IEnumerator ResetColorAnimation()
@@ -47,8 +46,8 @@ namespace BreadFlip.Entities
                 ChangeColor(currentTime * Timer.wholeTime / resetDuration);
                 yield return null;
             }
-            _toast.PulpRenderer.material.color = startPulpColor;
-            _toast.CrustRenderer.material.color = startCrustColor;
+            SkinChanger.CurrentSkin.PulpRenderer.material.color = startPulpColor;
+            SkinChanger.CurrentSkin.CrustRenderer.material.color = startCrustColor;
         }
 
         private void ResetColor()

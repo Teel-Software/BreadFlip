@@ -79,7 +79,7 @@ namespace BreadFlip.Movement
                 if (!toaster) return;
                 _jumpController.CurrentToaster = toaster;
 
-                toaster.SetToast(transform, _jumpController.Toast);
+                toaster.SetToast(transform, _jumpController.SkinChanger.CurrentSkin);
 
                 _rigidbody.velocity = Vector3.zero;
                 _jumpController.Reset();

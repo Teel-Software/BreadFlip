@@ -90,6 +90,8 @@ MonoBehaviour:
   - {fileID: -7588359438761295133, guid: 13bb3ee34d3518344b8d5ef99f20d08e, type: 3}
   - {fileID: -2931094569920823060, guid: fe3d3685c5be72c43884dd38c836b140, type: 3}
   - {fileID: 8566961829380017051, guid: 8233f63821eb6d1438f790a26a79ae47, type: 3}
+  - {fileID: 3623129605519198696, guid: a818c7326c9d0de4eb0adc56308a6b37, type: 3}
+  - {fileID: 788367080871814578, guid: 5a349b4bcb8741b40b0ca3d0aeadefa7, type: 3}
   _entryZoneComponents:
   - {fileID: 5590415440819224683}
   - {fileID: 2437911180529141594}
