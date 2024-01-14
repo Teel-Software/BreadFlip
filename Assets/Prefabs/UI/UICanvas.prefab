@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1058193958
 RectTransform:
   m_ObjectHideFlags: 0
@@ -418,7 +418,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4543165194679749350, guid: 6a77aa7b7aa4a1e4ba9053d20d59fe5a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4543165195245112665, guid: 6a77aa7b7aa4a1e4ba9053d20d59fe5a, type: 3}
       propertyPath: m_Transition
@@ -546,7 +546,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4543165196606065817, guid: 6a77aa7b7aa4a1e4ba9053d20d59fe5a, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 957.9238
+      value: 968
       objectReference: {fileID: 0}
     - target: {fileID: 4543165196606065817, guid: 6a77aa7b7aa4a1e4ba9053d20d59fe5a, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -734,10 +734,10 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 50
-    m_Bottom: 50
+    m_Top: 0
+    m_Bottom: 0
   m_ChildAlignment: 1
-  m_Spacing: 50
+  m_Spacing: 25
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -2442,7 +2442,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5640539205026757282, guid: ae0499a24b696264fba9c7417a352ddc, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5729362865178155608, guid: ae0499a24b696264fba9c7417a352ddc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
