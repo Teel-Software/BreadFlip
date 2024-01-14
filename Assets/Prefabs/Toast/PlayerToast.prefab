@@ -622,7 +622,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4850389746987007332
 Transform:
   m_ObjectHideFlags: 0
@@ -653,7 +653,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ModelTransform>k__BackingField: {fileID: 477525820954373044}
   <ModelUpOffset>k__BackingField: 0.1
-  <ModelCollider>k__BackingField: {fileID: 0}
+  <ModelCollider>k__BackingField: {fileID: 816373970022726577}
   <PulpRenderer>k__BackingField: {fileID: 6392261171645819986}
   <CrustRenderer>k__BackingField: {fileID: 5085768755244732877}
 --- !u!65 &816373970022726577
@@ -863,6 +863,7 @@ GameObject:
   - component: {fileID: 4603831788449828374}
   - component: {fileID: 2139659203}
   - component: {fileID: 6581707821822194863}
+  - component: {fileID: 584894851303034133}
   m_Layer: 0
   m_Name: PlayerToast
   m_TagString: Player
@@ -938,7 +939,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b549f1cc8c34c128753d2cd3bf69715, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _toast: {fileID: 4815341914535462348}
+  _skinChanger: {fileID: 584894851303034133}
   _rigidbody: {fileID: 5380029066633624961}
   _trajectoryRenderer: {fileID: 4655393827151577850}
   mainMenu: {fileID: 0}
@@ -958,7 +959,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88f1a8966ee699143b64bbfe2d28a450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _toast: {fileID: 4815341914535462348}
+  _skinChanger: {fileID: 584894851303034133}
   startCrustColor: {r: 0.6862745, g: 0.4627451, b: 0.18431373, a: 1}
   endCrustColor: {r: 0.13, g: 0.08765713, b: 0.034914277, a: 1}
   startPulpColor: {r: 0.9607843, g: 0.8117647, b: 0.5568628, a: 1}
@@ -977,6 +978,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85e323b404cb5b84886bfaf2f6e404d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &584894851303034133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5073544946718634969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4185570ca79f429c8ea39d2f912d1f9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _skins:
+  - {fileID: 1234029334738532760}
+  - {fileID: 8005237435177736288}
+  - {fileID: 4815341914535462348}
+  - {fileID: 3007157117727192356}
+  _skinNeedies:
+  - {fileID: 4603831788449828374}
+  - {fileID: 2139659203}
+  _defaultSkin: {fileID: 4815341914535462348}
 --- !u!1 &5978144403833715672
 GameObject:
   m_ObjectHideFlags: 0
@@ -994,7 +1016,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5224735610645219852
 Transform:
   m_ObjectHideFlags: 0
@@ -1448,7 +1470,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3645481625055281087, guid: 8c6543d3d03e71846882066ab8230960, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 43
+      value: 43.000008
       objectReference: {fileID: 0}
     - target: {fileID: 3645481625055281087, guid: 8c6543d3d03e71846882066ab8230960, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1456,7 +1478,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3645481625055281087, guid: 8c6543d3d03e71846882066ab8230960, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.089044
+      value: -5.0890465
       objectReference: {fileID: 0}
     - target: {fileID: 3645481625055281087, guid: 8c6543d3d03e71846882066ab8230960, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1464,15 +1486,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3645481625055281087, guid: 8c6543d3d03e71846882066ab8230960, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3645481625055281087, guid: 8c6543d3d03e71846882066ab8230960, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3645481625055281087, guid: 8c6543d3d03e71846882066ab8230960, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3645481625055281087, guid: 8c6543d3d03e71846882066ab8230960, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

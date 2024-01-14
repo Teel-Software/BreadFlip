@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using BreadFlip.Entities;
+using BreadFlip.Entities.Skins;
 using BreadFlip.Sound;
 using BreadFlip.UI;
 using UnityEngine;
@@ -8,9 +9,8 @@ using Random = UnityEngine.Random;
 
 namespace BreadFlip.Movement
 {
-    public class JumpController : MonoBehaviour
+    public class JumpController : AbstractSkinNeedy
     {
-        [SerializeField] private Toast _toast;
         [SerializeField] private Rigidbody _rigidbody;
 
         [SerializeField] private TrajectoryRenderer _trajectoryRenderer;
@@ -24,7 +24,6 @@ namespace BreadFlip.Movement
         [SerializeField] private Material lineRedererMaterial;
         [SerializeField] private Color defaultColor;
         [SerializeField] private Color redColor;
-        
 
         //private bool firstSoundPlayed;
         private bool secondSoundPlayed;
@@ -47,8 +46,7 @@ namespace BreadFlip.Movement
         private const float _MAX_TIME = 1.3f;
         private const float _MAGNITUDE = 5f;
         public Toaster CurrentToaster { get; set; }
-        public Toast Toast => _toast;
-
+        
         public Rigidbody Rigidbody => _rigidbody;
 
         public bool CanDoubleJump 
@@ -217,7 +215,7 @@ namespace BreadFlip.Movement
         private void ResetAnimRotation()
         {
             StopRotation();
-            Toast.ModelCollider.transform.localRotation = Quaternion.identity;
+            SkinChanger.CurrentSkin.ModelCollider.transform.localRotation = Quaternion.identity;
 
             _speedMultiplicator = 1;
             
@@ -239,7 +237,7 @@ namespace BreadFlip.Movement
             if (!ignoreDelay) yield return new WaitForSeconds(.15f);
             while (true)
             {
-                Toast.ModelCollider.transform.Rotate(_rotateAxis, _rotationSpeed * _speedMultiplicator * Time.deltaTime);
+                SkinChanger.CurrentSkin.ModelCollider.transform.Rotate(_rotateAxis, _rotationSpeed * _speedMultiplicator * Time.deltaTime);
                 yield return null;
             }
         }
