@@ -6,7 +6,7 @@ namespace BreadFlip
 {
     public class Leaderboard : MonoBehaviour
     {
-        private const int count = 6;
+        private const int count = 8;
         private List<GameObject> items = new List<GameObject>();
 
         [SerializeField] GameObject ItemPrefab;
@@ -37,7 +37,7 @@ namespace BreadFlip
 
         public void ShowNext(bool prosimPokazat)
         {
-            Debug.LogWarning(items.Count);
+            // Debug.LogWarning(items.Count);
             if (items.Count < count && !prosimPokazat) return;
             ClearSpace();
             from += count;
