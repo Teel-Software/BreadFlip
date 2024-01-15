@@ -1,9 +1,7 @@
-using BreadFlip.Entities;
-using BreadFlip.UI;
 using TMPro;
 using UnityEngine;
 
-namespace BreadFlip
+namespace BreadFlip.UI
 {
     public class CoinsPanel : MonoBehaviour
     {
@@ -36,11 +34,11 @@ namespace BreadFlip
             if (PlayerPrefs.HasKey("all_coins"))
             {
                 var coinsWas = PlayerPrefs.GetInt("all_coins");
-               PlayerPrefs.SetInt("all_coins", coinsWas + Coins);
+                PlayerPrefs.SetInt("all_coins", coinsWas + Coins);
             }
             else
             {
-               PlayerPrefs.SetInt("all_coins", Coins);
+                PlayerPrefs.SetInt("all_coins", Coins);
             }
             _coinsOutput.text = $"+{Coins}";
         
