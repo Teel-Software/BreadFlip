@@ -843,6 +843,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2312743659114872124, guid: 3c07d6c53e161054e967aa53a0bdc9a2, type: 3}
   m_PrefabInstance: {fileID: 1332389459}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1479106921 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4543165196315739497, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+  m_PrefabInstance: {fileID: 1877933764}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1487771678
 GameObject:
   m_ObjectHideFlags: 0
@@ -1185,6 +1190,18 @@ PrefabInstance:
       propertyPath: _jumpController
       value: 
       objectReference: {fileID: 2139659199}
+    - target: {fileID: 6344882562373608260, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1479106921}
+    - target: {fileID: 6344882562373608260, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138631101522550931, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
 --- !u!224 &1877933765 stripped
