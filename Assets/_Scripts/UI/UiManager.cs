@@ -68,8 +68,12 @@ namespace BreadFlip.UI
 
         public void ReloadScene() // в редакторе только дебаг, в вебе - показ интера и по калбеку закрытия - переход
         {
-#if (UNITY_WEBGL || UNITY_ANDROID) && UNITY_EDITOR
+#if UNITY_EDITOR
             Debug.Log("Interstitial advertisement");
+            LoadLevel();
+#endif
+#if UNITY_ANDROID && !UNITY_EDITOR
+            // Debug.Log("Interstitial advertisement");
             LoadLevel();
 #endif
 #if UNITY_WEBGL && !UNITY_EDITOR
