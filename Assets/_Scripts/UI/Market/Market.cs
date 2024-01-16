@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,10 +22,19 @@ namespace BreadFlip.UI
                 _coinsText.text = PlayerPrefs.GetInt("all_coins").ToString();
             }
 
-
+            _buyButton.onClick.AddListener(someMethod);
 
             // TODO меняем контент кнопки и её логику
         }
-        
+
+        private void someMethod()
+        {
+            SwitchFromBuyToEquip();
+        }
+
+        private void SwitchFromBuyToEquip()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
