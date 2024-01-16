@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace BreadFlip
+namespace BreadFlip.UI
 {
     public class SettingsBackButton : MonoBehaviour
     {
