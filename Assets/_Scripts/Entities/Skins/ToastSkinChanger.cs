@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using BreadFlip.UI;
 
 namespace BreadFlip.Entities.Skins
 {
@@ -7,7 +8,7 @@ namespace BreadFlip.Entities.Skins
     {
         public Toast CurrentSkin { get; private set; }
 
-        public Toast[] skins;
+        [SerializeField] private Toast[] skins;
         [SerializeField] private AbstractSkinNeedy[] _skinNeedies;
 
         [SerializeField] private Toast _defaultSkin;
@@ -15,8 +16,9 @@ namespace BreadFlip.Entities.Skins
         private void Awake()
         {
             // скин, который ставится по дефолту, при старте игры
-            CurrentSkin = _defaultSkin;
-            ChangeSkin(CurrentSkin);
+            // CurrentSkin = _defaultSkin;
+            // ChangeSkin(CurrentSkin);
+            ChangeSkin(Market.EquippedSkin);
         }
 
         private void Update()
