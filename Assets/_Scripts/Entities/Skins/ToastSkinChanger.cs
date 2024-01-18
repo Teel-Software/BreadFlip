@@ -18,7 +18,12 @@ namespace BreadFlip.Entities.Skins
             // скин, который ставится по дефолту, при старте игры
             // CurrentSkin = _defaultSkin;
             // ChangeSkin(CurrentSkin);
-            ChangeSkin(Market.EquippedSkin);
+            if (PlayerPrefs.HasKey("SKIN_EQUPPIED"))
+                ChangeSkin(PlayerPrefs.GetInt("SKIN_EQUPPIED"));
+            else
+            {
+                ChangeSkin(_defaultSkin);
+            }
         }
 
         private void Update()
@@ -69,7 +74,7 @@ namespace BreadFlip.Entities.Skins
         
         public void ChangeSkin(int newSkinIndex)
         {
-            if (newSkinIndex <= 0 || newSkinIndex >= skins.Length)
+            if (newSkinIndex < 0 || newSkinIndex >= skins.Length)
                 return;
 
             CurrentSkin = skins[newSkinIndex];
