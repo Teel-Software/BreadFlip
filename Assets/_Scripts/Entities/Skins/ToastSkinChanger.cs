@@ -7,7 +7,7 @@ namespace BreadFlip.Entities.Skins
     {
         public Toast CurrentSkin { get; private set; }
 
-        [SerializeField] private Toast[] _skins;
+        public Toast[] skins;
         [SerializeField] private AbstractSkinNeedy[] _skinNeedies;
 
         [SerializeField] private Toast _defaultSkin;
@@ -30,23 +30,23 @@ namespace BreadFlip.Entities.Skins
 
         public void NextSkin()
         {
-            var index = Array.IndexOf(_skins, CurrentSkin);
-            var nextIndex = (index + 1) % _skins.Length;
+            var index = Array.IndexOf(skins, CurrentSkin);
+            var nextIndex = (index + 1) % skins.Length;
 
-            var nextSkin = _skins[nextIndex];
+            var nextSkin = skins[nextIndex];
             ChangeSkin(nextSkin);
         }
 
         public void PreviousSkin()
         {
-            var index = Array.IndexOf(_skins, CurrentSkin);
+            var index = Array.IndexOf(skins, CurrentSkin);
             var previousIndex = index - 1;
             if (index < 0)
             {
-                previousIndex = _skins.Length - 1;
+                previousIndex = skins.Length - 1;
             }
 
-            var previousSkin = _skins[previousIndex];
+            var previousSkin = skins[previousIndex];
             ChangeSkin(previousSkin);
         }
 
@@ -54,7 +54,7 @@ namespace BreadFlip.Entities.Skins
         public void ChangeSkin(Toast newSkin)
         {
             CurrentSkin = newSkin;
-            foreach (var skin in _skins)
+            foreach (var skin in skins)
             {
                 skin.gameObject.SetActive(skin == newSkin);
             }
@@ -67,12 +67,12 @@ namespace BreadFlip.Entities.Skins
         
         public void ChangeSkin(int newSkinIndex)
         {
-            if (newSkinIndex <= 0 || newSkinIndex >= _skins.Length)
+            if (newSkinIndex <= 0 || newSkinIndex >= skins.Length)
                 return;
 
-            CurrentSkin = _skins[newSkinIndex];
+            CurrentSkin = skins[newSkinIndex];
             
-            foreach (var skin in _skins)
+            foreach (var skin in skins)
             {
                 skin.gameObject.SetActive(skin == CurrentSkin);
             }
