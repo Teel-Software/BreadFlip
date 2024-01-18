@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace BreadFlip.UI
 {
     public enum Skins
