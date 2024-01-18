@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +12,7 @@ namespace BreadFlip.UI
 
         public Skins skin;
 
-        [SerializeField ] private Sprite defaultImage;
+        [SerializeField] private Sprite defaultImage;
 
         private void Awake() {
             buttonToggle.group = transform.parent.GetComponent<ToggleGroup>();
