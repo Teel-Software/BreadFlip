@@ -7,7 +7,7 @@ namespace BreadFlip
     {
         private const int skinsCount = 6;
 
-        [SerializeField] private List<GameObject> _cellsPrefabs;
+        public List<GameObject> _cellsPrefabs;
         [SerializeField] private GameObject _blockedPrefab;
 
         private List<GameObject> _spawnedItems = new List<GameObject>();
