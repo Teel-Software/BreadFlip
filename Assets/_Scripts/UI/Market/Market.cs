@@ -24,6 +24,7 @@ namespace BreadFlip.UI
 
         [Header("Skin Changing")]
         [SerializeField] private ToastSkinChanger _skinChanger;
+        private Skins _selectedSkin;
 
         private Dictionary<Skins, int> _skinsPricing = new Dictionary<Skins, int>
         {
@@ -59,6 +60,7 @@ namespace BreadFlip.UI
             MarketCell.SkinSelected += ChangeBigImage;
             MarketCell.SkinSelected += ChangeSkinPrice;
             MarketCell.SkinSelected += ChangeSkinName;
+            MarketCell.SkinSelected += (Skins skin) => _selectedSkin = skin;
 
             // TODO меняем контент кнопки и её логику
         }
@@ -67,6 +69,7 @@ namespace BreadFlip.UI
             MarketCell.SkinSelected -= ChangeBigImage;
             MarketCell.SkinSelected -= ChangeSkinPrice;
             MarketCell.SkinSelected -= ChangeSkinName;
+            MarketCell.SkinSelected -= (Skins skin) => _selectedSkin = skin;
         }
 
         private void FillSkinsList()
@@ -113,7 +116,8 @@ namespace BreadFlip.UI
 
             else if (_notEquipedButtonObj.activeSelf)
             {
-                _skinChanger.ChangeSkin(_skinChanger.skins)
+                _skinChanger.ChangeSkin(_skinChanger.skins[(int)_selectedSkin]);
+                SwitchToEquipped();
             }
         }
 
