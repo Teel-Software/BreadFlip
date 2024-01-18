@@ -1172,6 +1172,14 @@ PrefabInstance:
       propertyPath: _jumpController
       value: 
       objectReference: {fileID: 2139659199}
+    - target: {fileID: 7385019106065741025, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8622384397152588130, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
 --- !u!224 &1877933765 stripped
