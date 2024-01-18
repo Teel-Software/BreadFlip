@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using Agava.YandexGames;
 using BreadFlip.Movement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace BreadFlip.UI
 {
@@ -21,6 +23,9 @@ namespace BreadFlip.UI
         
         [SerializeField] public ToastZoneController zoneController;
         [SerializeField] private JumpController _jumpController;
+
+        [Header("Main menu buttons")]
+        [SerializeField] private List<GameObject> _mainMenuElements;
 
         public static bool pauseButtonPressed;
 
@@ -41,6 +46,33 @@ namespace BreadFlip.UI
             }
 
             Timer.TimeOvered += OnFailed;
+
+            SetDisablingToButtons();
+        }
+
+        private void SetDisablingToButtons()
+        {
+            foreach(var el in _mainMenuElements)
+            {
+                if (el.name != "TitleIcon")
+                el.GetComponent<Button>().onClick.AddListener(DisableButtons);
+            }
+        }
+
+        private void DisableButtons()
+        {
+            foreach(var el in _mainMenuElements)
+            {
+                el.SetActive(false);
+            }
+        }
+
+        public void ActivateMainButtons()
+        {
+            foreach(var el in _mainMenuElements)
+            {
+                el.SetActive(true);
+            }
         }
 
         public void PressPauseButton()

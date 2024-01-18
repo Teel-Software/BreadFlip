@@ -945,8 +945,8 @@ MonoBehaviour:
   mainMenu: {fileID: 0}
   _soundManager: {fileID: 0}
   lineRedererMaterial: {fileID: 2100000, guid: 08d588173a91ba342bcae5661179a18d, type: 2}
-  defaultColor: {r: 1, g: 1, b: 1, a: 0.5019608}
-  redColor: {r: 0.745283, g: 0.23830582, b: 0.16522783, a: 0.5019608}
+  defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  redColor: {r: 0.8867924, g: 0.20499441, b: 0.10457456, a: 1}
 --- !u!114 &2139659203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -990,15 +990,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4185570ca79f429c8ea39d2f912d1f9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _skins:
+  skins:
+  - {fileID: 3007157117727192356}
   - {fileID: 1234029334738532760}
   - {fileID: 8005237435177736288}
   - {fileID: 4815341914535462348}
-  - {fileID: 3007157117727192356}
   _skinNeedies:
   - {fileID: 4603831788449828374}
   - {fileID: 2139659203}
-  _defaultSkin: {fileID: 4815341914535462348}
+  _defaultSkin: {fileID: 3007157117727192356}
 --- !u!1 &5978144403833715672
 GameObject:
   m_ObjectHideFlags: 0
@@ -1453,12 +1453,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 08d588173a91ba342bcae5661179a18d, type: 2}
     - target: {fileID: 3645481625055281084, guid: 8c6543d3d03e71846882066ab8230960, type: 3}
+      propertyPath: m_Parameters.colorGradient.atime2
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645481625055281084, guid: 8c6543d3d03e71846882066ab8230960, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3645481625055281084, guid: 8c6543d3d03e71846882066ab8230960, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.g
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645481625055281084, guid: 8c6543d3d03e71846882066ab8230960, type: 3}
+      propertyPath: m_Parameters.colorGradient.key2.a
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3645481625055281084, guid: 8c6543d3d03e71846882066ab8230960, type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
