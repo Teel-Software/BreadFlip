@@ -6,7 +6,6 @@ namespace BreadFlip
     public class BuyingCells : MonoBehaviour
     {
         private const int skinsCount = 6;
-
         public List<GameObject> _cellsPrefabs;
         [SerializeField] private GameObject _blockedPrefab;
 
