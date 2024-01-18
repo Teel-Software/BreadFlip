@@ -29,9 +29,9 @@ namespace BreadFlip.UI
         private Dictionary<Skins, int> _skinsPricing = new Dictionary<Skins, int>
         {
             {Skins.DefaultSkin, 0},
-            {Skins.NotDefaultSkin, 12},
-            {Skins.CatSkin, 73},
-            {Skins.CorgiAssSkin, 99}
+            {Skins.NotDefaultSkin, 4},
+            {Skins.CatSkin, 5},
+            {Skins.CorgiAssSkin, 100000}
 
         };
 
@@ -46,7 +46,7 @@ namespace BreadFlip.UI
         private List<Sprite> SkinsImages = new List<Sprite>();
 
         private void OnEnable() {
-            
+                       
             // отображаем имеющиеся монеты
             if (PlayerPrefs.HasKey("all_coins"))
             {
@@ -75,13 +75,11 @@ namespace BreadFlip.UI
         private void FillSkinsList()
         {
             var list = _buyingCells.GetComponent<BuyingCells>()._cellsPrefabs;
-            Debug.Log(list.Count);
             for (int i = 0; i < list.Count; i++)
             {
                 SkinsImages.Add(list[i].GetComponentsInChildren<Image>()[1].sprite);
                 
             }
-            Debug.Log($"Length: {SkinsImages.Count}");
         }
 
         private void ChangeBigImage(Skins skin)
@@ -95,6 +93,24 @@ namespace BreadFlip.UI
             {
                 SwitchToBuyButton();
                 _skinPrice.text = _skinsPricing[skin].ToString();
+                
+                if (PlayerPrefs.GetInt("all_coins") < _skinsPricing[skin])
+                {
+                    _buyButton.interactable = false;
+                    foreach (var comp in _buyButtonObj.GetComponents<ChangeTextColor>())
+                    {
+                        comp.ChangeColorOnPressed();
+                    }
+                }
+                else
+                {
+                    _buyButton.interactable = true;
+                    foreach (var comp in _buyButtonObj.GetComponents<ChangeTextColor>())
+                    {
+                        comp.ChangeColorToDefault();
+                    }
+                }
+
             }
             else
             {
@@ -111,7 +127,7 @@ namespace BreadFlip.UI
         {
             if (_buyButtonObj.activeSelf)
             {
-
+                // логика покупки
             }
 
             else if (_notEquipedButtonObj.activeSelf)
@@ -147,6 +163,14 @@ namespace BreadFlip.UI
             _notEquipedButtonObj.SetActive(false);
 
             _buyButton.interactable = true;
+        }
+
+        public void SetDefaultView()
+        {
+            _buyingCells.GetComponent<BuyingCells>().SpawnedItems[0].GetComponent<MarketCell>().buttonToggle.isOn = true;
+            _buyingCells.GetComponent<BuyingCells>().SpawnedItems[0].GetComponent<Image>().sprite = 
+                                                    _buyingCells.GetComponent<BuyingCells>().SpawnedItems[0].GetComponent<MarketCell>().
+                                                    buttonToggle.spriteState.selectedSprite;
         }
     }
 }

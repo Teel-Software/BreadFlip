@@ -12,7 +12,14 @@ namespace BreadFlip
 
         private List<GameObject> _spawnedItems = new List<GameObject>();
 
-        private void OnEnable() {
+        public List<GameObject> SpawnedItems {
+            get 
+                { 
+                    return _spawnedItems;
+                }
+        }
+
+        private void Awake() {
             ShowSkins();
         }
 

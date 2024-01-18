@@ -227,6 +227,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d2acf80207cca543854ac4b4dab8f94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _buttonToggle: {fileID: 4798832509723891634}
+  buttonToggle: {fileID: 4798832509723891634}
   skin: 0
   defaultImage: {fileID: 21300000, guid: 9a1c586037544e141b0557049547bd3a, type: 3}
