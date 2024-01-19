@@ -500,3 +500,4 @@ MonoBehaviour:
   Num: {fileID: 5110901255355825766}
   Login: {fileID: 2084519809595797662}
   Record: {fileID: 5993110719804804644}
+  Player: {fileID: 21300000, guid: f37e49efd9aa11b4ba461c3115ba2f86, type: 3}

@@ -10,7 +10,7 @@ namespace BreadFlip
 {
     public static class DBWorker
     {
-        private static string endpoint = "";//http://localhost:8080
+        private static string endpoint = "http://localhost:8080";//http://localhost:8080
         public static DBTopRecords GetRecords(int offset, int count)
         {
             initEndpoint();
@@ -80,6 +80,7 @@ namespace BreadFlip
     [Serializable]
     public struct DBPlayer
     {
+        public int id;
         public string player;
         public int record;
     }
