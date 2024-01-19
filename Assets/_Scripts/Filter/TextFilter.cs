@@ -12,6 +12,12 @@ namespace BreadFlip
         [SerializeField] private GameObject _label;
 
         [SerializeField] Button button;
+
+        private void OnEnable()
+        {
+            button.enabled = false;
+        }
+
         public void CheckText(string str)
         {
             var a = str.Trim();
