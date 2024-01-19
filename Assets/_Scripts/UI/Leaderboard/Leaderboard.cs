@@ -16,7 +16,7 @@ namespace BreadFlip
         private void OnEnable()
         {
             from = -count;
-            ShowNext(true);
+            ShowNext();
         }
 
         private void AddItem(DBPlayer player, int id)
@@ -35,13 +35,17 @@ namespace BreadFlip
             items.Clear();
         }
 
-        public void ShowNext(bool prosimPokazat)
+        public void ShowNext()
         {
-            // Debug.LogWarning(items.Count);
-            if (items.Count < count && !prosimPokazat) return;
-            ClearSpace();
             from += count;
             var players = DBInterface.GetRecords(from, count);
+            // Debug.LogWarning(items.Count);
+            if (players.record_list.Count == 0)
+            {
+                from -= count;
+                return;
+            }
+            ClearSpace();
 
             int i = from + 1;
             foreach (var el in players.record_list)

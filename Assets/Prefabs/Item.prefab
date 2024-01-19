@@ -230,6 +230,7 @@ MonoBehaviour:
   Num: {fileID: 8188623760747636420}
   Login: {fileID: 8188623761038851528}
   Record: {fileID: 8188623760071362899}
+  Player: {fileID: 21300000, guid: f37e49efd9aa11b4ba461c3115ba2f86, type: 3}
 --- !u!1 &8188623760747636422
 GameObject:
   m_ObjectHideFlags: 0

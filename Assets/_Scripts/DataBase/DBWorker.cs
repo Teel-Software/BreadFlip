@@ -80,6 +80,7 @@ namespace BreadFlip
     [Serializable]
     public struct DBPlayer
     {
+        public int id;
         public string player;
         public int record;
     }
