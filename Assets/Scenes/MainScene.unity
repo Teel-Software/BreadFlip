@@ -1052,14 +1052,38 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 1924893623014060740, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1924893623106048814, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1924893623639393246, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1924893623703070243, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3152046714966707053, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3278268419570178110, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4048511321596943178, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
       propertyPath: _skinChanger
       value: 
       objectReference: {fileID: 2139659200}
+    - target: {fileID: 4428067507318595911, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4614380712577566193, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
