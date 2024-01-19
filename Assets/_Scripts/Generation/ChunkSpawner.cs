@@ -29,7 +29,7 @@ namespace BreadFlip.Generation
         [SerializeField] private float _emptySpaceValue = 2f;
 
         private Vector3 END_OFFSET = new Vector3(1.75f, 2f, 0f);
-        private const float HEIGHT = 1.5f;
+        private const float HEIGHT = 1.15f;
         private const int COINS_AMOUNT = 5;
 
         // [SerializeField] private GameObject coinPrefab;
@@ -122,7 +122,6 @@ namespace BreadFlip.Generation
         public void SpawnCoins(Coin _coinPrefab, Chunk currentChunk, Chunk previousChunk)
         {
             if (currentChunk.FirstTable == null) return;
-            // TODO: продебажить минусы и плюсы
             Vector3 endPosition = currentChunk
             .FirstTable.EntryZoneComponents
             .First(zone => zone.TryGetComponent<Toaster>(out var _))
@@ -163,7 +162,7 @@ namespace BreadFlip.Generation
 
         private Vector3[] GetCoinPoints(Vector3 origin, Vector3 end, float height)
         {
-            var direction = -transform.forward;
+            // var direction = -transform.forward;
             // Vector3 speed = new Vector3 (direction.x * 0.5f, 0.5f, direction.z * 0.5f);
 
             var points = new Vector3[100];
