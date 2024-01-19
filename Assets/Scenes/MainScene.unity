@@ -1020,13 +1020,33 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 318428775}
     m_Modifications:
-    - target: {fileID: 2007060867182477968, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
-      propertyPath: m_fontStyle
-      value: 0
+    - target: {fileID: 1924893622498489041, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 3278268419311304836, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
-      propertyPath: m_fontStyle
-      value: 0
+    - target: {fileID: 1924893622498489041, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1924893622498489041, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1877933766}
+    - target: {fileID: 1924893622498489041, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1924893622498489041, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SaveMoneyWhenExitFromGameplay
+      objectReference: {fileID: 0}
+    - target: {fileID: 1924893622498489041, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: BreadFlip.UI.UiManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1924893622498489041, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4048511321596943178, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
       propertyPath: _skinChanger
@@ -1143,6 +1163,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4855778870755685983, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
   m_PrefabInstance: {fileID: 1877933764}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1877933766 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5667851704598959125, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+  m_PrefabInstance: {fileID: 1877933764}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45a9ae7113c144df8f7ecc5a26baf417, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1979663220
 GameObject:
   m_ObjectHideFlags: 0

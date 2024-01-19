@@ -75,6 +75,14 @@ namespace BreadFlip.UI
             }
         }
 
+        public void SaveMoneyWhenExitFromGameplay()
+        {
+            PlayerPrefs.SetInt(
+                "all_coins",
+                PlayerPrefs.GetInt("all_coins") + _actionUI.GetComponentInChildren<CoinsPanel>().Coins
+            );
+        }
+
         public void PressPauseButton()
         {
             pauseButtonPressed = true;
