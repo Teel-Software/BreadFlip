@@ -4,6 +4,7 @@ using UnityEngine;
 using Crosstales.BWF;
 using Crosstales.BWF.Manager;
 using UnityEngine.UI;
+using BreadFlip.UI;
 
 namespace BreadFlip
 {
@@ -15,13 +16,24 @@ namespace BreadFlip
 
         private void OnEnable()
         {
-            button.enabled = false;
+            button.interactable = false;
+            button.gameObject.GetComponent<ChangeTextColor>().ChangeColorOnPressed();
         }
 
         public void CheckText(string str)
         {
             var a = str.Trim();
-            button.enabled = !BadWordManager.Contains(str) && (a != "");
+            // button.interactable = !BadWordManager.Contains(str) && (a != "");
+            if (!BadWordManager.Contains(str) && (a != ""))
+            {
+                button.interactable = true;
+                button.gameObject.GetComponent<ChangeTextColor>().ChangeColorToDefault();
+            }
+            else
+            {
+                button.interactable = false;
+                button.gameObject.GetComponent<ChangeTextColor>().ChangeColorOnPressed();
+            }
             _label.SetActive(!button.enabled);
         }
     }
