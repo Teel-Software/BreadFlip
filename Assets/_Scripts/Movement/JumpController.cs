@@ -297,7 +297,7 @@ namespace BreadFlip.Movement
                 _rigidbody.velocity = new Vector3(_rigidbody.velocity.x / 1.5f, 0f, _rigidbody.velocity.z);
                 
                 // _rigidbody.AddForce(new Vector3(0f, -15f, 0), ForceMode.Impulse);
-                for (int i = 0; i < 35; i++)
+                for (int i = 0; i < 20; i++)
                 {
                     _rigidbody.AddForce(new Vector3(0f, -1f, 0), ForceMode.Impulse);
                 }
