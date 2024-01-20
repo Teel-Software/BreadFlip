@@ -45,7 +45,7 @@ namespace BreadFlip.Movement
                 if (Input.GetMouseButton(0))
                 {
                     _movedTouchPosition = Input.mousePosition;
-                    if (_startTouchPosition.y - _movedTouchPosition.y > 1f && _movedTouchPosition.y < _startTouchPosition.y)
+                    if (_startTouchPosition.y - _movedTouchPosition.y > 0.05f && _movedTouchPosition.y < _startTouchPosition.y)
                     {
                         _touchMoved = true;
                         SwipeDownEvent?.Invoke();
