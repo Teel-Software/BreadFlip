@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading.Tasks;
 
 namespace BreadFlip
 {
     public static class DBInterface
     {
-        public static int RegisterPlayer(string name)
+        public static void RegisterPlayer(string name)
         {
             var a = new DBPlayer();
             a.player = name;
@@ -16,7 +17,6 @@ namespace BreadFlip
             PlayerPrefs.SetString("PlayerName", name);
             if(id != -1)
                 PlayerPrefs.SetInt("PlayerRecord", 0);
-            return id;
         }
 
         public static bool UpdateRecord(int record)
@@ -30,7 +30,10 @@ namespace BreadFlip
             PlayerPrefs.SetInt("PlayerRecord", record);
             playerReq.player = PlayerPrefs.GetInt("PlayerId", 404);
             playerReq.record = record;
-            DBWorker.UpdateRecord(playerReq);
+            Task.Run(() =>
+            {
+                DBWorker.UpdateRecord(playerReq);
+            });
             return true;
         }
 
