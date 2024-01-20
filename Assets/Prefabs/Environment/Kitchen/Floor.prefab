@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49a8255bb61893f489b5f470533c8188, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _triggerZone: {fileID: 7589974089867884131}
+  _triggerZone: {fileID: 2281484443793814536}
   _onEnteredZone:
     m_PersistentCalls:
       m_Calls: []
