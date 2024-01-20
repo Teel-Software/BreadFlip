@@ -1,16 +1,16 @@
-using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.UIElements.Experimental;
 
 namespace BreadFlip
 {
     public class ChangeWallAndFloorMaterial : MonoBehaviour
     {
         [Header("Prefabs")]
-        [SerializeField] private static GameObject _wallTopPrefab;
-        [SerializeField] private static GameObject _wallBottomPrefab;
-        [SerializeField] private static GameObject _floorPrefab;
+        [SerializeField] private GameObject _wallTopPrefab;
+        [SerializeField] private GameObject _wallBottomPrefab;
+        [SerializeField] private GameObject _floorPrefab;
 
         [Header("Skins")]
         [SerializeField] private List<Material> walls;
@@ -49,8 +49,9 @@ namespace BreadFlip
             }
         }
 
-        public static void SetWallAndFloor(Material wall, Material floor)
+        public void SetWallAndFloor(Material wall, Material floor)
         {
+            Debug.Log($"ChunkElement: {_wallTopPrefab.transform.Find("ChunkElement")}");
             _wallTopPrefab.transform.Find("ChunkElement").gameObject.GetComponent<MeshRenderer>().material = wall;
             _wallBottomPrefab.transform.Find("ChunkElement").gameObject.GetComponent<MeshRenderer>().material = wall;
 

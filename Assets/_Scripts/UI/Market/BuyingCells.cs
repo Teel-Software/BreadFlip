@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace BreadFlip
+namespace BreadFlip.UI
 {
     public class BuyingCells : MonoBehaviour
     {
         private const int skinsCount = 6;
         public List<GameObject> _cellsPrefabs;
+        [SerializeField] private Categories _categories;
         [SerializeField] private GameObject _blockedPrefab;
 
         private List<GameObject> _spawnedItems = new List<GameObject>();
@@ -22,7 +23,7 @@ namespace BreadFlip
             ShowSkins();
         }
 
-        private void ShowSkins()
+        public void ShowSkins()
         {
             ClearCells();
             for (int i = 1; i <= skinsCount; i ++)

@@ -19,12 +19,15 @@ namespace BreadFlip.UI
         [Header("Skin selector")]
         [SerializeField] private Image _bigImage;
         [SerializeField] private GameObject _buyingCells;
+        [SerializeField] private GameObject _categories;
         [SerializeField] private TMP_Text _skinPrice;
         [SerializeField] private TMP_Text _skinName;
 
         [Header("Skin Changing")]
         [SerializeField] private ToastSkinChanger _skinChanger;
         private Skins _selectedSkin;
+        private CategoryType _selectedCategory;
+
 
         private Dictionary<Skins, int> _skinsPricing = new Dictionary<Skins, int>
         {
@@ -67,21 +70,49 @@ namespace BreadFlip.UI
 
 
             MarketCell.SkinSelected += ChangeSkinCell;
+            CategoryCell.CategorySelected += ChangeShownCategory;
             // MarketCell.SkinSelected += SetSelectedSkin;
             // MarketCell.SkinSelected += (Skins skin) => _selectedSkin = skin;
         }
 
         private void OnDisable() {
             MarketCell.SkinSelected -= ChangeSkinCell;
+            CategoryCell.CategorySelected -= ChangeShownCategory;
             // MarketCell.SkinSelected -= SetSelectedSkin;
+        }
+
+        private void ChangeShownCategory(CategoryType type)
+        {
+            _selectedCategory = type;
+            Debug.Log($"Category: {_selectedCategory}");
+            if (_selectedCategory == CategoryType.Bread)
+            {
+                _buyingCells.GetComponent<BuyingCells>()._cellsPrefabs = _categories.GetComponent<Categories>()._breadCellsPrefabs;
+                FillSkinsList();
+                _buyingCells.GetComponent<BuyingCells>().ShowSkins();
+                _buyingCells.GetComponent<BuyingCells>().SpawnedItems[0].GetComponent<MarketCell>().buttonToggle.isOn = true;
+            }
+            // else if (_selectedCategory == CategoryType.Toast)
+            // {
+            //     _buyingCells.GetComponent<BuyingCells>()._cellsPrefabs = _categories.GetComponent<Categories>()._toastsCellsPrefabs;
+            //     _buyingCells.GetComponent<BuyingCells>().ShowSkins();
+            // }
+            else if (_selectedCategory == CategoryType.Kitchen)
+            {
+                _buyingCells.GetComponent<BuyingCells>()._cellsPrefabs = _categories.GetComponent<Categories>()._kitchenCellsPrefabs;
+                _buyingCells.GetComponent<BuyingCells>().ShowSkins();
+            }
         }
 
         private void FillSkinsList()
         {
             var list = _buyingCells.GetComponent<BuyingCells>()._cellsPrefabs;
-            for (int i = 0; i < list.Count; i++)
+            if (list.Count > 0)
             {
-                SkinsImages.Add(list[i].GetComponentsInChildren<Image>()[1].sprite);
+                for (int i = 0; i < list.Count; i++)
+                {
+                    SkinsImages.Add(list[i].GetComponentsInChildren<Image>()[1].sprite);
+                }
             }
         }
 
@@ -89,7 +120,6 @@ namespace BreadFlip.UI
         private void ChangeBigImage(Skins skin)
         {
             _bigImage.sprite = SkinsImages[(int)skin];
-            
         }
 
         private void ChangeSkinName(Skins skin)
@@ -219,14 +249,15 @@ namespace BreadFlip.UI
             _buyButton.interactable = true;
         }
 
-        // срабатывает при нажатии на кнопку магазина в Главном Меню, задаёт начальный выбранный скин
+        // срабатывает при нажатии на кнопку магазина в Главном Меню, задаёт начальный выбранные категорию и скин
         public void SetDefaultView()
         {
+            _categories.GetComponent<Categories>().breadCategoryPrefab.GetComponent<CategoryCell>().buttonToggle.isOn = true;
+            _categories.GetComponent<Categories>().breadCategoryPrefab.GetComponent<Image>().sprite = 
+                _categories.GetComponent<Categories>().breadCategoryPrefab.GetComponent<CategoryCell>().buttonToggle.spriteState.selectedSprite;
+            
+            ChangeShownCategory(CategoryType.Bread);
             _buyingCells.GetComponent<BuyingCells>().SpawnedItems[0].GetComponent<MarketCell>().buttonToggle.isOn = true;
-            // _buyingCells.GetComponent<BuyingCells>().SpawnedItems[0].GetComponent<Image>().sprite = 
-            //                                         _buyingCells.GetComponent<BuyingCells>().SpawnedItems[0].GetComponent<MarketCell>().
-            //                                         buttonToggle.spriteState.selectedSprite;
-            // MarketCell.SkinSelected.Invoke(Skins.DefaultSkin);
         }
     }
 }
