@@ -41,7 +41,7 @@ namespace BreadFlip.Movement
         private bool _playerFailed;
         private Vector3 forceVector;
 
-        private bool bylo;
+        // private bool bylo;
 
         private const float _MAX_TIME = 1.3f;
         private const float _MAGNITUDE = 5f;
@@ -295,8 +295,13 @@ namespace BreadFlip.Movement
             if (_rigidbody != null && !_inToaster)
             {
                 _rigidbody.velocity = new Vector3(_rigidbody.velocity.x / 1.5f, 0f, _rigidbody.velocity.z);
-            
-                _rigidbody.AddForce(new Vector3(0f, -15f, 0), ForceMode.Impulse);
+                
+                // _rigidbody.AddForce(new Vector3(0f, -15f, 0), ForceMode.Impulse);
+                for (int i = 0; i < 35; i++)
+                {
+                    _rigidbody.AddForce(new Vector3(0f, -1f, 0), ForceMode.Impulse);
+                }
+                
             }
         }
     }
