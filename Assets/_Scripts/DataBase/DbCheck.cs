@@ -19,7 +19,7 @@ namespace BreadFlip
         {
             var text = player.text;
             Debug.Log(text);
-            Debug.Log(DBInterface.RegisterPlayer(text));
+            // Debug.Log(DBInterface.RegisterPlayer(text));
         }
 
         public void UpdatePlayer()
