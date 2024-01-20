@@ -1077,14 +1077,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 318428775}
     m_Modifications:
-    - target: {fileID: 3278268419311304838, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
-      propertyPath: m_Name
-      value: OK
-      objectReference: {fileID: 0}
-    - target: {fileID: 3278268420405511867, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
-      propertyPath: m_Interactable
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4048511321596943178, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
       propertyPath: _skinChanger
       value: 
