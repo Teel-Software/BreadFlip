@@ -52,11 +52,11 @@ namespace BreadFlip.UI
             {Skins.Kitchen_Game, 10000},
             {Skins.Kitchen_Gold, 20000},
             {Skins.Toaster_default, 0},
-            {Skins.Toaster_bricks, 5},
-            {Skins.Toaster_cute, 0},
-            {Skins.Toaster_voxel, 0},
+            {Skins.Toaster_bricks, 500},
+            {Skins.Toaster_cute, 1000},
             // {Skins.Toaster_undefined, -1},
-            {Skins.Toaster_golden, 0},
+            {Skins.Toaster_voxel, 10000},
+            {Skins.Toaster_golden, 20000},
         };
 
         private Dictionary<Skins, string> _skinsNaming;
@@ -83,8 +83,8 @@ namespace BreadFlip.UI
                 {Skins.Toaster_default,LocalizationManager.Localize("Skins.ToasterDefault")},
                 {Skins.Toaster_bricks,LocalizationManager.Localize("Skins.BricksToaster")},
                 {Skins.Toaster_cute,LocalizationManager.Localize("Skins.CuteToaster")},
-                {Skins.Toaster_voxel,LocalizationManager.Localize("Skins.VoxelToaster")},
                 // {Skins.Toaster_undefined,"undefined"},
+                {Skins.Toaster_voxel,LocalizationManager.Localize("Skins.VoxelToaster")},                
                 {Skins.Toaster_golden,LocalizationManager.Localize("Skins.GoldenToaster")},
             };
                        
