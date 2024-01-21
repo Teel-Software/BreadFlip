@@ -665,11 +665,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 739c4b3be12b9bd4d8f9f1718bd3c064, type: 3}
       propertyPath: m_Name
-      value: toasterMiniFurnace
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 739c4b3be12b9bd4d8f9f1718bd3c064, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      value: MiniFurnaceToaster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 739c4b3be12b9bd4d8f9f1718bd3c064, type: 3}
