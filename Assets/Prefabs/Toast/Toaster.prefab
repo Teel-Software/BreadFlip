@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 5153640404115310715}
   - component: {fileID: 882304931816628594}
   - component: {fileID: 4800201893606259044}
+  - component: {fileID: 3638400923590329327}
   m_Layer: 0
   m_Name: Toaster
   m_TagString: Untagged
@@ -171,6 +172,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.3046365, y: 0.82350546, z: 1.3475046}
   m_Center: {x: -0.19212854, y: 0.23456934, z: -0.2598905}
+--- !u!114 &3638400923590329327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2186822481414939807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b121147d532152458f0b219f381057f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skinsPrefabs:
+  - {fileID: 1790778689737901404}
+  - {fileID: 4466198054340084518}
+  - {fileID: 2619580553861971217}
+  - {fileID: 7626807897207081374}
+  - {fileID: 1480175051748901828}
 --- !u!1 &5420923683631665303
 GameObject:
   m_ObjectHideFlags: 0
@@ -388,7 +407,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5afa26e0eb63f7e4c8bc92d0251b7556, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4865064391339405807, guid: 5afa26e0eb63f7e4c8bc92d0251b7556, type: 3}
       propertyPath: m_LocalPosition.x
@@ -407,6 +426,11 @@ PrefabInstance:
 --- !u!4 &1410135853410983910 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5afa26e0eb63f7e4c8bc92d0251b7556, type: 3}
+  m_PrefabInstance: {fileID: 1448881907552483341}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1790778689737901404 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5afa26e0eb63f7e4c8bc92d0251b7556, type: 3}
   m_PrefabInstance: {fileID: 1448881907552483341}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &6313862108769946082 stripped
@@ -503,6 +527,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5afa26e0eb63f7e4c8bc92d0251b7556, type: 3}
+--- !u!1 &1480175051748901828 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5afa26e0eb63f7e4c8bc92d0251b7556, type: 3}
+  m_PrefabInstance: {fileID: 1750715599466446485}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2288237571556497790 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5afa26e0eb63f7e4c8bc92d0251b7556, type: 3}
@@ -569,6 +598,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7184e27219d5ac54e9cdf6cf3f93938d, type: 3}
+--- !u!1 &2619580553861971217 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7184e27219d5ac54e9cdf6cf3f93938d, type: 3}
+  m_PrefabInstance: {fileID: 2926204458641358912}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3391577820445992875 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7184e27219d5ac54e9cdf6cf3f93938d, type: 3}
@@ -644,6 +678,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 739c4b3be12b9bd4d8f9f1718bd3c064, type: 3}
   m_PrefabInstance: {fileID: 3547278113076838007}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4466198054340084518 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 739c4b3be12b9bd4d8f9f1718bd3c064, type: 3}
+  m_PrefabInstance: {fileID: 3547278113076838007}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7284207970892723407
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -699,10 +738,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: voxelToaster
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1182a357091090349a174e3e6f2bdaf1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1182a357091090349a174e3e6f2bdaf1, type: 3}
 --- !u!4 &7105569649975907108 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1182a357091090349a174e3e6f2bdaf1, type: 3}
+  m_PrefabInstance: {fileID: 7284207970892723407}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7626807897207081374 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1182a357091090349a174e3e6f2bdaf1, type: 3}
   m_PrefabInstance: {fileID: 7284207970892723407}
   m_PrefabAsset: {fileID: 0}
