@@ -6,7 +6,6 @@ namespace BreadFlip.UI
         Bread_NotDefaultSkin,
         Bread_CatSkin,
         Bread_CorgiAssSkin,
-
         Kitchen_Default,
         Kitchen_CatsAndWood,
     }

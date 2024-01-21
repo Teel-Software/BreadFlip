@@ -19,7 +19,7 @@ namespace BreadFlip.UI
             if (buttonToggle.isOn)
             {
                 GetComponent<Image>().sprite = buttonToggle.spriteState.selectedSprite;
-                CategorySelected.Invoke(categoryType);
+                CategorySelected?.Invoke(categoryType);
             }
             else
             {
