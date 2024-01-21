@@ -507,7 +507,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 1e7e9d4016d43334793e9ba8316c47e6, type: 2}
     - target: {fileID: 919132149155446097, guid: 5afa26e0eb63f7e4c8bc92d0251b7556, type: 3}
       propertyPath: m_Name
-      value: toaster Gold
+      value: toasterGold
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5afa26e0eb63f7e4c8bc92d0251b7556, type: 3}
       propertyPath: m_IsActive
@@ -590,7 +590,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7184e27219d5ac54e9cdf6cf3f93938d, type: 3}
       propertyPath: m_Name
-      value: tousterCutie
+      value: toasterCutie
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7184e27219d5ac54e9cdf6cf3f93938d, type: 3}
       propertyPath: m_IsActive
@@ -665,7 +665,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 739c4b3be12b9bd4d8f9f1718bd3c064, type: 3}
       propertyPath: m_Name
-      value: MiniFurnaceToaster
+      value: toasterMiniFurnace
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 739c4b3be12b9bd4d8f9f1718bd3c064, type: 3}
       propertyPath: m_IsActive

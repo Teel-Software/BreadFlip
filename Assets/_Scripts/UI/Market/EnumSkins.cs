@@ -12,6 +12,11 @@ namespace BreadFlip.UI
         Kitchen_Lightning,
         Kitchen_Game,
         Kitchen_Gold,
-        
+        Toaster_default,
+        Toaster_bricks,
+        Toaster_cute,
+        Toaster_voxel,
+        Toaster_golden,
+        Toaster_undefined
     }
 }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3377724464009549560}
   - component: {fileID: 4357492910300364688}
   m_Layer: 5
-  m_Name: CategoryBread
+  m_Name: CategoryToaster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69,7 +69,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9c0569a3d7ab3c64ba8fbe5ed0c70183, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 980e48136d5fb2e478eb9fd00dc40546, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -110,8 +110,8 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 21300000, guid: 91ea10af0972e4949a3f953a1ab4427c, type: 3}
-    m_DisabledSprite: {fileID: 21300000, guid: 91ea10af0972e4949a3f953a1ab4427c, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: 001fa10d16d59d843833bf02184e3b25, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: 001fa10d16d59d843833bf02184e3b25, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -152,8 +152,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonToggle: {fileID: 3377724464009549560}
-  categoryType: 0
-  defaultImage: {fileID: 21300000, guid: 9c0569a3d7ab3c64ba8fbe5ed0c70183, type: 3}
+  categoryType: 1
+  defaultImage: {fileID: 21300000, guid: 980e48136d5fb2e478eb9fd00dc40546, type: 3}
 --- !u!1 &8997151912860529446
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8de9970fc3b92aa44880e7b0009fc782, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 34ff5f0bda70467889d7b59c758479da, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

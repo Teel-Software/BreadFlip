@@ -4,27 +4,31 @@ namespace BreadFlip.Generation
 {
     public class SwitchToasterSkin : MonoBehaviour
     {
-        [SerializeField] private ToasterSkins _toasterSkins;
+        [SerializeField] private GameObject _toasterSkins;
 
         private int skinsCount;
         // private Dictionary<int, GameObject> dict = new Dictionary<int, GameObject>();
 
         private void OnEnable()
         {
-            skinsCount = _toasterSkins.skinsPrefabs.Count;
+            skinsCount = _toasterSkins.GetComponent<ToasterSkins>().skinsPrefabs.Count;
+            
         }
 
         public void SetToasterSkin(int skinIndex)
         {
+            Debug.Log(skinsCount);
             for (int i = 0; i < skinsCount; i++)
             {
                 if (i == skinIndex)
                 {
-                    _toasterSkins.skinsPrefabs[i].SetActive(true);
+                    _toasterSkins.GetComponent<ToasterSkins>().skinsPrefabs[i].SetActive(true);
+                    Debug.Log("I switched");
                 }
                 else
                 {
-                    _toasterSkins.skinsPrefabs[i].SetActive(false);
+                    _toasterSkins.GetComponent<ToasterSkins>().skinsPrefabs[i].SetActive(false);
+                    Debug.Log("I did not switch");
                 }
             }
         }
