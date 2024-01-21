@@ -29,6 +29,7 @@ namespace BreadFlip.UI
         [SerializeField] private ToastSkinChanger _skinChanger_bread;
         [SerializeField] private ChangeWallAndFloorMaterial _skinChanger_kitchen;
         private Skins _selectedSkin;
+        private int _selectedSkinIndex;
         private CategoryType _selectedCategory;
 
         [Header("SkinsCount")]
@@ -142,11 +143,10 @@ namespace BreadFlip.UI
 #region Methods for selected cell in Market
         private void ChangeSkinInfoPanel(Skins skin)
         {
-            int index;
-            if (skin.HumanName().StartsWith("Bread")) index = (int)skin;
-            else /* if (skin.HumanName().StartsWith("Kitchen")) */ index = (int)skin - BreadSkinsCount;
+            if (skin.HumanName().StartsWith("Bread")) _selectedSkinIndex = (int)skin;
+            else /* if (skin.HumanName().StartsWith("Kitchen")) */ _selectedSkinIndex = (int)skin - BreadSkinsCount;
             
-            _bigImage.sprite = SkinsImages[index];
+            _bigImage.sprite = SkinsImages[_selectedSkinIndex];
             _skinName.text = _skinsNaming[skin];
         }
 
@@ -201,14 +201,14 @@ namespace BreadFlip.UI
             // надет ли выбранный скин
             if (PlayerPrefs.HasKey("KITCHEN_EQUPPIED"))
             {
-                if (PlayerPrefs.GetInt("KITCHEN_EQUPPIED") == (int)skin)
+                if (PlayerPrefs.GetInt("KITCHEN_EQUPPIED") == _selectedSkinIndex)// == (int)skin)
                 {
                     SwitchToEquipped();
                 }
             }
             else
             {
-                PlayerPrefs.SetInt("KITCHEN_EQUPPIED", (int)skin);
+                PlayerPrefs.SetInt("KITCHEN_EQUPPIED", _selectedSkinIndex);//, (int)skin);
                 SwitchToEquipped();
             }
         }
@@ -324,10 +324,11 @@ namespace BreadFlip.UI
             else if (_notEquipedButtonObj.activeSelf)
             {
                 // меняем скин
-                _skinChanger_bread.ChangeSkin((int)_selectedSkin);
+                _skinChanger_kitchen.SetWallAndFloor(_skinChanger_kitchen.WallsAndFloors[_selectedSkinIndex][0], 
+                                                    _skinChanger_kitchen.WallsAndFloors[_selectedSkinIndex][1]);
                 
                 // надеваем выбранный
-                PlayerPrefs.SetInt("KITCHEN_EQUPPIED", (int)_selectedSkin);
+                PlayerPrefs.SetInt("KITCHEN_EQUPPIED", _selectedSkinIndex);//, (int)_selectedSkin);
                 SwitchToEquipped();
             }
         }

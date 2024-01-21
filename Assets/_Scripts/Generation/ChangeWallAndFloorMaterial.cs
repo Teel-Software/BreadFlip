@@ -20,16 +20,24 @@ namespace BreadFlip
 
         private Dictionary<int, Texture[]> dict = new Dictionary<int, Texture[]>();
 
+        public Dictionary<int, Texture[]> WallsAndFloors
+        {
+            get
+            {
+                return dict;
+            }
+        }
+
         // скины будут нумероваться ( 0 - дефолт, 1 - первый и т.д.)
         // внутри словаря первый элемент значения - это всегда стена, второй - пол
         private void Awake() 
         {
             SetDict();
-            if (PlayerPrefs.HasKey("current_kitchen"))
+            if (PlayerPrefs.HasKey("KITCHEN_EQUPPIED"))
             {
                 SetWallAndFloor(
-                    dict[PlayerPrefs.GetInt("current_kitchen")][0],
-                    dict[PlayerPrefs.GetInt("current_kitchen")][1]
+                    dict[PlayerPrefs.GetInt("KITCHEN_EQUPPIED")][0],
+                    dict[PlayerPrefs.GetInt("KITCHEN_EQUPPIED")][1]
                 );
             }
             else
