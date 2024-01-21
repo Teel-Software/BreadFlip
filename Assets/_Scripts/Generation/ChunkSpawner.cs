@@ -99,16 +99,42 @@ namespace BreadFlip.Generation
             if (_spawnedChunks.Count > _maxSpawnedChunks ||
                 (_spawnedChunks.Count > _minSpawnedChunks &&
                  _player.transform.position.x < firstTableStartPosition.x - _offsetDistanceToFirstChunkX))
-                DestroyChunk();
+                DestroyChunk(0);
         }
 
-        private void DestroyChunk()
+        private void DestroyChunk(int index)
         {
-            Destroy(_spawnedChunks[0].gameObject);
-            _spawnedChunks.RemoveAt(0);
+            Destroy(_spawnedChunks[index].gameObject);
+            _spawnedChunks.RemoveAt(index);
 
             // Destroy(_spawnedCoins[0].gameObject);
             // _spawnedCoins.RemoveAt(0);
+        }
+
+        public void UpdateChunks(int index)
+        {
+            for(int i = 0; i < _spawnedChunks.Count; i++)
+            {
+                var toaster = _spawnedChunks[i].GetComponentInChildren<Toaster>();
+                if (toaster != null) SwitchToaster(toaster, index);
+            }
+        }
+
+        public void SwitchToaster(Toaster toaster, int skinIndex)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                if (i == skinIndex)
+                {
+                    toaster.GetComponent<ToasterSkins>().skinsPrefabs[i].SetActive(true);
+                    Debug.Log("I switched");
+                }
+                else
+                {
+                    toaster.GetComponent<ToasterSkins>().skinsPrefabs[i].SetActive(false);
+                    Debug.Log("I did not switch");
+                }
+            }
         }
 
         private void Spawn()

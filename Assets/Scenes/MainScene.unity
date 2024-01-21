@@ -251,6 +251,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2713404047980045698, guid: dfb68812bd0f50249bb220584a3b037e, type: 3}
   m_PrefabInstance: {fileID: 215885149}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &215885151 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 215885152, guid: dfb68812bd0f50249bb220584a3b037e, type: 3}
+  m_PrefabInstance: {fileID: 215885149}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92cb0430a13d40a48e0d6ae2075255c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &318428774
 GameObject:
   m_ObjectHideFlags: 0
@@ -1172,6 +1183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _toasterSkins: {fileID: 2186822481414939807, guid: 64d8e57d8335819499b2c6b163652167, type: 3}
+  _chunkSpawner: {fileID: 215885151}
 --- !u!1001 &1877933764
 PrefabInstance:
   m_ObjectHideFlags: 0

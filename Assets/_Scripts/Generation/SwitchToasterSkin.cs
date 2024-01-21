@@ -5,6 +5,7 @@ namespace BreadFlip.Generation
     public class SwitchToasterSkin : MonoBehaviour
     {
         [SerializeField] private GameObject _toasterSkins;
+        [SerializeField] private ChunkSpawner _chunkSpawner;
 
         private int skinsCount;
         // private Dictionary<int, GameObject> dict = new Dictionary<int, GameObject>();
@@ -31,6 +32,7 @@ namespace BreadFlip.Generation
                     Debug.Log("I did not switch");
                 }
             }
+            _chunkSpawner.UpdateChunks(skinIndex);
         }
     }
 }
