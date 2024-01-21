@@ -44,7 +44,7 @@ namespace BreadFlip.UI
             {Skins.Bread_CatSkin, 1000},
             {Skins.Bread_CorgiAssSkin, 5000},
             {Skins.Kitchen_Default, 0},
-            {Skins.Kitchen_CatsAndWood, 5},
+            {Skins.Kitchen_CatsAndWood, 500},
         };
 
         private Dictionary<Skins, string> _skinsNaming = new Dictionary<Skins, string>
