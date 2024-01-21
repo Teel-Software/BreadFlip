@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using BreadFlip.Entities.Skins;
+using BreadFlip.Generation;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -28,6 +29,7 @@ namespace BreadFlip.UI
         [Header("Skin Changing")]
         [SerializeField] private ToastSkinChanger _skinChanger_bread;
         [SerializeField] private ChangeWallAndFloorMaterial _skinChanger_kitchen;
+        [SerializeField] private SwitchToasterSkin _skinChanger_toaster;
         private Skins _selectedSkin;
         private int _selectedSkinIndex;
         private CategoryType _selectedCategory;
@@ -41,7 +43,7 @@ namespace BreadFlip.UI
         {
             {Skins.Bread_DefaultSkin, 0},
             {Skins.Bread_NotDefaultSkin, 500},
-            {Skins.Bread_CatSkin, 100_0},
+            {Skins.Bread_CatSkin, 1000},
             {Skins.Bread_CorgiAssSkin, 5000},
             {Skins.Kitchen_Default, 0},
             {Skins.Kitchen_Bricks, 500},
@@ -49,6 +51,12 @@ namespace BreadFlip.UI
             {Skins.Kitchen_Lightning, 5000},
             {Skins.Kitchen_Game, 10000},
             {Skins.Kitchen_Gold, 20000},
+            {Skins.Toaster_default, 0},
+            {Skins.Toaster_bricks, 5},
+            {Skins.Toaster_cute, 0},
+            {Skins.Toaster_voxel, 0},
+            // {Skins.Toaster_undefined, -1},
+            {Skins.Toaster_golden, 0},
         };
 
         private Dictionary<Skins, string> _skinsNaming;
@@ -72,6 +80,12 @@ namespace BreadFlip.UI
                 {Skins.Kitchen_Lightning, LocalizationManager.Localize("Skins.LightningWall")},
                 {Skins.Kitchen_Game, LocalizationManager.Localize("Skins.GamerWall")},
                 {Skins.Kitchen_Gold, LocalizationManager.Localize("Skins.GoldWall")},
+                {Skins.Toaster_default,LocalizationManager.Localize("Skins.ToasterDefault")},
+                {Skins.Toaster_bricks,LocalizationManager.Localize("Skins.BricksToaster")},
+                {Skins.Toaster_cute,LocalizationManager.Localize("Skins.CuteToaster")},
+                {Skins.Toaster_voxel,LocalizationManager.Localize("Skins.VoxelToaster")},
+                // {Skins.Toaster_undefined,"undefined"},
+                {Skins.Toaster_golden,LocalizationManager.Localize("Skins.GoldenToaster")},
             };
                        
             // отображаем имеющиеся монеты
@@ -85,6 +99,8 @@ namespace BreadFlip.UI
                 PlayerPrefs.SetInt("SKIN_" + Skins.Bread_DefaultSkin.ToString(), 1);
             if (!PlayerPrefs.HasKey("KITCHEN_" + Skins.Kitchen_Default.ToString()))
                 PlayerPrefs.SetInt("KITCHEN_" + Skins.Kitchen_Default.ToString(), 1);
+            if (!PlayerPrefs.HasKey("TOASTER_" + Skins.Toaster_default.ToString()))
+                PlayerPrefs.SetInt("TOASTER_" + Skins.Toaster_default.ToString(), 1);
 
             // подписываемся на события
             MarketCell.SkinSelected += ChangeSkinCell;
@@ -102,9 +118,8 @@ namespace BreadFlip.UI
         /// <param name="type"> Тип категории, передаваемый через событие </param>
         private void ChangeShownCategory(CategoryType type)
         {
-            
             _selectedCategory = type;
-            Debug.Log($"Category: {_selectedCategory}");
+            // Debug.Log($"Category: {_selectedCategory}");
             if (_selectedCategory == CategoryType.Bread)
             {
                 // переприсваиваем листенер на кнопку для нужной категории
@@ -117,11 +132,18 @@ namespace BreadFlip.UI
                 _buyingCells.GetComponent<BuyingCells>().ShowSkins();
                 _buyingCells.GetComponent<BuyingCells>().SpawnedItems[0].GetComponent<MarketCell>().buttonToggle.isOn = true;
             }
-            // else if (_selectedCategory == CategoryType.Toast)
-            // {
-            //     _buyingCells.GetComponent<BuyingCells>()._cellsPrefabs = _categories.GetComponent<Categories>()._toastsCellsPrefabs;
-            //     _buyingCells.GetComponent<BuyingCells>().ShowSkins();
-            // }
+            else if (_selectedCategory == CategoryType.Toast)
+            {
+                // переприсваиваем листенер на кнопку для нужной категории
+                _buyButton.onClick.RemoveAllListeners();
+                _buyButton.onClick.AddListener(DoActions_ToasterSkins);
+
+                // переключаем категорию
+                _buyingCells.GetComponent<BuyingCells>()._cellsPrefabs = _categories.GetComponent<Categories>()._toastsCellsPrefabs;
+                FillSkinsList();
+                _buyingCells.GetComponent<BuyingCells>().ShowSkins();
+                _buyingCells.GetComponent<BuyingCells>().SpawnedItems[0].GetComponent<MarketCell>().buttonToggle.isOn = true;
+            }
             else if (_selectedCategory == CategoryType.Kitchen)
             {
                 // переприсваиваем листенер на кнопку для нужной категории
@@ -154,34 +176,34 @@ namespace BreadFlip.UI
 #region Methods for selected cell in Market
         private void ChangeSkinInfoPanel(Skins skin)
         {
-            // if (skin.HumanName().StartsWith("Bread")) _selectedSkinIndex = (int)skin;
             if (skin.ToString().StartsWith("Bread")) _selectedSkinIndex = (int)skin;
-            else /* if (skin.HumanName().StartsWith("Kitchen")) */ _selectedSkinIndex = (int)skin - BreadSkinsCount;
-            
+            else if (skin.ToString().StartsWith("Kitchen")) _selectedSkinIndex = (int)skin - BreadSkinsCount;
+            else _selectedSkinIndex = (int)skin - BreadSkinsCount - KitchenSkinsCount;
+
             _bigImage.sprite = SkinsImages[_selectedSkinIndex];
             _skinName.text = _skinsNaming[skin];
         }
 
         private void ChangeSkinCell(Skins skin)
         {
-            // if (skin.HumanName().StartsWith("Bread"))
             if (skin.ToString().StartsWith("Bread"))
                 BreadSkinAction(skin);
-            // else if (skin.HumanName().StartsWith("Kitchen"))
             else if (skin.ToString().StartsWith("Kitchen"))
                 KitchenSkinAction(skin);
+            else if (skin.ToString().StartsWith("Toaster"))
+                ToasterSkinAction(skin);
         }
 
-        private void KitchenSkinAction(Skins skin)
+        private void ToasterSkinAction(Skins skin)
         {
             _selectedSkin = skin;
             ChangeSkinInfoPanel(skin);
 
             // Debug.Log(_selectedSkin.ToString() + "|||" + skin.ToString());
             // покупал ли игрок этот скин
-            if (PlayerPrefs.HasKey("KITCHEN_" + skin.ToString()))
+            if (PlayerPrefs.HasKey("TOASTER_" + skin.ToString()))
             {
-                if (PlayerPrefs.GetInt("KITCHEN_" + skin.ToString()) == 1)
+                if (PlayerPrefs.GetInt("TOASTER_" + skin.ToString()) == 1)
                 {
                     SwitchFromBuyToEquip();
                 }
@@ -213,16 +235,71 @@ namespace BreadFlip.UI
             }
 
             // надет ли выбранный скин
-            if (PlayerPrefs.HasKey("KITCHEN_EQUPPIED"))
+            if (PlayerPrefs.HasKey("TOASTER_EQUPPIED"))
             {
-                if (PlayerPrefs.GetInt("KITCHEN_EQUPPIED") == _selectedSkinIndex)// == (int)skin)
+                if (PlayerPrefs.GetInt("TOASTER_EQUPPIED") == _selectedSkinIndex)// == (int)skin)
                 {
                     SwitchToEquipped();
                 }
             }
             else
             {
-                PlayerPrefs.SetInt("KITCHEN_EQUPPIED", _selectedSkinIndex);//, (int)skin);
+                PlayerPrefs.SetInt("TOASTER_EQUPPIED", _selectedSkinIndex);//, (int)skin);
+                SwitchToEquipped();
+            }
+        }
+
+        private void KitchenSkinAction(Skins skin)
+        {
+            _selectedSkin = skin;
+            ChangeSkinInfoPanel(skin);
+
+            // Debug.Log(_selectedSkin.ToString() + "|||" + skin.ToString());
+            // покупал ли игрок этот скин
+            if (PlayerPrefs.HasKey("TOASTER_" + skin.ToString()))
+            {
+                if (PlayerPrefs.GetInt("TOASTER_" + skin.ToString()) == 1)
+                {
+                    SwitchFromBuyToEquip();
+                }
+            }
+
+            else
+            {
+                SwitchToBuyButton();
+                _skinPrice.text = _skinsPricing[skin].ToString();
+                
+                if (PlayerPrefs.GetInt("all_coins") < _skinsPricing[skin])
+                {
+                    _buyButton.interactable = false;
+                    foreach (var comp in _buyButtonObj.GetComponents<ChangeTextColor>())
+                    {
+                        comp.ChangeColorOnPressed();
+                    }
+                    _buyButtonObj.transform.parent.gameObject.GetComponent<EventTrigger>().enabled = false;
+                }
+                else
+                {
+                    _buyButton.interactable = true;
+                    foreach (var comp in _buyButtonObj.GetComponents<ChangeTextColor>())
+                    {
+                        comp.ChangeColorToDefault();
+                    }
+                    _buyButtonObj.transform.parent.gameObject.GetComponent<EventTrigger>().enabled = true;
+                }
+            }
+
+            // надет ли выбранный скин
+            if (PlayerPrefs.HasKey("TOASTER_EQUPPIED"))
+            {
+                if (PlayerPrefs.GetInt("TOASTER_EQUPPIED") == _selectedSkinIndex)// == (int)skin)
+                {
+                    SwitchToEquipped();
+                }
+            }
+            else
+            {
+                PlayerPrefs.SetInt("TOASTER_EQUPPIED", _selectedSkinIndex);//, (int)skin);
                 SwitchToEquipped();
             }
         }
@@ -343,6 +420,37 @@ namespace BreadFlip.UI
                 
                 // надеваем выбранный
                 PlayerPrefs.SetInt("KITCHEN_EQUPPIED", _selectedSkinIndex);//, (int)_selectedSkin);
+                SwitchToEquipped();
+            }
+        }
+
+        private void DoActions_ToasterSkins()
+        {
+            // покупка скина
+            if (_buyButtonObj.activeSelf)
+            {
+                // 1. вычитаем деньги 
+                var moneyToRemove = _skinsPricing[_selectedSkin];
+                PlayerPrefs.SetInt("all_coins", PlayerPrefs.GetInt("all_coins") - moneyToRemove);
+
+                // 2. сохраняем покупку скина
+                PlayerPrefs.SetInt("TOASTER_" + _selectedSkin.ToString(), 1);
+
+                // 3. меняем кнопку
+                SwitchFromBuyToEquip();
+
+                // 4. меняем показания монет
+                _coinsText.text = (int.Parse(_coinsText.text) - moneyToRemove).ToString();
+            }
+
+            // надевание скина
+            else if (_notEquipedButtonObj.activeSelf)
+            {
+                // меняем скин
+                _skinChanger_toaster.SetToasterSkin(_selectedSkinIndex);
+                
+                // надеваем выбранный
+                PlayerPrefs.SetInt("TOASTER_EQUPPIED", _selectedSkinIndex);//, (int)_selectedSkin);
                 SwitchToEquipped();
             }
         }

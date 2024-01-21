@@ -49,7 +49,7 @@ namespace BreadFlip
 
         private void SetDict()
         {
-            for (int i = 0; i < walls.Count; i ++)
+            for (int i = 0; i < walls.Count; i++)
             {
                 dict.Add(i, new Texture[] { walls[i], floors[i] });
             }
