@@ -1384,11 +1384,14 @@ MonoBehaviour:
   - {fileID: 1468619332408714765, guid: 5075a2cdc17645a4b934ef4cfb85d191, type: 3}
   - {fileID: 1468619332408714765, guid: ed830090c02559c4a8c7f480bc0089ab, type: 3}
   - {fileID: 1468619332408714765, guid: df0c9252694ddef43ac874f221dc48c6, type: 3}
+  - {fileID: 1468619332408714765, guid: bfe96d2af406718449f7ce6c79fdf81a, type: 3}
+  - {fileID: 1468619332408714765, guid: 14b1960e14ce53747b0ac2c9dabe1ade, type: 3}
   _toastsCellsPrefabs:
   - {fileID: 1468619332408714765, guid: cf5e326e91b386747a50d26df0be17bf, type: 3}
   - {fileID: 1468619332408714765, guid: 5abc66160fbe7f440a15a6eefdd71175, type: 3}
   - {fileID: 1468619332408714765, guid: a1ef512df0b9e5a4286c0ba4ca859558, type: 3}
   - {fileID: 1468619332408714765, guid: e4dc76012e367204aaa1133b941d0d4b, type: 3}
+  - {fileID: 1468619332408714765, guid: 4dd209045f4bd214785815ae22f4fc85, type: 3}
   - {fileID: 1468619332408714765, guid: 22f09e11ed1f5584ea3e225bbb37903f, type: 3}
   _kitchenCellsPrefabs:
   - {fileID: 1468619332408714765, guid: 31c65d54452344548a7679e9f8b27958, type: 3}
@@ -1711,8 +1714,8 @@ MonoBehaviour:
   _skinChanger_bread: {fileID: 0}
   _skinChanger_kitchen: {fileID: 0}
   _skinChanger_toaster: {fileID: 0}
-  BreadSkinsCount: 4
-  TostersSkinsCount: 5
+  BreadSkinsCount: 6
+  TostersSkinsCount: 6
   KitchenSkinsCount: 6
 --- !u!1 &5232102218828092711
 GameObject:
