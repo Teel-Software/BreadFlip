@@ -388,7 +388,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5afa26e0eb63f7e4c8bc92d0251b7556, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4865064391339405807, guid: 5afa26e0eb63f7e4c8bc92d0251b7556, type: 3}
       propertyPath: m_LocalPosition.x
@@ -698,6 +698,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1182a357091090349a174e3e6f2bdaf1, type: 3}
       propertyPath: m_Name
       value: voxelToaster
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1182a357091090349a174e3e6f2bdaf1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1182a357091090349a174e3e6f2bdaf1, type: 3}
