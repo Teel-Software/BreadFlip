@@ -2,9 +2,12 @@ namespace BreadFlip.UI
 {
     public enum Skins
     {
-        DefaultSkin,
-        NotDefaultSkin,
-        CatSkin,
-        CorgiAssSkin
+        Bread_DefaultSkin,
+        Bread_NotDefaultSkin,
+        Bread_CatSkin,
+        Bread_CorgiAssSkin,
+
+        Kitchen_Default,
+        Kitchen_CatsAndWood,
     }
 }

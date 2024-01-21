@@ -31,19 +31,19 @@ namespace BreadFlip.UI
 
         private Dictionary<Skins, int> _skinsPricing = new Dictionary<Skins, int>
         {
-            {Skins.DefaultSkin, 0},
-            {Skins.NotDefaultSkin, 500},
-            {Skins.CatSkin, 1000},
-            {Skins.CorgiAssSkin, 5000}
+            {Skins.Bread_DefaultSkin, 0},
+            {Skins.Bread_NotDefaultSkin, 500},
+            {Skins.Bread_CatSkin, 1000},
+            {Skins.Bread_CorgiAssSkin, 5000}
 
         };
 
         private Dictionary<Skins, string> _skinsNaming = new Dictionary<Skins, string>
         {
-            {Skins.DefaultSkin, "Хлеб"},
-            {Skins.NotDefaultSkin, "Надкусанный хлеб"},
-            {Skins.CatSkin, "Котохлеб"},
-            {Skins.CorgiAssSkin, "Булочки корги"}
+            {Skins.Bread_DefaultSkin, "Хлеб"},
+            {Skins.Bread_NotDefaultSkin, "Надкусанный хлеб"},
+            {Skins.Bread_CatSkin, "Котохлеб"},
+            {Skins.Bread_CorgiAssSkin, "Булочки корги"}
         };
 
         private List<Sprite> SkinsImages = new List<Sprite>();
@@ -64,8 +64,8 @@ namespace BreadFlip.UI
             FillSkinsList();
 
             // скин DefaultSkin по умолчанию есть у игрока
-            if (!PlayerPrefs.HasKey("SKIN_" + Skins.DefaultSkin.ToString()))
-                PlayerPrefs.SetInt("SKIN_" + Skins.DefaultSkin.ToString(), 1);
+            if (!PlayerPrefs.HasKey("SKIN_" + Skins.Bread_DefaultSkin.ToString()))
+                PlayerPrefs.SetInt("SKIN_" + Skins.Bread_DefaultSkin.ToString(), 1);
 
             // подписываемся на события
             MarketCell.SkinSelected += ChangeSkinCell;
@@ -100,13 +100,16 @@ namespace BreadFlip.UI
             else if (_selectedCategory == CategoryType.Kitchen)
             {
                 _buyingCells.GetComponent<BuyingCells>()._cellsPrefabs = _categories.GetComponent<Categories>()._kitchenCellsPrefabs;
+                FillSkinsList();
                 _buyingCells.GetComponent<BuyingCells>().ShowSkins();
+                _buyingCells.GetComponent<BuyingCells>().SpawnedItems[0].GetComponent<MarketCell>().buttonToggle.isOn = true;
             }
         }
 
         // заполняем список скинов для отображения
         private void FillSkinsList()
         {
+            if (SkinsImages.Count > 0) SkinsImages.Clear();
             var list = _buyingCells.GetComponent<BuyingCells>()._cellsPrefabs;
             if (list.Count > 0)
             {
@@ -254,7 +257,6 @@ namespace BreadFlip.UI
             _categories.GetComponent<Categories>().breadCategoryPrefab.GetComponent<CategoryCell>().buttonToggle.isOn = true;
             _categories.GetComponent<Categories>().breadCategoryPrefab.GetComponent<Image>().sprite = 
                 _categories.GetComponent<Categories>().breadCategoryPrefab.GetComponent<CategoryCell>().buttonToggle.spriteState.selectedSprite;
-            
             ChangeShownCategory(CategoryType.Bread);
             _buyingCells.GetComponent<BuyingCells>().SpawnedItems[0].GetComponent<MarketCell>().buttonToggle.isOn = true;
         }
