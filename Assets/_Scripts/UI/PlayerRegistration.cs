@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 
@@ -19,7 +20,7 @@ namespace BreadFlip
 
         public void RegPlayer()
         {
-            DBInterface.RegisterPlayer(_inputField.text);
+            Task.Run(() => { DBInterface.RegisterPlayer(_inputField.text); });
             PlayerPrefs.SetInt("DisableRegistartion", 1);
             _panel.SetActive(false);
         }
