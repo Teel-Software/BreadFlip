@@ -112,13 +112,13 @@ namespace BreadFlip.UI
             Debug.Log("Interstitial advertisement");
             LoadLevel();
 #endif
-#if UNITY_ANDROID && !UNITY_EDITOR
+// #if UNITY_ANDROID && !UNITY_EDITOR
             // Debug.Log("Interstitial advertisement");
             LoadLevel();
-#endif
-#if UNITY_WEBGL && !UNITY_EDITOR
-            InterstitialAd.Show(onCloseCallback:_ => LoadLevel());
-#endif
+// #endif
+// #if UNITY_WEBGL && !UNITY_EDITOR
+//             InterstitialAd.Show(onCloseCallback:_ => LoadLevel());
+// #endif
         }
 
         private void LoadLevel()
