@@ -2068,6 +2068,10 @@ PrefabInstance:
       propertyPath: m_enableAutoSizing
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 982327754253424081, guid: 0f91dd01b25551143b61b15e7199614b, type: 3}
+      propertyPath: _categories
+      value: 
+      objectReference: {fileID: 3046153763829556724}
     - target: {fileID: 1820070665219046808, guid: 0f91dd01b25551143b61b15e7199614b, type: 3}
       propertyPath: m_fontSize
       value: 72
@@ -2348,6 +2352,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5232102217816495368, guid: 0f91dd01b25551143b61b15e7199614b, type: 3}
   m_PrefabInstance: {fileID: 5232102218729782972}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3046153763829556724 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7123064630677363528, guid: 0f91dd01b25551143b61b15e7199614b, type: 3}
+  m_PrefabInstance: {fileID: 5232102218729782972}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0c4939be706a824e97684ae2907769a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4048511321596943178 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8120863861516871158, guid: 0f91dd01b25551143b61b15e7199614b, type: 3}

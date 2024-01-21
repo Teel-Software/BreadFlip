@@ -173,9 +173,17 @@ MonoBehaviour:
   walls:
   - {fileID: 2800000, guid: e69055bee68f62e40a81f03e00de6dce, type: 3}
   - {fileID: 2800000, guid: e108fb6bde7d75844b3011ad02e05686, type: 3}
+  - {fileID: 2800000, guid: fbb7ced554fe07243aa78de8a39bd5e9, type: 3}
+  - {fileID: 2800000, guid: 25e8f1e72bcf4464d9ab07c44b0f1bd0, type: 3}
+  - {fileID: 2800000, guid: 08a452d052c0a4245a9b5c7c2abcf386, type: 3}
+  - {fileID: 2800000, guid: 3463efbb61ef5dc44aa347269480696c, type: 3}
   floors:
   - {fileID: 2800000, guid: 913f656d253c02047957efc89708ef92, type: 3}
   - {fileID: 2800000, guid: 8a57114229beff74d8d2c1e043f026ae, type: 3}
+  - {fileID: 2800000, guid: 3f9673f5ad5881949a8bcdb77c1a8703, type: 3}
+  - {fileID: 2800000, guid: 5fda32c71ddff5341b52740755349894, type: 3}
+  - {fileID: 2800000, guid: d33b7200c0332ae449d9361e14721657, type: 3}
+  - {fileID: 2800000, guid: aae21ac28d0480c40a4efa7a3e741433, type: 3}
 --- !u!1 &190059056 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 811503766263375528, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
@@ -289,17 +297,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95bbfd382af9c7d4bbb77ba4a7bd2ed0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &539000641 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3046153763829556724, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
-  m_PrefabInstance: {fileID: 1877933764}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0c4939be706a824e97684ae2907769a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &696238564
@@ -1124,10 +1121,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6912410602040569719, guid: be17455fd5b165347a9ed91481dd00e7, type: 3}
-      propertyPath: manager
-      value: 
-      objectReference: {fileID: 1493755432}
     - target: {fileID: 6912410602040569722, guid: be17455fd5b165347a9ed91481dd00e7, type: 3}
       propertyPath: m_Name
       value: BackgroundMusic
@@ -1141,6 +1134,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 318428775}
     m_Modifications:
+    - target: {fileID: 4048511321596943178, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: KitchenSkinsCount
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4048511321596943178, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
       propertyPath: _skinChanger_bread
       value: 
@@ -1241,10 +1238,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4989360413291555693, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
-      propertyPath: _categories
-      value: 
-      objectReference: {fileID: 539000641}
     - target: {fileID: 5667851704598959125, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
       propertyPath: _timer
       value: 

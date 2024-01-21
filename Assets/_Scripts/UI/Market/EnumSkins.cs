@@ -7,6 +7,11 @@ namespace BreadFlip.UI
         Bread_CatSkin,
         Bread_CorgiAssSkin,
         Kitchen_Default,
-        Kitchen_CatsAndWood,
+        Kitchen_Bricks,
+        Kitchen_Cats,
+        Kitchen_Lightning,
+        Kitchen_Game,
+        Kitchen_Gold,
+        
     }
 }
