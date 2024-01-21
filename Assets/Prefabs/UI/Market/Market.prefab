@@ -236,7 +236,7 @@ MonoBehaviour:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 21300000, guid: cef8413fba5f5974fba59edfe58bb3da, type: 3}
     m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 21300000, guid: cef8413fba5f5974fba59edfe58bb3da, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: ee614e60d6b153d4d8485d21c5c4e32c, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -1443,8 +1443,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 3.746521, y: 0}
-  m_SizeDelta: {x: -7.493, y: 0}
+  m_AnchoredPosition: {x: 6.7749023, y: 0}
+  m_SizeDelta: {x: -13.5496, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6364962620716254456
 CanvasRenderer:
@@ -1501,7 +1501,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 71.75
   m_fontSizeBase: 55
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1537,7 +1537,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 89.75781, w: 0}
+  m_margin: {x: 0, y: 0, z: 96.07733, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1643,7 +1643,8 @@ MonoBehaviour:
   _categories: {fileID: 4039688457301500284}
   _skinPrice: {fileID: 544536384363785389}
   _skinName: {fileID: 6598610865763996675}
-  _skinChanger: {fileID: 0}
+  _skinChanger_bread: {fileID: 0}
+  _skinChanger_kitchen: {fileID: 0}
 --- !u!1 &5232102218828092711
 GameObject:
   m_ObjectHideFlags: 0
@@ -2146,7 +2147,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -14, y: -30}
-  m_SizeDelta: {x: 220, y: 104}
+  m_SizeDelta: {x: 318, y: 100}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &1203556561050595763
 CanvasRenderer:
@@ -2431,21 +2432,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 1636334761501522135}
     m_Modifications:
     - target: {fileID: 3377724464009549560, guid: 6d4105a05ca5cef46901e5cc045bc0b0, type: 3}
-      propertyPath: m_IsOn
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3377724464009549560, guid: 6d4105a05ca5cef46901e5cc045bc0b0, type: 3}
       propertyPath: m_Group
       value: 
       objectReference: {fileID: 1488203070460808257}
-    - target: {fileID: 3377724464009549560, guid: 6d4105a05ca5cef46901e5cc045bc0b0, type: 3}
-      propertyPath: toggleTransition
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3377724464009549560, guid: 6d4105a05ca5cef46901e5cc045bc0b0, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SelectCategory
-      objectReference: {fileID: 0}
     - target: {fileID: 5856213999467017821, guid: 6d4105a05ca5cef46901e5cc045bc0b0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
