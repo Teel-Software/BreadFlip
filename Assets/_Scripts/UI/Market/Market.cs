@@ -24,10 +24,10 @@ namespace BreadFlip.UI
         [SerializeField] private TMP_Text _skinName;
 
         [Header("Skin Changing")]
-        [SerializeField] private ToastSkinChanger _skinChanger;
+        [SerializeField] private ToastSkinChanger _skinChanger_bread;
+        [SerializeField] private ChangeWallAndFloorMaterial _skinChanger_kitchen;
         private Skins _selectedSkin;
         private CategoryType _selectedCategory;
-
 
         private Dictionary<Skins, int> _skinsPricing = new Dictionary<Skins, int>
         {
@@ -58,7 +58,8 @@ namespace BreadFlip.UI
                 _coinsText.text = PlayerPrefs.GetInt("all_coins").ToString();
             }
 
-            _buyButton.onClick.AddListener(DoButtonActions);
+            
+            _buyButton.onClick.AddListener(DoActionsOnBreadSkins); // в будущем перенести эту команду в метод переключения категории (переприсваиваем листенер при переключении категории)
 
             FillSkinsList();
 
@@ -66,21 +67,20 @@ namespace BreadFlip.UI
             if (!PlayerPrefs.HasKey("SKIN_" + Skins.DefaultSkin.ToString()))
                 PlayerPrefs.SetInt("SKIN_" + Skins.DefaultSkin.ToString(), 1);
 
-            // задаём уже выбранный скин как надетый
-
-
+            // подписываемся на события
             MarketCell.SkinSelected += ChangeSkinCell;
             CategoryCell.CategorySelected += ChangeShownCategory;
-            // MarketCell.SkinSelected += SetSelectedSkin;
-            // MarketCell.SkinSelected += (Skins skin) => _selectedSkin = skin;
         }
 
         private void OnDisable() {
             MarketCell.SkinSelected -= ChangeSkinCell;
             CategoryCell.CategorySelected -= ChangeShownCategory;
-            // MarketCell.SkinSelected -= SetSelectedSkin;
         }
 
+        /// <summary>
+        /// Меняем лист префабов ячеек для оборажения в соответствии с категорией
+        /// </summary>
+        /// <param name="type"> Тип категории, передаваемый через событие </param>
         private void ChangeShownCategory(CategoryType type)
         {
             _selectedCategory = type;
@@ -104,6 +104,7 @@ namespace BreadFlip.UI
             }
         }
 
+        // заполняем список скинов для отображения
         private void FillSkinsList()
         {
             var list = _buyingCells.GetComponent<BuyingCells>()._cellsPrefabs;
@@ -116,7 +117,7 @@ namespace BreadFlip.UI
             }
         }
 
-#region Methods for selecting cell in Market
+#region Methods for selected cell in Market
         private void ChangeBigImage(Skins skin)
         {
             _bigImage.sprite = SkinsImages[(int)skin];
@@ -169,7 +170,7 @@ namespace BreadFlip.UI
             }
 
             // надет ли выбранный скин
-            /* else */ if (PlayerPrefs.HasKey("SKIN_EQUPPIED"))
+            if (PlayerPrefs.HasKey("SKIN_EQUPPIED"))
             {
                 if (PlayerPrefs.GetInt("SKIN_EQUPPIED") == (int)skin)
                 {
@@ -184,8 +185,8 @@ namespace BreadFlip.UI
         }
 #endregion
 
-#region Market button logic
-        private void DoButtonActions()
+#region Market main button logic
+        private void DoActionsOnBreadSkins()
         {
             // покупка скина
             if (_buyButtonObj.activeSelf)
@@ -207,13 +208,9 @@ namespace BreadFlip.UI
             // надевание скина
             else if (_notEquipedButtonObj.activeSelf)
             {
-                _skinChanger.ChangeSkin((int)_selectedSkin);
+                // меняем скин
+                _skinChanger_bread.ChangeSkin((int)_selectedSkin);
                 
-                // снимамем все скины
-                // foreach (Skins skin in Enum.GetValues(typeof(Skins)))
-                // {
-                //     PlayerPrefs.SetInt("SKIN_EQUPPIED" + skin.ToString(), 0);
-                // }
                 // надеваем выбранный
                 PlayerPrefs.SetInt("SKIN_EQUPPIED", (int)_selectedSkin);
                 SwitchToEquipped();
@@ -221,6 +218,7 @@ namespace BreadFlip.UI
         }
 #endregion
 
+#region Methods to switch sign on main market button
         private void SwitchFromBuyToEquip()
         {
             _buyButtonObj.SetActive(false);
@@ -248,8 +246,9 @@ namespace BreadFlip.UI
 
             _buyButton.interactable = true;
         }
+#endregion
 
-        // срабатывает при нажатии на кнопку магазина в Главном Меню, задаёт начальный выбранные категорию и скин
+        // срабатывает при нажатии на кнопку магазина в Главном Меню, задаёт начальные выбранные категорию и скин
         public void SetDefaultView()
         {
             _categories.GetComponent<Categories>().breadCategoryPrefab.GetComponent<CategoryCell>().buttonToggle.isOn = true;

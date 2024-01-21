@@ -38,10 +38,10 @@ namespace BreadFlip
             request.SendWebRequest();
             while (!request.isDone) { }
             //var res = request.isError || request.isNetworkError || request.isHttpError;
-            Debug.Log(request.downloadHandler.text);
+            Debug.LogWarning(request.downloadHandler.text);
 
             var res = -1;
-            Debug.Log(request.error);
+            Debug.LogWarning(request.error);
             if (request.error == null || request.error == "")
                 res = int.Parse(request.downloadHandler.text);
             request.Dispose();
