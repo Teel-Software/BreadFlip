@@ -49,11 +49,10 @@ namespace BreadFlip
 
         public void SetWallAndFloor(Texture wall, Texture floor)
         {
-            Debug.Log($"ChunkElement: {_wallTopPrefab.transform.Find("ChunkElement")}");
-            _wallTopPrefab.transform.Find("ChunkElement").gameObject.GetComponent<MeshRenderer>().material.SetTexture("wallTOP",wall);
-            _wallBottomPrefab.transform.Find("ChunkElement").gameObject.GetComponent<MeshRenderer>().material.SetTexture("wallBOTTOM", wall);
+            _wallTopPrefab.transform.Find("ChunkElement").gameObject.GetComponent<MeshRenderer>().sharedMaterial.SetTexture("_MainTex", wall);
+            _wallBottomPrefab.transform.Find("ChunkElement").gameObject.GetComponent<MeshRenderer>().sharedMaterial.SetTexture("_MainTex", wall);
 
-            _floorPrefab.transform.GetComponent<MeshRenderer>().material.SetTexture("floor",floor);
+            _floorPrefab.transform.GetComponent<MeshRenderer>().sharedMaterial.SetTexture("_MainTex", floor);
         }
     }
 }

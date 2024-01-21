@@ -10,7 +10,7 @@ namespace BreadFlip.UI
 
         public static Action<CategoryType> CategorySelected;
 
-        public CategoryType catType;
+        public CategoryType categoryType;
 
         [SerializeField] private Sprite defaultImage;
 
@@ -19,7 +19,7 @@ namespace BreadFlip.UI
             if (buttonToggle.isOn)
             {
                 GetComponent<Image>().sprite = buttonToggle.spriteState.selectedSprite;
-                CategorySelected.Invoke(catType);
+                CategorySelected?.Invoke(categoryType);
             }
             else
             {

@@ -172,8 +172,10 @@ MonoBehaviour:
   _floorPrefab: {fileID: 5211239329658857239, guid: 6c87fc733881e4b458d872b7fb51f5bf, type: 3}
   walls:
   - {fileID: 2800000, guid: e69055bee68f62e40a81f03e00de6dce, type: 3}
+  - {fileID: 2800000, guid: e108fb6bde7d75844b3011ad02e05686, type: 3}
   floors:
   - {fileID: 2800000, guid: 913f656d253c02047957efc89708ef92, type: 3}
+  - {fileID: 2800000, guid: 8a57114229beff74d8d2c1e043f026ae, type: 3}
 --- !u!1 &190059056 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 811503766263375528, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
@@ -287,6 +289,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95bbfd382af9c7d4bbb77ba4a7bd2ed0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &539000641 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3046153763829556724, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+  m_PrefabInstance: {fileID: 1877933764}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0c4939be706a824e97684ae2907769a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &696238564
@@ -1129,9 +1142,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 318428775}
     m_Modifications:
     - target: {fileID: 4048511321596943178, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
-      propertyPath: _skinChanger
+      propertyPath: _skinChanger_bread
       value: 
       objectReference: {fileID: 2139659200}
+    - target: {fileID: 4048511321596943178, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: _skinChanger_kitchen
+      value: 
+      objectReference: {fileID: 64412911}
     - target: {fileID: 4614380712577566193, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
@@ -1224,6 +1241,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4989360413291555693, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: _categories
+      value: 
+      objectReference: {fileID: 539000641}
     - target: {fileID: 5667851704598959125, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
       propertyPath: _timer
       value: 
@@ -1236,10 +1257,6 @@ PrefabInstance:
       propertyPath: _jumpController
       value: 
       objectReference: {fileID: 2139659199}
-    - target: {fileID: 8183326448237777973, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
-      propertyPath: m_IsOn
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
 --- !u!224 &1877933765 stripped
