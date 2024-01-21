@@ -1143,6 +1143,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4048511321596943178, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: KitchenSkinsCount
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048511321596943178, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
       propertyPath: _skinChanger_bread
       value: 
       objectReference: {fileID: 2139659200}
