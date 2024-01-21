@@ -154,7 +154,8 @@ namespace BreadFlip.UI
 #region Methods for selected cell in Market
         private void ChangeSkinInfoPanel(Skins skin)
         {
-            if (skin.HumanName().StartsWith("Bread")) _selectedSkinIndex = (int)skin;
+            // if (skin.HumanName().StartsWith("Bread")) _selectedSkinIndex = (int)skin;
+            if (skin.ToString().StartsWith("Bread")) _selectedSkinIndex = (int)skin;
             else /* if (skin.HumanName().StartsWith("Kitchen")) */ _selectedSkinIndex = (int)skin - BreadSkinsCount;
             
             _bigImage.sprite = SkinsImages[_selectedSkinIndex];
@@ -163,9 +164,11 @@ namespace BreadFlip.UI
 
         private void ChangeSkinCell(Skins skin)
         {
-            if (skin.HumanName().StartsWith("Bread"))
+            // if (skin.HumanName().StartsWith("Bread"))
+            if (skin.ToString().StartsWith("Bread"))
                 BreadSkinAction(skin);
-            else if (skin.HumanName().StartsWith("Kitchen"))
+            // else if (skin.HumanName().StartsWith("Kitchen"))
+            else if (skin.ToString().StartsWith("Kitchen"))
                 KitchenSkinAction(skin);
         }
 
