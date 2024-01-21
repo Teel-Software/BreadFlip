@@ -45,6 +45,8 @@ namespace BreadFlip.UI
             {Skins.Bread_NotDefaultSkin, 500},
             {Skins.Bread_CatSkin, 1000},
             {Skins.Bread_CorgiAssSkin, 5000},
+            {Skins.Bread_Voxel, 10000},
+            {Skins.Bread_Golden, 20000},
             {Skins.Kitchen_Default, 0},
             {Skins.Kitchen_Bricks, 500},
             {Skins.Kitchen_Cats, 1000},
@@ -54,7 +56,7 @@ namespace BreadFlip.UI
             {Skins.Toaster_default, 0},
             {Skins.Toaster_bricks, 500},
             {Skins.Toaster_cute, 1000},
-            // {Skins.Toaster_undefined, -1},
+            {Skins.Toaster_ghost, 5000},
             {Skins.Toaster_voxel, 10000},
             {Skins.Toaster_golden, 20000},
         };
@@ -67,13 +69,15 @@ namespace BreadFlip.UI
 
         private void OnEnable() 
         {
-
+            PlayerPrefs.SetInt("all_coins", 100000000);
             _skinsNaming = new Dictionary<Skins, string>
             {
                 {Skins.Bread_DefaultSkin, LocalizationManager.Localize("Skins.Bread")},
                 {Skins.Bread_NotDefaultSkin, LocalizationManager.Localize("Skins.NotDefaultBread")},
                 {Skins.Bread_CatSkin, LocalizationManager.Localize("Skins.CatBread")},
                 {Skins.Bread_CorgiAssSkin, LocalizationManager.Localize("Skins.CorgiBread")},
+                {Skins.Bread_Voxel, LocalizationManager.Localize("Skins.VoxelBread")},
+                {Skins.Bread_Golden, LocalizationManager.Localize("Skins.GoldenBread")},
                 {Skins.Kitchen_Default, LocalizationManager.Localize("Skins.WhiteWall")},
                 {Skins.Kitchen_Bricks, LocalizationManager.Localize("Skins.BricksWall")},
                 {Skins.Kitchen_Cats, LocalizationManager.Localize("Skins.CatWall")},
@@ -83,7 +87,7 @@ namespace BreadFlip.UI
                 {Skins.Toaster_default,LocalizationManager.Localize("Skins.ToasterDefault")},
                 {Skins.Toaster_bricks,LocalizationManager.Localize("Skins.BricksToaster")},
                 {Skins.Toaster_cute,LocalizationManager.Localize("Skins.CuteToaster")},
-                // {Skins.Toaster_undefined,"undefined"},
+                {Skins.Toaster_ghost,LocalizationManager.Localize("Skins.GhostToaster")},
                 {Skins.Toaster_voxel,LocalizationManager.Localize("Skins.VoxelToaster")},                
                 {Skins.Toaster_golden,LocalizationManager.Localize("Skins.GoldenToaster")},
             };

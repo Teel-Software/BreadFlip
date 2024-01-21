@@ -310,6 +310,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95bbfd382af9c7d4bbb77ba4a7bd2ed0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!23 &420834905 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5664352671200608766, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
+  m_PrefabInstance: {fileID: 2139659192}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &696238564
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1014,6 +1019,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b616a6b022b2ca64886ad6dd41be1463, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!23 &1584743859 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4862233213337664132, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
+  m_PrefabInstance: {fileID: 2139659192}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1737770653
 GameObject:
   m_ObjectHideFlags: 3
@@ -1362,6 +1372,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 963194227}
+    - target: {fileID: 2878594276956541714, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
+      propertyPath: <PulpRenderer>k__BackingField
+      value: 
+      objectReference: {fileID: 1584743859}
+    - target: {fileID: 2878594276956541714, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
+      propertyPath: <CrustRenderer>k__BackingField
+      value: 
+      objectReference: {fileID: 420834905}
     - target: {fileID: 4603831788449828374, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
       propertyPath: mainMenu
       value: 

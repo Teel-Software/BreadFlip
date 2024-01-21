@@ -6,6 +6,8 @@ namespace BreadFlip.UI
         Bread_NotDefaultSkin,
         Bread_CatSkin,
         Bread_CorgiAssSkin,
+        Bread_Voxel,
+        Bread_Golden,
         Kitchen_Default,
         Kitchen_Bricks,
         Kitchen_Cats,
@@ -15,8 +17,9 @@ namespace BreadFlip.UI
         Toaster_default,
         Toaster_bricks,
         Toaster_cute,
+        Toaster_ghost,
         Toaster_voxel,
         Toaster_golden,
-        Toaster_undefined
+        
     }
 }
