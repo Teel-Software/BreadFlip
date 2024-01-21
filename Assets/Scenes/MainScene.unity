@@ -1134,9 +1134,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 318428775}
     m_Modifications:
-    - target: {fileID: 4048511321596943178, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
-      propertyPath: KitchenSkinsCount
-      value: 6
+    - target: {fileID: 3152046714966707053, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3278268419570178110, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4048511321596943178, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
       propertyPath: _skinChanger_bread
@@ -1146,6 +1150,62 @@ PrefabInstance:
       propertyPath: _skinChanger_kitchen
       value: 
       objectReference: {fileID: 64412911}
+    - target: {fileID: 4428067507318595911, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443922249139962930, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443922249781558984, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 231.4186
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443922249781558984, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 218.01433
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443922249781558991, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_margin.z
+      value: 0.23434448
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443922249781558991, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443922250098892387, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443922250098892387, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443922250098892396, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 337.6421
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443922250098892396, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 271.1289
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443922250098892396, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4543165195954531339, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 830.3284
+      objectReference: {fileID: 0}
+    - target: {fileID: 4543165195954531339, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1.9402
+      objectReference: {fileID: 0}
+    - target: {fileID: 4543165196315739497, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4614380712577566193, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
@@ -1250,6 +1310,10 @@ PrefabInstance:
       propertyPath: _jumpController
       value: 
       objectReference: {fileID: 2139659199}
+    - target: {fileID: 9138631101522550931, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
 --- !u!224 &1877933765 stripped
