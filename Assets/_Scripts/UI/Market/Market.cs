@@ -44,7 +44,11 @@ namespace BreadFlip.UI
             {Skins.Bread_CatSkin, 1000},
             {Skins.Bread_CorgiAssSkin, 5000},
             {Skins.Kitchen_Default, 0},
-            {Skins.Kitchen_CatsAndWood, 500},
+            {Skins.Kitchen_Bricks, 500},
+            {Skins.Kitchen_Cats, 1000},
+            {Skins.Kitchen_Lightning, 5000},
+            {Skins.Kitchen_Game, 10000},
+            {Skins.Kitchen_Gold, 20000},
         };
 
         private Dictionary<Skins, string> _skinsNaming = new Dictionary<Skins, string>
@@ -53,8 +57,12 @@ namespace BreadFlip.UI
             {Skins.Bread_NotDefaultSkin, "Надкусанный хлеб"},
             {Skins.Bread_CatSkin, "Котохлеб"},
             {Skins.Bread_CorgiAssSkin, "Булочки корги"},
-            {Skins.Kitchen_Default, "Обычная кухня"},
-            {Skins.Kitchen_CatsAndWood, "Кирпичная кухня"},
+            {Skins.Kitchen_Default, "Обычный белый"},
+            {Skins.Kitchen_Bricks, "Кирпичный красный"},
+            {Skins.Kitchen_Cats, "Кошачий фиолетовый"},
+            {Skins.Kitchen_Lightning, "Молниеносно жёлтый"},
+            {Skins.Kitchen_Game, "Геймерский зелёный"},
+            {Skins.Kitchen_Gold, "Роскошный золотой"},
         };
 
         private List<Sprite> SkinsImages = new List<Sprite>();

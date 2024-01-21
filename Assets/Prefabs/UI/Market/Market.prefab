@@ -1346,6 +1346,10 @@ MonoBehaviour:
   _kitchenCellsPrefabs:
   - {fileID: 1468619332408714765, guid: 31c65d54452344548a7679e9f8b27958, type: 3}
   - {fileID: 1468619332408714765, guid: d47a25c0a95d0c04f862d4513e384dc0, type: 3}
+  - {fileID: 1468619332408714765, guid: 445326fff584d9c4ab851f2bff12f4ab, type: 3}
+  - {fileID: 1468619332408714765, guid: 1dc4f6bd4226d9145852e2465aa89ce7, type: 3}
+  - {fileID: 1468619332408714765, guid: 77906e30c72b7bd4596a7987998c1cba, type: 3}
+  - {fileID: 1468619332408714765, guid: 0db6d551b627c2948a0607c6c25e10d1, type: 3}
 --- !u!1 &4227444771916104434
 GameObject:
   m_ObjectHideFlags: 0
