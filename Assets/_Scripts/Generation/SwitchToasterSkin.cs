@@ -26,7 +26,7 @@ namespace BreadFlip.Generation
 
         public void SetToasterSkin(int skinIndex)
         {
-            Debug.Log(skinsCount);
+            // Debug.Log($"skinsCount: {skinsCount}\n skinsPrefabs: {_toasterSkins.GetComponent<ToasterSkins>().skinsPrefabs.Count}");
             for (int i = 0; i < skinsCount; i++)
             {
                 if (i == skinIndex)
@@ -42,5 +42,28 @@ namespace BreadFlip.Generation
             }
             _chunkSpawner.UpdateChunks(skinIndex);
         }
+
+        // на "Начать игру"
+        // public void SetToasterSkin(string input)
+        // {
+        //     if (input.Equals("prefs"))
+        //     {
+        //         Debug.Log($"PlayerPrefs: {PlayerPrefs.GetInt("TOASTER_EQUPPIED")} || 3");
+        //         for (int i = 0; i < skinsCount; i++)
+        //         {
+        //             if (i == 3)
+        //             {
+        //                 _toasterSkins.GetComponent<ToasterSkins>().skinsPrefabs[i].SetActive(true);
+        //                 Debug.Log("I switched");
+        //             }
+        //             else
+        //             {
+        //                 _toasterSkins.GetComponent<ToasterSkins>().skinsPrefabs[i].SetActive(false);
+        //                 // Debug.Log("I did not switch");
+        //             }
+        //         }
+        //         PlayerPrefs.SetInt("TOASTER_EQUPPIED", 3);
+        //     }
+        // }
     }
 }
