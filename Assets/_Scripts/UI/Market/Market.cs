@@ -68,7 +68,7 @@ namespace BreadFlip.UI
 
         private void OnEnable() 
         {
-            PlayerPrefs.SetInt("all_coins", 100000000);
+            //PlayerPrefs.SetInt("all_coins", 100000000);
             _skinsNaming = new Dictionary<Skins, string>
             {
                 {Skins.Bread_DefaultSkin, LocalizationManager.Localize("Skins.Bread")},
