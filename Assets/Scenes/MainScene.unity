@@ -315,6 +315,17 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 5664352671200608766, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
   m_PrefabInstance: {fileID: 2139659192}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &577792359 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3844732170019490986, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+  m_PrefabInstance: {fileID: 1877933764}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &696238564
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1201,6 +1212,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 318428775}
     m_Modifications:
+    - target: {fileID: 481440976497033146, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: _titleIcon
+      value: 
+      objectReference: {fileID: 577792359}
     - target: {fileID: 4048511321596943178, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
       propertyPath: _skinChanger_bread
       value: 
@@ -1357,6 +1372,10 @@ PrefabInstance:
       propertyPath: _jumpController
       value: 
       objectReference: {fileID: 2139659199}
+    - target: {fileID: 6540628661089837858, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: _titleIcon
+      value: 
+      objectReference: {fileID: 577792359}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
 --- !u!224 &1877933765 stripped
