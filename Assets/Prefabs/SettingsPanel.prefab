@@ -164,6 +164,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultSprite: {fileID: 21300000, guid: 6f0bfe18cbf984043b35a16f78e6d363, type: 3}
   buttonToggle: {fileID: 1545306569965833452}
+  _titleIcon: {fileID: 0}
+  ENG_Title: {fileID: 21300000, guid: 87cec134191af034a9b98b7cdf7d670d, type: 3}
+  RUS_Title: {fileID: 21300000, guid: 19574bd35db041d499ad17fd35bed377, type: 3}
 --- !u!1 &1201571281587940131
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,6 +331,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultSprite: {fileID: 21300000, guid: b2637b939e7390843b82a31f29717ae9, type: 3}
   buttonToggle: {fileID: 960590937329264474}
+  _titleIcon: {fileID: 0}
+  ENG_Title: {fileID: 21300000, guid: 87cec134191af034a9b98b7cdf7d670d, type: 3}
+  RUS_Title: {fileID: 21300000, guid: 19574bd35db041d499ad17fd35bed377, type: 3}
 --- !u!1 &4668471602752199262
 GameObject:
   m_ObjectHideFlags: 0

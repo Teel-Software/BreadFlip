@@ -76,3 +76,5 @@ crashlytics-build.properties
 
 /[Aa]ssets/[Rr]esources/endpoint.*
 Assets/Materials/Wall and Floor/*
+Assets/Materials/Wall and Floor/defaultFloor.mat
+Assets/Materials/Wall and Floor/defaultWall.mat

@@ -453,11 +453,13 @@ namespace BreadFlip.UI
             // надевание скина
             else if (_notEquipedButtonObj.activeSelf)
             {
+                // сохраняем выбранный
+                PlayerPrefs.SetInt("TOASTER_EQUPPIED", _selectedSkinIndex);
                 // меняем скин
                 _skinChanger_toaster.SetToasterSkin(_selectedSkinIndex);
                 
-                // надеваем выбранный
-                PlayerPrefs.SetInt("TOASTER_EQUPPIED", _selectedSkinIndex);//, (int)_selectedSkin);
+                
+                //, (int)_selectedSkin);
                 SwitchToEquipped();
             }
         }

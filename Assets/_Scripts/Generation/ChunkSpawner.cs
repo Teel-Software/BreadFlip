@@ -94,6 +94,7 @@ namespace BreadFlip.Generation
             if (_player.transform.position.x < lastTableEndPosition.x + _offsetDistanceToLastChunkX)
             {
                 Spawn();
+                UpdateChunks(PlayerPrefs.GetInt("TOASTER_EQUPPIED"));
             }
 
             if (_spawnedChunks.Count > _maxSpawnedChunks ||

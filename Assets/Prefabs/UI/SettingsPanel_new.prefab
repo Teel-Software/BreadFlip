@@ -201,3 +201,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pausePanel: {fileID: 0}
+  _mainMenu: {fileID: 0}
