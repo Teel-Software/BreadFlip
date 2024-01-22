@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using BreadFlip.Entities.Skins;
 using BreadFlip.Generation;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -96,6 +95,10 @@ namespace BreadFlip.UI
             if (PlayerPrefs.HasKey("all_coins"))
             {
                 _coinsText.text = PlayerPrefs.GetInt("all_coins").ToString();
+            }
+            else
+            {
+                _coinsText.text = "0";
             }
 
             // скины по умолчанию есть у игрока
@@ -260,9 +263,9 @@ namespace BreadFlip.UI
 
             // Debug.Log(_selectedSkin.ToString() + "|||" + skin.ToString());
             // покупал ли игрок этот скин
-            if (PlayerPrefs.HasKey("TOASTER_" + skin.ToString()))
+            if (PlayerPrefs.HasKey("KITCHEN_" + skin.ToString()))
             {
-                if (PlayerPrefs.GetInt("TOASTER_" + skin.ToString()) == 1)
+                if (PlayerPrefs.GetInt("KITCHEN_" + skin.ToString()) == 1)
                 {
                     SwitchFromBuyToEquip();
                 }
@@ -294,16 +297,16 @@ namespace BreadFlip.UI
             }
 
             // надет ли выбранный скин
-            if (PlayerPrefs.HasKey("TOASTER_EQUPPIED"))
+            if (PlayerPrefs.HasKey("KITCHEN_EQUPPIED"))
             {
-                if (PlayerPrefs.GetInt("TOASTER_EQUPPIED") == _selectedSkinIndex)// == (int)skin)
+                if (PlayerPrefs.GetInt("KITCHEN_EQUPPIED") == _selectedSkinIndex)// == (int)skin)
                 {
                     SwitchToEquipped();
                 }
             }
             else
             {
-                PlayerPrefs.SetInt("TOASTER_EQUPPIED", _selectedSkinIndex);//, (int)skin);
+                PlayerPrefs.SetInt("KITCHEN_EQUPPIED", _selectedSkinIndex);//, (int)skin);
                 SwitchToEquipped();
             }
         }
@@ -496,7 +499,7 @@ namespace BreadFlip.UI
             _categories.GetComponent<Categories>().breadCategoryPrefab.GetComponent<CategoryCell>().buttonToggle.isOn = true;
             _categories.GetComponent<Categories>().breadCategoryPrefab.GetComponent<Image>().sprite = 
                 _categories.GetComponent<Categories>().breadCategoryPrefab.GetComponent<CategoryCell>().buttonToggle.spriteState.selectedSprite;
-            Debug.LogWarning(_categories.GetComponent<Categories>().breadCategoryPrefab.GetComponent<Image>().sprite.name);
+            // Debug.LogWarning(_categories.GetComponent<Categories>().breadCategoryPrefab.GetComponent<Image>().sprite.name);
             ChangeShownCategory(CategoryType.Bread);
             _buyingCells.GetComponent<BuyingCells>().SpawnedItems[0].GetComponent<MarketCell>().buttonToggle.isOn = true;
         }

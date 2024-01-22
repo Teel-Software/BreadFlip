@@ -426,7 +426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cellsPrefabs: []
-  _categories: {fileID: 0}
+  _categories: {fileID: 7123064630677363528}
   _blockedPrefab: {fileID: 1468619332408714765, guid: dde72e53fb0f10d4a9937803ddeaff76, type: 3}
 --- !u!114 &1701999015823918264
 MonoBehaviour:

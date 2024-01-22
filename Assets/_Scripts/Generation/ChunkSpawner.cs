@@ -113,6 +113,7 @@ namespace BreadFlip.Generation
 
         public void UpdateChunks(int index)
         {
+            // Debug.Log($"_spawnedChunks.Count: {_spawnedChunks.Count}");
             for(int i = 0; i < _spawnedChunks.Count; i++)
             {
                 var toaster = _spawnedChunks[i].GetComponentInChildren<Toaster>();
@@ -122,17 +123,18 @@ namespace BreadFlip.Generation
 
         public void SwitchToaster(Toaster toaster, int skinIndex)
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 6; i++)
             {
                 if (i == skinIndex)
                 {
+                    // Debug.Log($"skinsPrefabs: {toaster.GetComponent<ToasterSkins>().skinsPrefabs.Count} || {skinIndex}");
                     toaster.GetComponent<ToasterSkins>().skinsPrefabs[i].SetActive(true);
-                    Debug.Log("I switched");
+                    // Debug.Log("I switched");
                 }
                 else
                 {
                     toaster.GetComponent<ToasterSkins>().skinsPrefabs[i].SetActive(false);
-                    Debug.Log("I did not switch");
+                    // Debug.Log("I did not switch");
                 }
             }
         }
