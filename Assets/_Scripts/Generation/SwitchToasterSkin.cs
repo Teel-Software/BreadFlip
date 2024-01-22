@@ -10,10 +10,18 @@ namespace BreadFlip.Generation
         private int skinsCount;
         // private Dictionary<int, GameObject> dict = new Dictionary<int, GameObject>();
 
-        private void OnEnable()
+        private void Start()
         {
             skinsCount = _toasterSkins.GetComponent<ToasterSkins>().skinsPrefabs.Count;
-            
+            if (PlayerPrefs.HasKey("TOASTER_EQUPPIED"))
+            {
+                // Debug.Log($"PlayerPrefs: {PlayerPrefs.GetInt("TOASTER_EQUPPIED")}");
+                SetToasterSkin(PlayerPrefs.GetInt("TOASTER_EQUPPIED"));
+            }
+            else
+            {
+                SetToasterSkin(0);
+            }
         }
 
         public void SetToasterSkin(int skinIndex)
@@ -29,7 +37,7 @@ namespace BreadFlip.Generation
                 else
                 {
                     _toasterSkins.GetComponent<ToasterSkins>().skinsPrefabs[i].SetActive(false);
-                    Debug.Log("I did not switch");
+                    // Debug.Log("I did not switch");
                 }
             }
             _chunkSpawner.UpdateChunks(skinIndex);
