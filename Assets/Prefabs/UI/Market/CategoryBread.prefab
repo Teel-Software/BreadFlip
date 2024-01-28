@@ -69,7 +69,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: da28503cf6ec4e1469b52723eb8f2303, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9c0569a3d7ab3c64ba8fbe5ed0c70183, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -110,8 +110,8 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 21300000, guid: da28503cf6ec4e1469b52723eb8f2303, type: 3}
-    m_DisabledSprite: {fileID: 21300000, guid: da28503cf6ec4e1469b52723eb8f2303, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: 91ea10af0972e4949a3f953a1ab4427c, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: 91ea10af0972e4949a3f953a1ab4427c, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonToggle: {fileID: 3377724464009549560}
   categoryType: 0
-  defaultImage: {fileID: 21300000, guid: 9a1c586037544e141b0557049547bd3a, type: 3}
+  defaultImage: {fileID: 21300000, guid: 9c0569a3d7ab3c64ba8fbe5ed0c70183, type: 3}
 --- !u!1 &8997151912860529446
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,7 +171,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5616257956268127427
 RectTransform:
   m_ObjectHideFlags: 0

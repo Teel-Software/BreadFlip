@@ -13,9 +13,5 @@ namespace BreadFlip.UI
         public List<GameObject> _breadCellsPrefabs;
         public List<GameObject> _toastsCellsPrefabs;
         public List<GameObject> _kitchenCellsPrefabs;
-
-        // private void Awake() {
-            
-        // }
     }
 }

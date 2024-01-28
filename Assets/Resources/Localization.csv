@@ -1,0 +1,45 @@
+Key,English,Russian
+Test.Prev,Previous,предыдущая
+Test.Next,Next,следующая
+Test.English,English,Английский
+Test.Russian,Russian,Русский
+Test.NewText,New Text,Новый Текст
+Test.Button,Button,Кнопка
+Test.EnterText,Enter text...,Введите текст...
+Main.Start,Press to start game,Нажмите для начала игры
+Pause.Title,Pause,Пауза
+Pause.Resume,Continue,Продолжить
+Pause.Settings,Settings,Настройки
+Pause.Exit,Exit,Выйти
+Settings.Title,Settings,Настройки
+Settings.Audio,Audio,Звук
+Settings.Music,Music,Музыка
+Settings.Back,Back,Назад
+Score.Title,The end,Конец
+Score.Score,Score,Счёт
+Score.Coins,Coins,Монеты
+Rega.Title,Registration,Регистрация
+Rega.Name,Write your Name:,Введите Ваше имя:
+Rega.Ban,Invalid name,Некорректное имя
+Leaderboard.Title,Leaderboard,Рейтинг
+Skins.Bread,Slice of bread,Хлеб
+Skins.NotDefaultBread,Bitten bread,Надкусанный хлеб
+Skins.CatBread,Bread cat,Котохлеб
+Skins.CorgiBread,Corgi buns,Булочки корги
+Skins.WhiteWall,Basic white,Обычный белый
+Skins.BricksWall,Red brick,Кирпичный красный
+Skins.CatWall,Feline purple,Кошачий фиолетовый
+Skins.LightningWall,Lightning yellow,Молниеносно жёлтый
+Skins.GamerWall,Gamer’s green,Геймерский зелёный
+Skins.GoldWall,Luxurious golden,Роскошный золотой
+Market.Buy,Buy,Купить
+Market.Equip,Equip,Выбрать
+Market.Equipped,Equipped,Выбрано
+Skins.ToasterDefault,Red standart,Красный стандарт
+Skins.BricksToaster,Mini-furnace,Мини-печь
+Skins.CuteToaster,Cute toaster,Милый тостер
+Skins.VoxelToaster,Voxel toaster,Воксельный тостер
+Skins.GoldenToaster,Golden toaster,Золотой тостер
+Skins.GhostToaster,GhostToaster,Призрачный тостер
+Skins.VoxelBread,Voxel bread,Воксельный хлеб
+Skins.GoldenBread,Golden bread,Золотой хлеб

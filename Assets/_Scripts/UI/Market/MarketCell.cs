@@ -24,7 +24,7 @@ namespace BreadFlip.UI
             {
                 GetComponent<Image>().sprite = buttonToggle.spriteState.selectedSprite;
                 SkinSelected?.Invoke(skin);
-                Debug.Log($"Selected skin: {skin.HumanName()}");
+                // Debug.Log($"Selected skin: {skin.HumanName()}");
             }
             else
             {
