@@ -8,59 +8,71 @@ using System.Threading.Tasks;
 
 namespace BreadFlip
 {
-    public static class DBWorker
+    public class DBWorker : MonoBehaviour
     {
         private static string endpoint = "";//http://localhost:8080
-        public static DBTopRecords GetRecords(int offset, int count)
+        private DBTopRecords rec;
+
+        public void GetRecords(int offset, int count, Action<DBTopRecords> action)
         {
             initEndpoint();
+            StartCoroutine(getRecords(offset, count, action));
+        }
+
+        private IEnumerator getRecords(int offset, int count, Action<DBTopRecords> action)
+        {
             var request = UnityWebRequest.Get(endpoint + "/getrecords");
             request.SetRequestHeader("offset", offset.ToString());
             request.SetRequestHeader("count", count.ToString());
-            request.SendWebRequest();
-            while (!request.isDone) { }
-            var a = new DBTopRecords();
-            if (request.error == null || request.error == "")
-                a = JsonUtility.FromJson<DBTopRecords>(request.downloadHandler.text);
+
+            yield return request.SendWebRequest();
+
+            if (!(request.error == null || request.error == ""))
+            {
+                Debug.Log("error");
+                Debug.LogError(request.error);
+            }
+            else
+            {
+                rec = JsonUtility.FromJson<DBTopRecords>(request.downloadHandler.text);
+                action(rec);
+            }
             request.Dispose();
-            return a;
         }
 
-        public static int PutRecord(DBPlayer player)
+        public void PutRecord(DBPlayer player, Action<int> action)
+        {
+            StartCoroutine(putRecord(player, action));
+        }
+
+        public IEnumerator putRecord(DBPlayer player, Action<int> action)
         {
             initEndpoint();
             var str = JsonUtility.ToJson(player);
-            Debug.Log(str);
 
             var request = UnityWebRequest.Put(endpoint + "/add", Encoding.UTF8.GetBytes(str));
-            byte[] bytes = Encoding.UTF8.GetBytes(str);
-            request.SetRequestHeader("size", bytes.Length.ToString());
-            request.SendWebRequest();
-            while (!request.isDone) { }
-            //var res = request.isError || request.isNetworkError || request.isHttpError;
-            Debug.LogWarning(request.downloadHandler.text);
+            yield return request.SendWebRequest();
 
             var res = -1;
-            Debug.LogWarning(request.error);
             if (request.error == null || request.error == "")
                 res = int.Parse(request.downloadHandler.text);
             request.Dispose();
-            return res;
+            action(res);
         }
 
-        public static async Task UpdateRecord(DBRegPlayer player)
+        public void UpdateRecord(DBRegPlayer player)
+        {
+            StartCoroutine(updateRecord(player));
+        }
+
+        private IEnumerator updateRecord(DBRegPlayer player)
         {
             initEndpoint();
             var str = JsonUtility.ToJson(player);
             Debug.Log(str);
 
             var request = UnityWebRequest.Put(endpoint + "/change", Encoding.UTF8.GetBytes(str));
-            byte[] bytes = Encoding.UTF8.GetBytes(str);
-            request.SetRequestHeader("size", bytes.Length.ToString());
-            request.SendWebRequest();
-            while (!request.isDone) {
-                await Task.Yield();
-            }
+            yield return request.SendWebRequest();
 
             if (request.error != null) PlayerPrefs.SetInt("RetryRecord", 1);
             else PlayerPrefs.SetInt("RetryRecord", 0);

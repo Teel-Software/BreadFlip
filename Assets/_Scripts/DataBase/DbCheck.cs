@@ -34,19 +34,19 @@ namespace BreadFlip
         public void UpdateList()
         {
 
-            var a = DBInterface.GetRecords(0, 5);
-            if(a.record_list == null)
-            {
-                output.text = "no connection";
-                return;
-            }
-            output.text = "";
-            int i = 0;
-            foreach (var p in a.record_list)
-            {
-                ++i;
-                output.text += i.ToString() +" "+ p.player + ": " + p.record.ToString() + "\n";
-            }
+            //var a = DBInterface.GetRecords(0, 5);
+            //if(a.record_list == null)
+            //{
+            //    output.text = "no connection";
+            //    return;
+            //}
+            //output.text = "";
+            //int i = 0;
+            //foreach (var p in a.record_list)
+            //{
+            //    ++i;
+            //    output.text += i.ToString() +" "+ p.player + ": " + p.record.ToString() + "\n";
+            //}
         }
 
         public void NetIsOn()

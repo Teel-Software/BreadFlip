@@ -38,21 +38,21 @@ namespace BreadFlip
         public void ShowNext()
         {
             from += count;
-            var players = DBInterface.GetRecords(from, count);
-            // Debug.LogWarning(items.Count);
-            if (players.record_list.Count == 0)
-            {
-                from -= count;
-                return;
-            }
-            ClearSpace();
+            DBInterface.GetRecords(from, count, (DBTopRecords players) => {
+                if (players.record_list.Count == 0)
+                {
+                    from -= count;
+                    return;
+                }
+                ClearSpace();
 
-            int i = from + 1;
-            foreach (var el in players.record_list)
-            {
-                AddItem(el, i);
-                ++i;
-            }
+                int i = from + 1;
+                foreach (var el in players.record_list)
+                {
+                    AddItem(el, i);
+                    ++i;
+                }
+            });
         }
 
         public void ShowPrevious()
@@ -60,14 +60,14 @@ namespace BreadFlip
             if (from == 0) return;
             ClearSpace();
             from -= count;
-            var players = DBInterface.GetRecords(from, count);
-
-            int i = from + 1;
-            foreach (var el in players.record_list)
-            {
-                AddItem(el, i);
-                ++i;
-            }
+            DBInterface.GetRecords(from, count, (DBTopRecords players) => {
+                int i = from + 1;
+                foreach (var el in players.record_list)
+                {
+                    AddItem(el, i);
+                    ++i;
+                }
+            });
         }
 
     }
