@@ -20,7 +20,7 @@ namespace BreadFlip
 
         public void RegPlayer()
         {
-            Task.Run(() => { DBInterface.RegisterPlayer(_inputField.text); });
+            DBInterface.RegisterPlayer(_inputField.text);
             PlayerPrefs.SetInt("DisableRegistartion", 1);
             _panel.SetActive(false);
         }
