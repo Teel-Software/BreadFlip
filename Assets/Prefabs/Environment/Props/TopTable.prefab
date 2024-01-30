@@ -112,6 +112,46 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1155abec182345c43939c061b51bfd14, type: 3}
+--- !u!1 &1759929204409622273 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6014503084441653313, guid: 1155abec182345c43939c061b51bfd14, type: 3}
+  m_PrefabInstance: {fileID: 5411999611936640832}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2247987251002108780
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759929204409622273}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.033312295, y: 0.016366256, z: 0.027737606}
+  m_Center: {x: 0.000020401552, y: -0.00068313186, z: 0.013895372}
+--- !u!114 &8057559633852057113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759929204409622273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49a8255bb61893f489b5f470533c8188, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _triggerZone: {fileID: 2247987251002108780}
+  _onEnteredZone:
+    m_PersistentCalls:
+      m_Calls: []
+  _onExitZone:
+    m_PersistentCalls:
+      m_Calls: []
+  _activeHighlight: 0
+  _isToaster: 0
+  _color: {r: 0, g: 1, b: 0, a: 1}
 --- !u!4 &5517456569433090219 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1155abec182345c43939c061b51bfd14, type: 3}
