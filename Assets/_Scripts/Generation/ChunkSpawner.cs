@@ -5,6 +5,7 @@ using BreadFlip.Entities;
 using BreadFlip.Generation.Props;
 using BreadFlip.Movement;
 using JetBrains.Annotations;
+using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -27,6 +28,7 @@ namespace BreadFlip.Generation
 
         [Space, SerializeField] private Chunk _emptySpaceVariant;
         [SerializeField] private float _emptySpaceValue = 2f;
+        [SerializeField]private int _maximumAllowedQuantityEmptyChunk = 3;
 
         private Vector3 END_OFFSET = new Vector3(1.75f, 2f, 0f);
         private const float HEIGHT = 1.15f;
@@ -38,6 +40,7 @@ namespace BreadFlip.Generation
         
         private ToastZoneController _player;
         private readonly List<Chunk> _spawnedChunks = new();
+        private int _numberOfChunksInARow;
 
         private void OnValidate()
         {
@@ -142,7 +145,25 @@ namespace BreadFlip.Generation
 
         private void Spawn()
         {
-            var newChunk = Instantiate(_chunkPrefabs[Random.Range(0, _chunkPrefabs.Count)] /*GetRandomChunkVariant()*/,
+            var chunkPrefab = _chunkPrefabs[Random.Range(0, _chunkPrefabs.Count)];
+
+            if (chunkPrefab == _emptySpaceVariant)
+            {
+                _numberOfChunksInARow++;
+
+                if (_numberOfChunksInARow > _maximumAllowedQuantityEmptyChunk)
+                {
+                    Debug.Log("Заспавненно больше пустых чанков чем можно, пересоздал");
+                    var chunksWithoutEmpty = _chunkPrefabs.Where(chunk => chunk != _emptySpaceVariant).ToArray();
+                    chunkPrefab = chunksWithoutEmpty[Random.Range(0, chunksWithoutEmpty.Length)];
+                }
+            }
+            else
+            {
+                _numberOfChunksInARow = 0;
+            }
+            
+            var newChunk = Instantiate(chunkPrefab /*GetRandomChunkVariant()*/,
                 _spawnParent);
 
             UpdateSpawnedChunk(newChunk, _spawnedChunks[^1]);
