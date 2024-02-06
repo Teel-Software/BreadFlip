@@ -771,6 +771,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3086906738547597184, guid: 77c2274802cacc540bbbdc2529c326f3, type: 3}
   m_PrefabInstance: {fileID: 1009739564}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1052346752 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6080068383792257565, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+  m_PrefabInstance: {fileID: 1877933764}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feebc080f0998647bd2ee86be11e560, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1177448500
 GameObject:
   m_ObjectHideFlags: 0
@@ -1201,6 +1212,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 318428775}
     m_Modifications:
+    - target: {fileID: 481440976497033146, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: titleIconLang
+      value: 
+      objectReference: {fileID: 1052346752}
     - target: {fileID: 1056067102303651293, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2
@@ -1221,6 +1236,10 @@ PrefabInstance:
       propertyPath: _skinChanger_toaster
       value: 
       objectReference: {fileID: 1873298894}
+    - target: {fileID: 4543165196315739497, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4614380712577566193, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
@@ -1325,6 +1344,10 @@ PrefabInstance:
       propertyPath: _jumpController
       value: 
       objectReference: {fileID: 2139659199}
+    - target: {fileID: 6540628661089837858, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
+      propertyPath: titleIconLang
+      value: 
+      objectReference: {fileID: 1052346752}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb1501baf9266ff4f85e40299e3607c2, type: 3}
 --- !u!224 &1877933765 stripped

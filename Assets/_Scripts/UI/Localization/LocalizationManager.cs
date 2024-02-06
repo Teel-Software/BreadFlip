@@ -11,7 +11,17 @@ public static class LocalizationManager
     private static string _language = "hz";
     public static string Language
     {
-        get => _language;
+        get {
+            if(_language == "hz")
+            {
+                string def;
+                if (Application.systemLanguage == SystemLanguage.Russian) def = "Russian";
+                else def = "English";
+    
+                _language = PlayerPrefs.GetString("CurrentLanguage", def);
+            }
+            return _language;
+        }
         set { 
             _language = value;
             LocalizationChanged();
