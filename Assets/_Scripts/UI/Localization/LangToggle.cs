@@ -7,9 +7,7 @@ namespace BreadFlip
     {
         [SerializeField] private Sprite defaultSprite;
         [SerializeField] private Toggle buttonToggle;
-        [SerializeField] private Image _titleIcon;
-        [SerializeField] private Sprite ENG_Title;
-        [SerializeField] private Sprite RUS_Title;
+        [SerializeField] private TitleIconLang titleIconLang;
 
         public void ActionOnChange()
         {
@@ -22,14 +20,17 @@ namespace BreadFlip
                 GetComponent<Image>().sprite = defaultSprite;
             }
 
-            if (LocalizationManager.Language == "Russian")
-            {
-                _titleIcon.sprite = RUS_Title;
-            }
-            else
-            {
-                _titleIcon.sprite = ENG_Title;
-            }
+            titleIconLang.ChangeIcon();
+
+
+            // if (LocalizationManager.Language == "Russian")
+            // {
+            //     _titleIcon.sprite = RUS_Title;
+            // }
+            // else
+            // {
+            //     _titleIcon.sprite = ENG_Title;
+            // }
         }
     }
 }
