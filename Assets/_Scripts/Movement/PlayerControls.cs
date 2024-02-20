@@ -35,7 +35,7 @@ namespace BreadFlip.Movement
                     ""id"": ""af2e03dd-23da-4267-bdf6-63af1d5fcc9e"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Hold(duration=0.1,pressPoint=0.3)"",
+                    ""interactions"": ""Hold(duration=0.05,pressPoint=0.27)"",
                     ""initialStateCheck"": false
                 },
                 {
@@ -60,6 +60,17 @@ namespace BreadFlip.Movement
             ""bindings"": [
                 {
                     ""name"": """",
+                    ""id"": ""d854be8a-555e-413d-ad61-0f0db0b302c7"",
+                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Touch"",
+                    ""action"": ""Press"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""e9b200c1-d771-42e0-a9e4-687ba493b403"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
@@ -71,12 +82,12 @@ namespace BreadFlip.Movement
                 },
                 {
                     ""name"": """",
-                    ""id"": ""d854be8a-555e-413d-ad61-0f0db0b302c7"",
-                    ""path"": ""<Touchscreen>/touch1/tap"",
+                    ""id"": ""22e83b46-1e97-4bdf-948b-041b9d4c502e"",
+                    ""path"": ""<Touchscreen>/primaryTouch/press"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Touch"",
-                    ""action"": ""Press"",
+                    ""action"": ""PrimaryTap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -87,17 +98,6 @@ namespace BreadFlip.Movement
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Mouse"",
-                    ""action"": ""PrimaryTap"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""22e83b46-1e97-4bdf-948b-041b9d4c502e"",
-                    ""path"": ""<Touchscreen>/primaryTouch/press"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Touch"",
                     ""action"": ""PrimaryTap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false

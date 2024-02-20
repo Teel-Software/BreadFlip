@@ -1504,6 +1504,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5951631042798394827, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: Touch
+      objectReference: {fileID: 0}
     - target: {fileID: 6556600626714998364, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
       propertyPath: _soundManager
       value: 
