@@ -260,8 +260,8 @@ MonoBehaviour:
   <ModelTransform>k__BackingField: {fileID: 490847871732915290}
   <ModelUpOffset>k__BackingField: 0.1
   <ModelCollider>k__BackingField: {fileID: 9072606185977364116}
-  <PulpRenderer>k__BackingField: {fileID: 0}
-  <CrustRenderer>k__BackingField: {fileID: 0}
+  <PulpRenderer>k__BackingField: {fileID: 4862233213337664132}
+  <CrustRenderer>k__BackingField: {fileID: 5664352671200608766}
 --- !u!65 &9072606185977364116
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -733,6 +733,7 @@ GameObject:
   - component: {fileID: 2139659203}
   - component: {fileID: 6581707821822194863}
   - component: {fileID: 584894851303034133}
+  - component: {fileID: 5951631042798394827}
   m_Layer: 0
   m_Name: PlayerToast
   m_TagString: Player
@@ -818,6 +819,7 @@ MonoBehaviour:
   lineRedererMaterial: {fileID: 2100000, guid: 08d588173a91ba342bcae5661179a18d, type: 2}
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   redColor: {r: 0.8867924, g: 0.20499441, b: 0.10457456, a: 1}
+  playerControlsReference: {fileID: 6536368828599720040, guid: 415e521483e3a7543b5ff9a68873d9c4, type: 3}
 --- !u!114 &2139659203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -849,6 +851,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85e323b404cb5b84886bfaf2f6e404d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  swipeTapReference: {fileID: -4472204964501638745, guid: 415e521483e3a7543b5ff9a68873d9c4, type: 3}
+  swipePositionReference: {fileID: 5289136757945571182, guid: 415e521483e3a7543b5ff9a68873d9c4, type: 3}
 --- !u!114 &584894851303034133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -872,6 +876,84 @@ MonoBehaviour:
   - {fileID: 4603831788449828374}
   - {fileID: 2139659203}
   _defaultSkin: {fileID: 3007157117727192356}
+--- !u!114 &5951631042798394827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5073544946718634969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 415e521483e3a7543b5ff9a68873d9c4, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4603831788449828374}
+        m_TargetAssemblyTypeName: BreadFlip.Movement.JumpController, Assembly-CSharp
+        m_MethodName: ChangeInputCondition
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5073544946718634969}
+        m_TargetAssemblyTypeName: BreadFlip.Movement.JumpController, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: af2e03dd-23da-4267-bdf6-63af1d5fcc9e
+    m_ActionName: Player/Press[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6581707821822194863}
+        m_TargetAssemblyTypeName: BreadFlip.Movement.SwipeDetection, Assembly-CSharp
+        m_MethodName: DetectSwipe
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: bd25c85c-97a1-4440-b937-290dde587571
+    m_ActionName: Player/DragDown[/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5f51d08e-b0fd-48d3-93c8-b8c8c397f34e
+    m_ActionName: Player/PrimaryPosition[/Mouse/position]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &5978144403833715672
 GameObject:
   m_ObjectHideFlags: 0
@@ -1327,6 +1409,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ebfdb002c617894ba7e5ae0b4d67bee, type: 3}
+--- !u!23 &4862233213337664132 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7767691180090689383, guid: 4ebfdb002c617894ba7e5ae0b4d67bee, type: 3}
+  m_PrefabInstance: {fileID: 6289700597437989405}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &5664352671200608766 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1860641818344424419, guid: 4ebfdb002c617894ba7e5ae0b4d67bee, type: 3}
+  m_PrefabInstance: {fileID: 6289700597437989405}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5819556866524964342 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4ebfdb002c617894ba7e5ae0b4d67bee, type: 3}

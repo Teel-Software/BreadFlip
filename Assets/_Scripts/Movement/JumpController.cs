@@ -5,6 +5,7 @@ using BreadFlip.Entities.Skins;
 using BreadFlip.Sound;
 using BreadFlip.UI;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
 
 namespace BreadFlip.Movement
@@ -39,7 +40,7 @@ namespace BreadFlip.Movement
         private int _speedMultiplicator = 1;
         private bool _canDoubleJump;
         private bool _playerFailed;
-        private Vector3 forceVector;
+        private Vector3 forceVector;     
 
         // private bool bylo;
 
@@ -53,6 +54,27 @@ namespace BreadFlip.Movement
         {
             get {return _canDoubleJump; }
             set {_canDoubleJump = value;}
+        }
+
+        [Header("Input System")]
+        [SerializeField] private InputActionReference playerControlsReference;
+        private PressCondition pressCondition;
+        private bool _inputStarted;
+
+        private void OnEnable() {
+            playerControlsReference.action.Enable();
+
+            playerControlsReference.action.started += ChangeInputCondition;
+            playerControlsReference.action.performed += ChangeInputCondition;
+            playerControlsReference.action.canceled += ChangeInputCondition;
+        }
+
+        private void OnDisable() {
+            playerControlsReference.action.Disable();
+            
+            playerControlsReference.action.started -= ChangeInputCondition;
+            playerControlsReference.action.performed -= ChangeInputCondition;
+            playerControlsReference.action.canceled -= ChangeInputCondition;
         }
 
         private void Start()
@@ -80,6 +102,8 @@ namespace BreadFlip.Movement
             secondSoundPlayed = false;
             _canDoubleJump = false;
 
+            _inputStarted = false;
+
             SwipeDetection.Reset();
 
             transform.rotation = Quaternion.Euler(new Vector3 (0f, 90f, 0));
@@ -105,18 +129,35 @@ namespace BreadFlip.Movement
             else PrepareToJump();
         }
 
+        public void ChangeInputCondition (InputAction.CallbackContext context)
+        {
+            // if (context.started)
+            //     pressCondition = PressCondition.Started;
+            
+            if (context.performed)
+                pressCondition = PressCondition.Performed;
+            
+            if (context.canceled)
+                pressCondition = PressCondition.Up;
+        }
+
         private void PrepareToJump()
         {
             SwipeDetection.SwipeEnabled = false;
+            // Debug.LogError($"ПАНЕЛЬ: {mainMenu.activeSelf} |||||||||| StartJump: {_canStartJump}");
             if (!mainMenu.activeSelf && _canStartJump)
             {
-                if (Input.GetMouseButtonDown(0))
+                if (pressCondition == PressCondition.Performed/* Input.GetMouseButtonDown(0) */ && !_inputStarted)
                 {
+                    // Debug.LogError("Started");
                     _startTime = Time.time;
+                    _inputStarted = true;
+                    return;
                 }
 
-                if (Input.GetMouseButton(0) && _startTime != 0)
+                if (pressCondition == PressCondition.Performed /* Input.GetMouseButton(0) */ && _startTime != 0)
                 {
+                    // Debug.LogError("PressContinues");
                     forceVector = GetForceVector();
                     CurrentToaster.SetHandlePosition(GetForcePercent());
 
@@ -134,10 +175,10 @@ namespace BreadFlip.Movement
                     }
                 }
 
-                if (Input.GetMouseButtonUp(0) && _startTime != 0)
+                if (pressCondition == PressCondition.Up /* Input.GetMouseButtonUp(0) */ && _startTime != 0)
                 {
                     // var forceVector = GetForceVector();
-                    
+                    // Debug.LogError("Up");
                     if (forceVector.magnitude > _MAGNITUDE && _rigidbody.velocity.y >= 0f)
                     {
                         StartCoroutine(Wait(.45f, () => _canDoubleJump = true));
@@ -163,9 +204,11 @@ namespace BreadFlip.Movement
                     else
                     {
                         _trajectoryRenderer.ClearTrajectory();
+                        _inputStarted = false;
                     }
 
                     _startTime = 0;
+                    _inputStarted = false;
                 }
             }
         }
@@ -180,7 +223,11 @@ namespace BreadFlip.Movement
         {
             if (!_canDoubleJump) return;
             SwipeDetection.SwipeEnabled = true;
-            if (Input.GetMouseButtonDown(0) && !_isDoubleJumpPressed && !UiManager.pauseButtonPressed && !SwipeDetection.TouchMoved)
+            if (pressCondition == PressCondition.Performed 
+                && !_inputStarted /* Input.GetMouseButtonDown(0) */ 
+                && !_isDoubleJumpPressed 
+                && !UiManager.pauseButtonPressed 
+                && /* SwipeDetection.Y_diff <= SwipeDetection.SwipeDistance */!SwipeDetection.TouchMoved)
             {
                     if (_rigidbody.velocity.y < 0)
                         _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0f, _rigidbody.velocity.z);
@@ -194,18 +241,22 @@ namespace BreadFlip.Movement
                     // начать double jump sound
                     if (!_playerFailed)
                         _soundManager.PlayDoubleJump();
+                    _inputStarted = true;
             }
 
             else if (SwipeDetection.TouchMoved)
             {
                 _soundManager.StopJumpSound();
+
+                _inputStarted = false;
             }
 
-            if (Input.GetMouseButtonUp(0) && _isDoubleJumpPressed && _rigidbody.velocity.y > 0)
+            if (pressCondition == PressCondition.Up /* Input.GetMouseButtonUp(0) */ && _isDoubleJumpPressed && _rigidbody.velocity.y > 0)
             {
                 _rigidbody.velocity =
                     new Vector3(_rigidbody.velocity.x, _rigidbody.velocity.y / 2f, _rigidbody.velocity.z);
-
+                
+                _inputStarted = false;
             
                 // остановить double jump sound
                 _soundManager.StopJumpSound();

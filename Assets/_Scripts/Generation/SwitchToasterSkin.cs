@@ -32,7 +32,7 @@ namespace BreadFlip.Generation
                 if (i == skinIndex)
                 {
                     _toasterSkins.GetComponent<ToasterSkins>().skinsPrefabs[i].SetActive(true);
-                    Debug.Log("I switched");
+                    // Debug.Log("I switched");
                 }
                 else
                 {
