@@ -585,11 +585,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54550b02cac1e2140bd2bf1739b31f7c, type: 3}
---- !u!1 &919387029 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5073544946718634969, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
-  m_PrefabInstance: {fileID: 2139659192}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1461,10 +1456,6 @@ PrefabInstance:
       propertyPath: _soundManager
       value: 
       objectReference: {fileID: 1493755432}
-    - target: {fileID: 4603831788449828374, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
-      propertyPath: playerControlsReference
-      value: 
-      objectReference: {fileID: 6536368828599720040, guid: 415e521483e3a7543b5ff9a68873d9c4, type: 3}
     - target: {fileID: 5073544946718634969, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
       propertyPath: m_Name
       value: PlayerToast
@@ -1522,17 +1513,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6581707821822194863, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
-      propertyPath: swipeTapReference
-      value: 
-      objectReference: {fileID: -4472204964501638745, guid: 415e521483e3a7543b5ff9a68873d9c4, type: 3}
-    - target: {fileID: 6581707821822194863, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
       propertyPath: swipeDownReference
       value: 
       objectReference: {fileID: -4472204964501638745, guid: 415e521483e3a7543b5ff9a68873d9c4, type: 3}
-    - target: {fileID: 6581707821822194863, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
-      propertyPath: swipePositionReference
-      value: 
-      objectReference: {fileID: 5289136757945571182, guid: 415e521483e3a7543b5ff9a68873d9c4, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
 --- !u!114 &2139659193 stripped
@@ -1540,7 +1523,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6556600626714998364, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
   m_PrefabInstance: {fileID: 2139659192}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919387029}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8868dab8a554d3a8934af402e601bb3, type: 3}
@@ -1556,7 +1539,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4603831788449828374, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
   m_PrefabInstance: {fileID: 2139659192}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919387029}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b549f1cc8c34c128753d2cd3bf69715, type: 3}
@@ -1567,98 +1550,9 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 584894851303034133, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
   m_PrefabInstance: {fileID: 2139659192}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919387029}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4185570ca79f429c8ea39d2f912d1f9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2139659201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919387029}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 415e521483e3a7543b5ff9a68873d9c4, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2139659199}
-        m_TargetAssemblyTypeName: BreadFlip.Movement.JumpController, Assembly-CSharp
-        m_MethodName: ChangeInputCondition
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 919387029}
-        m_TargetAssemblyTypeName: BreadFlip.Movement.JumpController, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: af2e03dd-23da-4267-bdf6-63af1d5fcc9e
-    m_ActionName: Player/Press[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2139659202}
-        m_TargetAssemblyTypeName: BreadFlip.Movement.SwipeDetection, Assembly-CSharp
-        m_MethodName: DetectSwipe
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: bd25c85c-97a1-4440-b937-290dde587571
-    m_ActionName: Player/DragDown[/Mouse/delta]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 5f51d08e-b0fd-48d3-93c8-b8c8c397f34e
-    m_ActionName: Player/PrimaryPosition[/Mouse/position]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
---- !u!114 &2139659202 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6581707821822194863, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
-  m_PrefabInstance: {fileID: 2139659192}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919387029}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85e323b404cb5b84886bfaf2f6e404d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
