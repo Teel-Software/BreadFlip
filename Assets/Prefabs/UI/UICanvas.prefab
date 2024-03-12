@@ -442,7 +442,7 @@ PrefabInstance:
     - target: {fileID: 5663879995181683158, guid: b3c2dfeb5717c2345a52033ea52fe54c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 4543165196315739497}
+      objectReference: {fileID: 941637024980190285}
     - target: {fileID: 7513509801416554338, guid: b3c2dfeb5717c2345a52033ea52fe54c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1268,11 +1268,6 @@ GameObject:
 --- !u!224 &2619462853911683179 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2145662201488424807, guid: 6a77aa7b7aa4a1e4ba9053d20d59fe5a, type: 3}
-  m_PrefabInstance: {fileID: 4151439183280316172}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4543165196315739497 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 472965224951896677, guid: 6a77aa7b7aa4a1e4ba9053d20d59fe5a, type: 3}
   m_PrefabInstance: {fileID: 4151439183280316172}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4973155850124106762
