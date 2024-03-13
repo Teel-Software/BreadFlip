@@ -1,12 +1,13 @@
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace BreadFlip
 {
     public class PlayerRegistration : MonoBehaviour
     {
-        [SerializeField] private TMP_InputField _inputField;
+        [SerializeField] private InputField _inputField;
         [SerializeField] private GameObject _panel;
 
         private void Start() 
